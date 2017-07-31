@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>About Knowitwall</title>
+  </head>
+  <style media="screen">
+  body{
+    color:#444;
+    background-color: #f9f9f9;
+  }
+  .container{
+    margin-left:15%;
+    margin-right:15%;
+    line-height: 25px;
+  }
+  .episode_div{
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid #bfbfbf;
+  }
+  .col1{
+    width: 30%;
+    float: left;
+  }
+  .col2{
+    width: 70%;
+    float: left;
+  }
+  </style>
+  <body>
+<div class="container">
+  <h4>Go back to the <a href="{% url 'content:index' %}">homepage</a></h4>
+
+  <h1>About Knowitwall</h1>
+  <p>We do cool stuff</p>
+
+  <h2>Upcoming Flash Seminars</h2>
+  {% for flash_seminar in flash_seminar_list %}
+      <div class="episode_div">
+        <h3>{{ flash_seminar.title }}</h3>
+        <div class="row">
+          <div class="col1">
+            <p>by <i>{{ flash_seminar.episode.author.name }}</i></p>
+          </div>
+          <div class="col2">
+            <img src="{{ flash_seminar.episode.author.image.url }}" width="100px" style="padding-bottom:20px;">
+          </div>
+        </div>
+        <p>{{ flash_seminar.description | safe }}</p>
+      </div>
+    {% endfor %}
+
+</div>
+  </body>
+</html>

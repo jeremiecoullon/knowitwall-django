@@ -1,0 +1,15 @@
+  {% if forloop.counter|add:1|divisibleby:2 %}
+    <div class="row homepage_box_row">
+  {% endif %}
+
+
+  {% if forloop.counter|add:-1|divisibleby:4 or forloop.counter|add:-2|divisibleby:4 %}
+    {% include 'content/episode_boxes/episode_box_left_small.html' %}
+  {% endif %}
+  {% if forloop.counter|add:-3|divisibleby:4 or forloop.counter|divisibleby:4 %}
+    {% include 'content/episode_boxes/episode_box_left_big.html' %}
+  {% endif %}
+
+  {% if forloop.counter|divisibleby:2 or forloop.last %}
+    </div>
+  {% endif %}

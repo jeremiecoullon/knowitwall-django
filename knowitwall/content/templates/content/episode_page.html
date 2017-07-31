@@ -1,0 +1,388 @@
+{% extends "content/KiW_base.html" %}
+{% load static from staticfiles %}
+{% block content %}
+<head>
+
+
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{episode.abstract}}">
+  <meta name="keywords" content="Knowitwall, Know it Wall, audio-documentary, audiodoc, outreach, academia, insightful, science, humanities">
+  <meta name="author" content="">
+  <meta property="og:image" content="{{ episode.topic.image.url }}" />
+  <meta property="og:title" content="{{episode.title | safe}}{% if episode.video_embed %} [Video]{% elif episode.audio_mp3 %} [Audio]{% else %}{% endif %}"/>
+  <meta property="og:description" content="{{episode.abstract | safe}}" />
+  <meta property="og:url" content="http://knowitwall.com/episodes/{{episode.slug}}" />
+  <link rel="icon" href="{{config.AWS_URL}}/static/Images/KIW-thumbnail_logo.png" type="image/gif" sizes="16x16">
+<!-- pens -->
+
+  <title>{{episode.title}} | Know it Wall</title>
+
+  <link href="{% static 'content/css/audioplayer.min.css' %}" rel="stylesheet">
+  <link href="{% static 'content/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'content/css/circular_player.css' %}" rel="stylesheet">
+
+  <!-- new stylesheets -->
+  <link href="{% static 'content/css/knowitwall_base.css' %}" rel="stylesheet">
+  <link href="{% static 'content/css/episode_page.css' %}" rel="stylesheet">
+
+  <link href="{% static 'content/css/jquery.fancybox.css' %}" rel="stylesheet"/>
+
+  <!-- Custom Fonts -->
+  <link href="{% static 'content/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
+  <link href="http://fonts.googleapis.com/css?family=Lato:100,300,300italic,400,400italic" rel="stylesheet" type="text/css">
+
+</head>
+
+<body id="page-top">
+  <!-- Navigation -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <!-- HACK: disgusting inline style the moves the 'READ' button on the navbar to the right if the episode has audio.
+                Put this in a class once the CSS cleanup is done -->
+      <!-- TODO: this doesn't work for mobile! -->
+      <div class="navbar-header page-scroll {% if not episode.audio_mp3 %}text-only-margin{%endif%}">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand navbarADpage {% if episode.video_embed %}navbarADpage_video{% endif %}" href=" {% url 'content:index' %}">   <!-- for audiodoc, the logo goes back to home page-->
+
+    {% include 'content/KiW_logo.html' %}
+        </a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          {% if episode.video_embed %}
+          <li class="page-scroll navbar_hamburger">
+            <a href="#header_video_hidden_div">Watch</a>
+          </li>
+          {% endif %}
+          {% if episode.audio_mp3 %}
+          <li class="page-scroll navbar_hamburger">
+            <a href="#episodes">Listen</a>
+          </li>
+          {% endif %}
+          {% if episode.audio_mp3 or episode.video_embed %}
+
+          <li class="page-scroll-offset navbar_hamburger">
+            <a href="#read">Read</a>
+          </li>
+          {% endif %}
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <!-- <a href="/all_episodes">All Episodes</a> -->
+            <a href="{% url 'content:all_episodes' %}" id="all_episodes">All Episodes</a>
+          </li>
+          <li class="navbar_hamburger">
+            <a href="https://www.facebook.com/KnowitWall/" target="_blank"><i class="fa fa-fw fa-facebook"></i></a>
+          </li>
+
+        </ul>
+      <!-- /.navbar-collapse -->
+      </div>
+    <!-- /.container-fluid -->
+    </div>
+  </nav>
+
+  <div id="header_video_hidden_div" style="display:hidden">
+    fds
+  </div>
+
+
+
+
+  <!-- If the episode has a video -->
+  {% if episode.video_embed %}
+
+
+  <header id="header_no_player" style="background:linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.6)), {% if episode.topic_image_header.url %}url('{{ episode.topic_image_header }}'){% elif episode.topic_image %}url('{{ episode.topic_image.url }}'){% endif %}; background-repeat: no-repeat; background-size:cover;">
+      <div class="container container_video" style="">
+        <div class="row">
+
+          <div class="video_button_wrapper">
+            <svg height="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 1194.8 1194.8" style="enable-background:new 0 0 1194.8 1194.8;" xml:space="preserve">
+            <style type="text/css">
+              .st0{fill:none;stroke:#FFFFFF;stroke-width:20;stroke-miterlimit:10;}
+              .st1{fill:white}
+            </style>
+            <polygon class="st0 st1" points="457.2,844.9 457.2,349.9 839.6,599.6 "></polygon>
+            <circle class="st0" cx="597.4" cy="597.4" r="587.4"></circle>
+            </svg>
+          </div>
+          <div class="col-lg-10 col-lg-offset-1 text-center">
+               <div class="episode-title episode-title_video" style="background-color:transparent; color:white">
+              {{ episode.title | safe }}
+            </div>
+          </div>
+
+          <div class="col-lg-10 col-lg-offset-1 text-center page-scroll video_author_info" id="author_name" style="color:white">
+            <i >by</i> <a href="#author" style="color:white">{{ episode.author.name | safe }}</a>
+            <i >in</i>{% for ep in episode.classification.all %}
+              {% if not forloop.first %}
+                <i>and</i>
+              {% endif %}
+            <span>{{ ep.discipline }}</span>
+            {% endfor %}
+
+             <!-- <i style="color: white">by</i> <span class="highlight" style="background-color:transparent;color:white">{{ episode.author.name | safe }}</span> <i style="color: white">in</i> <span style="background-color:transparent; color:white"class="highlight">{{ episode.discipline }} </span> -->
+
+        </div>
+      </div>
+
+      {% if episode.status == 'v' %}
+        <div class="preview_episode_admin">
+          <p>PREVIEWED EPISODE</p>
+        </div>
+      {% endif %}
+
+      </div>
+    </header>
+    <!-- header with the video player. JQuery inserts the iframe -->
+  <header style="display:none;" id="header_player" data-video="{{ episode.video_embed }}">
+  </header>
+
+  <!-- else if there's no video -->
+  {% else %}
+  <header style="background: {% if episode.topic_image_header %}url('{{ episode.topic_image_header.url }}'){% elif episode.topic_image %}url('{{ episode.topic_image.url }}'){% endif %} fixed; background-repeat: no-repeat; background-size:cover;background-attachment:fixed">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 text-center">
+          <div class="episode-title">
+            {{ episode.title | safe }}
+          </div>
+        </div>
+        <div class="col-lg-10 col-lg-offset-1 text-center page-scroll" style="color: black; font-size:125%">
+           <i style="color: {% if episode.by_in_colour == 'b' %}black{% else %}white{%endif%}">by</i> <a href="#author" class="highlight">{{ episode.author.name | safe }}</a>
+           <i style="color: {% if episode.by_in_colour == 'b' %}black{% else %}white{%endif%}">in</i>{% include 'content/classification_discipline_tag.html' %}
+      </div>
+    </div>
+
+  {% if episode.status == 'v' %}
+    <div class="preview_episode_admin">
+      <p>PREVIEWED EPISODE</p>
+    </div>
+  {% endif %}
+
+    <div class="row arrow_row">
+      <div class="col-lg-10 col-lg-offset-1 text-center page-scroll" style="color: black; font-size:125%">
+        <a class="arrow-wrap a_arrow" href="#episodes">
+        <span class="arrow"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+  </header>
+{% endif %}
+
+  <section id="episodes" >
+    <div class="container image_credits">
+      <div class="row " id="image_credits">
+        <p>
+          {{ episode.image_credits | safe }}
+        </p>
+      </div>
+    </div>
+    <div class="container previous-audiodoc {% if not episode.audio_mp3 %}text-only-previous-audiodoc{%endif%}">
+      <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 text-center {% if not episode.audio_mp3 %}text-only-abstract{%endif%}">
+          <p class="audiodoc_abstact">{% if not episode.audio_mp3 %}<i>{% endif %}{{ episode.abstract | safe }}{% if not episode.audio_mp3 %}</i>{% endif %}</p>
+          {% if episode.audio_mp3 %}
+          <p class="audiodoc_narrate-credits">narrated by {{ episode.narration_credits }}</p>
+          <p class="audiodoc_narrate-credits">music by {{ episode.music_credits }}</p>
+          {% endif %}
+        </div>
+      </div>
+
+      {% if episode.audio_mp3 %}
+      <div class="row">
+        <!-- these 2 divs are used to get the variable audio & TI_box for the players -->
+        <div id="audioplayer_source_mp3" style="display:none">
+          {{ episode.audio_mp3.url }}
+        </div>
+        <div id="audioplayer_TI_box" style="display:none">
+          {% if episode.topic_image %}{{ episode.topic_image.url }}{% else %}{{ episode.topic_image_box.url }}{% endif %}
+        </div>
+        <div id="switching_audioplayers" class="col-lg-12"></div>
+      </div>
+      {% endif %}
+
+
+      <div class="row">
+        <div class="col-lg-12">
+        <!-- Author -->
+          <div class="author-bio">
+            <div class="col-md-3">
+              <img class="author-image"class="img-responsive" src="{% if episode.author.image %}{{ episode.author.image.url }}{% endif %}"  alt = "{{ episode.author.name | safe}}">
+            </div>
+            <div class="col-md-3">
+              <div class="author-name {% if not episode.audio_mp3 %}text-only-author-name{%endif%}" >
+              <h2 style="text-align:right; {% if episode.author_name_size == 'n' %}{% else %}font-size:2.3em;{%endif%}"> {{ episode.author.name | safe}} </h2>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="vertical-line">
+              <p class="audiodoc_bio"> {{ episode.author.bio | safe}} </p>
+              </div>
+            </div>
+          </div>
+        <!-- </div> -->
+        </div>
+      </div>
+    </div>
+
+      <div class="container">
+      <div class="row">
+        <div class="col-md-12" id="read">
+          <div class="transcript"> <!-- transcript class gives the padding -->
+            {{ episode.transcript | safe }}
+            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+            <div class="addthis_sharing_toolbox" style="float: right;"></div>
+          </div>
+        </div>
+      </div>  <!-- row -->
+
+      <div class="row">
+        <div class="col-md-12">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'knowitwall'; // Required - Replace '<example>' with your forum shortname
+            var disqus_identifier = '{{ episode.unique_id }}';
+            var disqus_url = 'http://knowitwall.com/{{ episode.unique_id }}';
+            var disqus_title = '{{ episode.unique_id }}';
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+    </div> <!-- container -->
+  </section> <!-- end of episodes -->
+
+{% endblock %}
+<!-- the footer is in base.html -->
+{% block jsscripts %}
+
+  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+  <div class="scroll-top page-scroll visible-xs visble-sm">
+    <a class="btn btn-primary" href="#page-top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+
+  <div id="static_files_URL" data="{% static 'content/js' %}" style="display:none">(hidden) static URL for 'switching_audioplayers.js'</div>
+
+  <script src="{% static 'content/js/jquery.js' %}"></script>
+  <script src="{% static 'content/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'content/js/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'content/js/classie.js' %}"></script>
+  <script src="{% static 'content/js/jqBootstrapValidation.js' %}"></script>
+  <script src="{% static 'content/js/knowitwall.js' %}"></script>
+  <script src="{% static 'content/js/switching_audioplayers.js' %}"></script>
+  <script src="{% static 'content/js/jquery.fancybox.pack.js' %}"></script>
+
+
+<!-- share buttons-->
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55df4f643792046e" async="async"></script>
+
+<!-- fancybox for transcript images -->
+  <script type="text/javascript">
+  $(document).ready(function() {
+      $(".fancybox_transcript").fancybox({
+          helpers : {
+              overlay : {
+                  css : {
+                      'background' : 'rgba(119, 119, 119, 0.95)'
+                  }
+              },
+              title : {
+                type: 'inside'
+              }
+          }
+      });
+  });
+
+  $(".fancybox_videos").fancybox({
+  maxWidth	: 800,
+  maxHeight	: 600,
+  fitToView	: false,
+  width		: '70%',
+  height		: '70%',
+  autoSize	: false,
+  closeClick	: false,
+  openEffect	: 'none',
+  closeEffect	: 'none',
+  helpers: {
+    overlay: {
+      css : {
+          'background' : 'rgba(119, 119, 119, 0.95)'
+      }
+    }
+  }
+});
+
+  </script>
+  <!-- To view the video player on click -->
+  <script type="text/javascript">
+  $('#header_no_player').click(function(){
+    // hide landing page header
+    $('#header_no_player').css('display','none');
+    // display video player header
+    $('#header_player').css('display','block');
+    // get youtube embed URL and insert in the video player header
+    var data_video = $('#header_player').attr('data-video');
+    var video_div = '<div class = "video_div"><iframe src="' + data_video + '" style=" width:100%; height:100%;" frameborder="0" allowfullscreen></iframe></div>';
+    $('#header_player').html(video_div);
+
+    // hide image credits
+    $('#image_credits').css('display','none');
+  });
+  </script>
+
+
+  <script type="text/javascript">
+  $(function() {
+    var width = $( window ).width();
+    if (width > 768){
+         $("#polanski_gif").hover(
+             function() {
+                 $(this).attr("src", "{{config.AWS_URL}}/static/Images/tr_image_emotional_expression_Scorsese_gif.gif");
+             },
+             function() {
+                 $(this).attr("src", "{{config.AWS_URL}}/static/Images/tr_image_emotional_expression_Scorsese_static.jpg");
+             }
+         );
+         $('#emotional_expression_gif').html('hover');
+       }
+    else {
+      $('#polanski_gif').on({
+       'click': function() {
+            var src = ($(this).attr('src') === '{{config.AWS_URL}}/static/Images/tr_image_emotional_expression_Scorsese_gif.gif')
+               ? '{{config.AWS_URL}}/static/Images/tr_image_emotional_expression_Scorsese_static.jpg'
+               : '{{config.AWS_URL}}/static/Images/tr_image_emotional_expression_Scorsese_gif.gif';
+            $(this).attr('src', src);
+       }
+   });
+   $('#emotional_expression_gif').html('click');
+    }
+   });
+  </script>
+
+
+</body>
+{% endblock %}

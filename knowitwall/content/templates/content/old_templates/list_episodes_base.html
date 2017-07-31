@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <style media="screen">
+  body{
+    color:#444;
+    background-color: #f9f9f9;
+  }
+  .container{
+    margin-left:15%;
+    margin-right:15%;
+    line-height: 25px;
+  }
+  .episode_div{
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid #bfbfbf;
+    height: 300px;
+  }
+  .col1{
+    width: 60%;
+    float: left;
+  }
+  .col2{
+    width: 40%;
+    float: left;
+  }
+  </style>
+  <body>
+    <section class="container">
+      {% block page_name %}
+      {% endblock %}
+      <!-- <h1>All episodes</h1> -->
+      <h4>Go back to the <a href="{% url 'content:index' %}">homepage</a></h4>
+
+      {% for episode in episode_list %}
+    <div class="episode_div">
+      {% block episode_redirect %}
+      <!-- <h1><a href="{% url 'episode_page' episode.slug %}">{{ episode.title }}</a></h1> -->
+      {% endblock %}
+      <div class="row">
+          <div class="col1">
+          <img src="{{ episode.topic_image.url }}" alt="" width="200px">
+          </div>
+          <div class="col2">
+            <div>
+              <p>{{ episode.abstract | safe}}</p>
+            </div>
+
+            <p>By <i>{{ episode.author.name }}</i></p>
+            {% if episode.status == 'v' %}
+              {% include 'content/previewed_episode_tag.html' %}
+            {% endif %}
+          </div>
+          <p>{{ episode.pub_date }}</p>
+      </div>
+
+    </div>
+
+      {% endfor %}
+    </section>
+
+  </body>
+</html>

@@ -1,0 +1,6 @@
+{% for ep in episode.classification.all %}
+  {% if not forloop.first %}
+    <i style="color: {% if episode.by_in_colour == 'b' %}black{% else %}white{%endif%}">and</i>
+  {% endif %}
+<span class="highlight">{{ ep.discipline }}</span>
+{% endfor %}

@@ -1,0 +1,7 @@
+*Le user feedback!*
+Here's their info:
+_name_: {{ name }}
+_email_: {{ email }}
+
+*Feedback:*
+> {{ content }}

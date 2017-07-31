@@ -1,0 +1,227 @@
+{% extends "content/KiW_base.html" %}
+{% load static from staticfiles %}
+{% block content %}
+<head>
+
+
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Browse through all the Knowitwall episodes">
+  <meta name="keywords" content="Knowitwall, Know It Wall, audio-documentary, audiodoc, outreach, academia, insightful, science, humanities">
+  <meta name="author" content="">
+  <meta property="og:image" content="{{config.AWS_URL}}/static/Images/KiW_banner.jpg" />
+  <meta property="og:title" content="Knowitwall episodes" />
+  <meta property="og:description" content="Browse through all the Knowitwall episodes" />
+  <meta property="og:url" content="http://knowitwall.com/{% url 'content:all_episodes' %}" />
+  <meta property=”og:type” content=”website” />
+  <link rel="icon" href="{{config.AWS_URL}}/static/Images/KIW-thumbnail_logo.png" type="image/gif" sizes="16x16">
+<!-- pens -->
+
+  <title>All episodes | Know it Wall</title>
+
+  <link href="{% static 'content/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'content/css/knowitwallredux.css' %}" rel="stylesheet">
+
+  <link href="{% static 'content/css/knowitwall_base.css' %}" rel="stylesheet">
+
+  <!-- HACK: just attached homepage_redesign.css to get the box stylings -->
+
+  <link href="{% static 'content/css/archive_extra.css' %}" rel="stylesheet">
+
+  <link href="{% static 'content/css/archive_page.css' %}" rel="stylesheet">
+  <!-- Custom Fonts -->
+  <link href="{% static 'content/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
+  <link href="http://fonts.googleapis.com/css?family=Lato:100,300,300italic,400,400italic" rel="stylesheet" type="text/css">
+
+
+
+</head>
+
+<body>
+  <div id="page-top" style="display:hidden;position:absolute; top:0px">
+hidden
+  </div>
+  <!-- Navigation -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href=" {% url 'content:index' %}">   <!-- for audiodoc, the logo goes back to home page-->
+    {% include 'content/KiW_logo.html' %}
+        </a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+        <ul class="nav navbar-nav navbar-right">
+          <li class="page-scroll">
+            <a href="#page-top" >All Episodes</a>
+          </li>
+          <li class="navbar_hamburger">
+            <a href="https://www.facebook.com/KnowitWall/" target="_blank"><i class="fa fa-fw fa-facebook"></i></a>
+          </li>
+        </ul>
+      <!-- /.navbar-collapse -->
+      </div>
+    <!-- /.container-fluid -->
+    </div>
+  </nav>
+
+<section class="archive_header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h2 class="archive_title">
+        Know it Wall episodes
+      </h2>
+      </div>
+    </div>
+    <div class="row archive_mobile">
+      <div class="col-md-4 col-md-offset-4 archive_filter">
+        <ul>
+          <li>
+              <p id="button_All">
+              All
+              </p>
+          </li>
+          <li>
+              <p id="button_Arts">
+                Arts
+              </p>
+          </li>
+          <li>
+              <p id="button_Sciences">
+                Sciences
+              </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <section class="archive_mobile">
+    <div class="container container_mobile">
+      <div class="row archive_row">
+        <div class="col-md-6 archive_episode_list_column">
+          <div class="col-md-12 archive_episode_list">
+            <p>
+               {{titles_list | safe}}
+            </p>
+            <h2 class="archive_category">
+              All Episodes
+            </h2>
+            {% for episode in episode_list %}
+            <div class="archive_episode_category_{{audiodoc.category}}">
+              <a class="archive_title_click" href="#{{episode.url}}">
+                <p class="archive_topic_name">
+                  {{episode.topic.name | safe}}
+                </p>
+              </a>
+              <a class="archive_title_click_mobile" href="episodes/{{episode.url}}">
+                <p class="archive_topic_name">
+                  {{episode.topic.name | safe}}
+                </p>
+              </a>
+              <p class="archive_title_info">
+                <i>by</i> {{episode.author.name | safe}}
+                <i>in</i> {% include 'content/classification_discipline_tag.html' %}
+              </p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col-md-6 archive_image_list_column">
+          <div class="col-md-12 archive_image_list">
+            <h2 class="archive_category archive_category_image_mobile">
+              All Episodes
+            </h2>
+            {% for episode in episode_list %}
+            <div class="archive_episode_category_{{episode.category}}">
+              <div id="{{episode.url}}" class="archive_hidden_anchor"></div>
+              <a href="{% url 'content:episode_page' episode.slug %}">
+                <div class="archive_image_padding">
+
+                <a href="{% url 'content:episode_page' episode.slug %}">
+                  <div class="archive_image_element" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url('{{ episode.topic_image.url }}');background-size:cover;">
+                    <p class="episode-title archive_episode_title">
+                      {{episode.title | safe}}
+                    </p>
+                    <div class="archive_wrapper">
+                    <i>by</i> <span class="highlight">{{episode.author.name | safe}}</span>
+                    <i>in</i> {% include 'content/classification_discipline_tag.html' %}
+                    <div class="archive_abstract">
+                      {{episode.abstract | safe}}
+                    </div>
+                  </div>
+                  </div>
+                </a>
+
+                </div>
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <section class="archive_desktop">
+    <div class="container desktop_archive" style="width:100%; margin-left:0px;margin-right:0px;padding-left:100px;padding-right:100px;">
+      <div class="episodes_container" style="border:1px solid #bdbdbd;background-color:white;border-radius:6px">
+
+
+        {% for episode in episode_list %}
+          {% include 'content/episode_boxes/loop_episode_boxes.html' %}
+        {% endfor %}
+
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
+<!-- the footer is in base.html -->
+{% block jsscripts %}
+
+  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+  <div class="scroll-top visible-xs visble-sm mobile_titles_filter">
+    <div class="mobile_filter_wrapper">
+      <div class="archive_filter">
+        <ul>
+          <li>
+              <p id="button_titles">
+              Titles only
+              </p>
+          </li>
+          <li>
+              <p id="button_images">
+                Titles with abstracts
+              </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<script src="{% static 'content/js/jquery.js' %}"></script>
+<script src="{% static 'content/js/jquery.easing.min.js' %}"></script>
+<script src="{% static 'content/js/knowitwall.js' %}"></script>
+<script src="{% static 'content/js/archive_filter.js' %}"></script>
+<script src="{% static 'content/js/bootstrap.min.js' %}"></script>
+
+</body>
+{% endblock %}

@@ -1,0 +1,354 @@
+
+.archive_desktop{
+  padding-top: 50px;
+  background-color: #f5f5f5;
+}
+.archive_mobile{
+  display: none;
+}
+.container_mobile{
+  margin-bottom: 40px;
+}
+.archive_header{
+  margin-top: 70px;
+  text-align: center;
+  background-color: #f5f5f5;
+}
+
+.archive_title{
+  font-size: 57px;
+  border-bottom: 5px solid rgba(255, 194, 28, 0.8);
+  padding-bottom: 60px;
+  width: 90%;
+  margin: auto;
+}
+
+.archive_filter{
+  margin-top: 65px;
+  padding: 0px 0px;
+}
+.archive_filter ul{
+  list-style-type: none;
+  display: table;
+  padding: 0px 0px;
+  border-radius: 10px;
+  border: 1px solid #bdbdbd;
+  margin: auto;
+  background-color: white;
+}
+.archive_filter li{
+  float: left;
+  border-radius: 7px;
+  margin: 3px;
+  display: table-cell;
+  transition: all 0.1s ease;
+  cursor: pointer;
+}
+.archive_filter li:hover{
+  background-color: rgba(255, 194, 28, 0.4);
+}
+.archive_filter p{
+  padding:25px 40px;
+  color: #33353d;
+  margin: 0px;
+  font-size: 17px;
+}
+#button_Sciences{
+  padding: 25px 25px;
+}
+/* 'All Episodes' is selected by default */
+#button_All{
+  background-color: rgba(255, 194, 28, 0.8);
+  border-radius: 7px;
+}
+
+
+
+
+
+
+/* set .archive_row to relative positioning to control the position/height of .archive_image_list */
+.archive_row{
+  position: relative;
+}
+@media(min-width: 1200px){
+  .container{
+    width: 1200px
+  }
+}
+/* List of episode titles */
+.archive_episode_list{
+  text-align: center;
+  padding-left: 0px;
+  padding-right: 0px;
+  border-radius: 3px;
+  background-color: white;
+}
+.archive_category{
+  text-transform: none;
+  padding: 40px 0px;
+  font-size: 45px;
+}
+.archive_topic_name{
+  font-style: italic;
+  margin-bottom: 0px;
+  line-height: 27px;
+}
+
+.archive_title_info{
+  color: #b1b1b1;
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+.archive_title_info i {
+  font-weight: 100;
+}
+.archive_title_click{
+  color: inherit;
+}
+/* episode title for mobile: redirects to episode page */
+.archive_title_click_mobile{
+  display: none;
+  color: inherit;
+}
+/* List of episode images */
+.archive_image_list_column{
+  position: absolute;
+  right: 0px;
+  height: 100%;
+  padding-right: 0px;
+  padding-left: 25px;
+}
+.archive_episode_list_column{
+  padding-right: 25px;
+  padding-left: 0px;
+}
+
+.archive_image_list{
+  overflow: scroll;
+  height: 100%;
+  position: absolute;
+  padding-left: 0px;
+  padding-right: 0px;
+  border-radius: 3px;
+}
+.archive_image_padding{
+  padding-bottom: 20px;
+  /*background-color: #f5f5f5;*/
+}
+/* darken the episode images */
+.archive_image_element {
+  height: 350px;
+  text-align: center;
+  border-radius: 6px;
+}
+.archive_episode_title{
+  font-size: 20px;
+  margin-top: 15%;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.archive_abstract{
+  color: white;
+  font-size: 14px;
+  margin: 52px 40px 0px 40px;
+  text-align: center;
+  line-height: 23px;
+}
+.archive_wrapper i{
+  color: white;
+  font-weight: 100;
+}
+
+/* Make the footer yellow cuz we like yellow */
+footer .footer-above{
+  background-color: #FFC21C;
+}
+footer .footer-below{
+  background-color: #FFC21C;
+}
+footer h3{
+  color:#27282D;
+}
+footer .btn-social{
+  color: #27282D;
+  border: 2px solid #27282D;
+}
+footer .footer-info{
+  color: #F5F5F5;
+}
+
+/* mobile version */
+
+/* Category title for the images/abstracts */
+.archive_mobile_display{
+  display: none;
+}
+.archive_mobile_display p {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+/* don't display category name above the image on desktop */
+.archive_category_image_mobile{
+  display: none;
+}
+
+/* Image boxes only */
+@media(max-width:768px){
+  .mobile_titles_filter{
+    display: inline !important;
+  }
+  .archive_mobile{
+    display: inline;
+  }
+  .archive_desktop{
+    display: none;
+  }
+  .archive_category_image_mobile{
+    display: block;
+  }
+  .archive_category{
+    padding-top: 0px;
+  }
+  .archive_image_list_column{
+    position: static;
+    padding-left: 14px;
+    padding-right: 14px;
+    display: block;
+  }
+  .archive_image_list{
+    overflow: visible;
+    position: static;
+  }
+  .archive_episode_list_column{
+    padding-right: 0px;
+    display: none;
+  }
+  .archive_image_padding{
+    padding-bottom: 12px;
+  }
+  .archive_mobile_display{
+    display: block;
+  }
+  .archive_title_click_mobile{
+    display: inline;
+  }
+  .archive_title_click{
+    display: none;
+  }
+  .archive_filter p{
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 13px;
+  }
+  .archive_filter{
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+  #button_Sciences{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .archive_title{
+    font-size: 40px;
+    width: 84%;
+  }
+  .archive_episode_title{
+    border-radius: 3px;
+    padding: 3px;
+  }
+
+  .archive_image_element{
+    position: relative;
+  }
+  .archive_abstract{
+    font-size: 13px;
+    position: absolute;
+    top: 52%;
+    margin: 0px 11px;
+  }
+  .archive_episode_list{
+    padding: 0px 30px;
+  }
+  .archive_header{
+    padding-bottom: 0px;
+    background-color: white;
+    padding-top: 30px;
+  }
+}
+@media(max-width:768px) and (min-width:600px){
+  .archive_abstract{
+    padding-top: 40px;
+  }
+}
+@media(max-width:320px) {
+  .archive_abstract{
+    top: 50%;
+  }
+}
+#button_titles, #button_images{
+  border-radius: 7px;
+}
+#button_titles{
+  padding-left: 43px;
+  padding-right:43px;
+}
+
+/* archive mobile filter: choose default button on pageload */
+ #button_images{
+   background-color: rgba(255, 194, 28, 0.8);
+   padding-left: 19px;
+   padding-right: 19px;
+ }
+.archive_hidden_anchor{
+  visibility:hidden;
+  position: relative;
+  bottom: 85px;
+}
+.scroll-top .btn {
+  border-radius: 0px;
+  opacity: 0.9;
+}
+.scroll-top{
+  bottom:60px;
+  width:100%;
+  right: 0px;
+}
+.toggle-off.btn{
+  padding-left:34px;
+  background-color: white;
+  color: #33353d;
+}
+.toggle-on.btn{
+  background-color: white;
+  color: #33353d;
+}
+.toggle-handle{
+  background-color: #ffc21c;
+}
+.btn-default:hover{
+  background-color: #ffc21c;
+}
+
+.mobile_filter_wrapper{
+  background-color:rgba(255,255,255,0.0);
+}
+
+
+.episodes_container{
+  padding-left: 21px;
+  padding-right: 21px;
+}
+.homepage_overlay {
+    height:100%;
+    background: rgba(0, 0, 0, 0.6);
+    background: -webkit-linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+    background: -o-linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+    background: -moz-linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+    display: block;
+    border-radius: 6px;
+}
+.homepage_hidden_info{
+  display: inline;
+}

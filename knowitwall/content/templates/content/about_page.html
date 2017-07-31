@@ -1,0 +1,196 @@
+{% extends "content/KiW_base.html" %}
+{% load static from staticfiles %}
+{% block content %}
+<head>
+
+
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="About Know it Wall">
+  <meta name="keywords" content="Knowitwall, Know It Wall, audio-documentary, audiodoc, outreach, academia, insightful, science, humanities">
+  <meta name="author" content="">
+  <meta property="og:image" content="{{config.AWS_URL}}/static/Images/KiW_banner.jpg" />
+  <meta property="og:title" content="Know it Wall" />
+  <meta property="og:description" content="Know it Wall: A Place for Inquisitive Minds" />
+  <meta property="og:url" content="http://knowitwall.com/about" />
+  <meta property=”og:type” content=”website” />
+  <link rel="icon" href="{{config.AWS_URL}}/static/Images/KIW-thumbnail_logo.png" type="image/gif" sizes="16x16">
+<!-- pens -->
+
+  <title>About | Know it Wall</title>
+
+  <link href="{% static 'content/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <link href="{% static 'content/css/knowitwall_base.css' %}" rel="stylesheet">
+
+  <link href="{% static 'content/css/archive_extra.css' %}" rel="stylesheet">
+
+  <link href="{% static 'content/css/archive_page.css' %}" rel="stylesheet">
+
+  <link href="{% static 'content/css/about_page.css' %}" rel="stylesheet">
+  <!-- Custom Fonts -->
+  <link href="{% static 'content/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
+  <link href="http://fonts.googleapis.com/css?family=Lato:100,300,300italic,400,400italic" rel="stylesheet" type="text/css">
+
+
+
+</head>
+
+<body>
+  <div id="page-top" style="display:hidden;position:absolute; top:0px">
+hidden
+  </div>
+  <!-- Navigation -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href=" {% url 'content:index' %}">   <!-- for audiodoc, the logo goes back to home page-->
+        {% include 'content/KiW_logo.html' %}
+        </a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+        <ul class="nav navbar-nav navbar-right">
+          <li class="page-scroll">
+            <a href="#flash_seminars">Flash Seminars</a>
+          </li>
+          <li class="page-scroll">
+            <a href="/all_episodes" >All Episodes</a>
+          </li>
+          <li class="navbar_hamburger">
+            <a href="https://www.facebook.com/KnowitWall/" target="_blank"><i class="fa fa-fw fa-facebook"></i></a>
+          </li>
+        </ul>
+      <!-- /.navbar-collapse -->
+      </div>
+    <!-- /.container-fluid -->
+    </div>
+  </nav>
+
+<section class="about_header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h2 class="about_title">
+        About <br> Know it Wall
+      </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about_block_1" id="about-block_1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-push-8 text-center about_page-left_wrapper">
+        <div id="about_page-left">
+        <h3 class="about_title_1">A place for inquisitive minds</h3>
+        </div>
+      </div>
+      <div class="col-md-8 col-md-pull-4">
+        <div class="vertical-line_right about_description">
+        <p class = 'justify'>It is estimated that well over two million academic papers are published each year and there are countless more university lectures. Who is accessing this knowledge? Academics within the same disciplines and their students. Why should it only be them? We couldn't think of a good reason either!</p>
+        <br>
+        <p class = 'justify'>The mission of Know it Wall (KiW) is to take the research that is going on at top universities and present it to the general public in an accessible and engaging way. At KiW, you will find audio and video documentaries, as well as short articles, about the latest research in the humanities and sciences —  all written by academics actively doing research in those fields.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about_block_2" id="about-block_1">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-4 text-center">
+        <div id="about_page-right">
+        <h3>How does it work?</h3>
+        </div>
+      </div>
+
+      <div class="col-md-8 ">
+        <div class="vertical-line_left about_description">
+        <p class = 'justify'>Academics send us an article of about 1000 words and we make sure it is delivered in a language that is accessible for the general public. We then turn their article into a short documentary (in audio, video or both), and release the documentary and the article on this website as well as on iTunes, Soundcloud, YouTube and Medium.</p>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</section>
+
+<section id="flash_seminars">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4 flash_sem_wrapper">
+        <h2 class="flash_sem_episode-title">Flash Seminars</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <p class="flash_sem_description">
+          Flash Seminars are one-off discussions that bring the people of London together to explore thought-provoking topics featured on Know it Wall. Anyone is welcome to come and join the discussion (it's free!), which is led by an academic who is a leader in the topic of the Flash Seminar.
+        </p>
+      </div>
+    </div>
+
+    <p class="upcoming_session">Previous Session:</p>
+
+    {% for flash_seminar in flash_seminar_list %}
+
+    <div class="flash_sem_sessions">
+      <div>
+        <h4 class="flash_sem_sessions_title">{{ flash_seminar.title }}</h4>
+      </div>
+      <div class="row">
+        <div class="col-md-2 col-md-offset-3">
+          <img class="flash_sem_author_image"class="img-responsive" src="{{ flash_seminar.episode.author.image.url }}"  alt="{{ flash_seminar.episode.author.image }}">
+        </div>
+        <div class="col-md-4 flash_sem_session_info">
+          <div>
+            <p><a class="flash_sem_author_link" href="{% url 'content:episode_page' flash_seminar.episode.slug %}">{{ flash_seminar.episode.author.name }}</a></p>
+          </div>
+          <div class="flash_sem_session_date-place">
+            <p>{{ flash_seminar.event_date }}</p>
+            <p>{{ flash_seminar.event_location }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 flash_sem_topic_description">
+            {{ flash_seminar.description | safe}}
+        </div>
+      </div>
+    </div>
+
+  {% endfor %}
+
+  </div>
+
+
+
+</section>
+
+
+
+
+{% endblock %}
+<!-- the footer is in base.html -->
+{% block jsscripts %}
+
+<script src="{% static 'content/js/bootstrap.min.js' %}"></script>
+
+</body>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% load static from staticfiles%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <style media="screen">
+  .container{
+    margin-left:15%;
+    margin-right:15%;
+    line-height: 25px;
+  }
+  .highlight{
+    background-color: rgba(255, 194, 28, 0.8);
+    padding: 4px;
+    border-radius:2px
+  }
+  </style>
+  <!-- <link rel="stylesheet" href="{% static 'content/style.css' %}"> -->
+  <body>
+<div class="container">
+  <h1>Episode page</h1>
+  {% if episode.status == 'v' %}
+    {% include 'content/previewed_episode_tag.html' %}
+  {% endif %}
+
+    <h4>Go back to the <a href="{% url 'content:index' %}">homepage</a></h4>
+    <img src="{{ episode.author.image.url }}" width="130px">
+    <p><i>by</i> <span class="highlight">{{ episode.author.name }}</span> <i>in</i>
+      {% for elem in episode.classification.all %}
+        {% if not forloop.first %}
+          <i>and</i>
+        {% endif %}
+      <span class="highlight">{{ elem.discipline }}</span>
+    {% endfor %}</p>
+
+
+      <p>Discipline:
+        {% for elem in episode.classification.all %}
+            {% if forloop.first %}{{ elem.get_academic_field_display }}{% endif %}
+            {% endfor %}
+            </p>
+
+  <h2>{{ episode.title }}</h2>
+
+  <p>{{ episode.transcript | safe }}</p>
+
+</div>
+  </body>
+</html>

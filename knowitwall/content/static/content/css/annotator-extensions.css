@@ -1,0 +1,171 @@
+.annotator-hl {
+    cursor: pointer;
+    border-radius: 3px;
+}
+.annotator-viewer_show {
+    display: block !important;
+    visibility: visible !important;
+}
+.annotator-widget::after {
+    background-image: initial;
+}
+#annotator-close_span {
+  position: absolute;
+  left: 455px;
+  top: 13px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+#annotator-question_mark{
+  position: absolute;
+  left: 434px;
+  top: 17px;
+  cursor: pointer;
+}
+/* close button */
+.annotator-close{
+  width: 27px;
+}
+.annotator-question_mark{
+  width: 11px;
+  opacity: 0.8;
+}
+.annotator_close_mouseover, .annotator_question-mark_mouseover{
+  visibility: hidden;
+  position: absolute;
+  bottom: 35px;
+  right: 10px;
+  font-size: 12px;
+  color: #3c3c3c;
+}
+/*.annotator_close_mouseover, .annotator_question-mark_mouseover{
+  visibility: visible;
+}*/
+
+#annotator-question_mark:hover .annotator_question-mark_mouseover{
+  visibility: visible;
+}
+#annotator-close_span:hover .annotator_close_mouseover{
+  visibility: visible;
+}
+.annotator_question-mark_mouseover{
+  width: 50px;
+  position: relative;
+  bottom: 20px;
+  right: 46px;
+  opacity: 0.8;
+}
+.knowit_button{
+  border: 1.5px solid black;
+  border-radius: 50px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+@media(max-width: 768px){
+  .knowit_button{
+  display:none;
+  }
+}
+.knowit_button_svg{
+  position: relative;
+  top: -7px;
+  left: 6px;
+}
+.knowit_button:hover{
+  border: solid 1.5px #ffc21c;
+  background-color: #ffc21c;
+}
+.knowit_img{
+  width:125px;
+  margin-left:35%;
+  /*border:1px solid #2c3e50;*/
+  border-radius:10px;
+  padding:7px;
+  margin-bottom:6px;
+  background-color: white;
+}
+/*annotation size & positioning on mobile*/
+
+/* Nexus 6P */
+@media(max-width:436px){
+  .annotator-annotation{
+    width: 406px;
+  }
+  .entire_knowit{
+    margin-left: 2%;
+  }
+  .entire_knowit::after{
+    content: '';
+    position: absolute;
+    top: 43px;
+    left: -5px;
+    right: 0px;
+    bottom: 0px;
+    border-left: 4px solid #ffc21c;
+    z-index: -1;
+  }
+  .annotator-widget .annotator-listing,
+  .annotator-widget .annotator-item{
+    border-left: none;
+  }
+  #annotator-close_span{
+    left:275px;
+    top: 3px;
+  }
+  .annotator-outer{
+    left: 2%;
+  }
+  .knowit_img{
+    margin-left: 36%;
+    margin-bottom: 1px;
+  }
+  .annotator-viewer .knowit_message{
+    font-size: 13px;
+    padding-left: 9px
+  }
+  .annotator-viewer .knowit_author{
+    margin-bottom: 0px;
+  }
+  .annotator-viewer .knowit_title{
+    font-size: 18px
+  }
+  .annotator-viewer .knowit_url{
+    font-size: 10px
+  }
+}
+/* iphone 6+ */
+@media(max-width:414px){
+  .annotator-annotation{
+    width: 380px;
+  }
+  .knowit_img{
+    margin-left: 34%;
+  }
+}
+@media(max-width:375px){
+  .annotator-annotation{
+    width: 350px;
+  }
+}
+/* Galaxy 5S */
+@media(max-width:360px){
+  .annotator-annotation{
+    width: 335px;
+  }
+  .knowit_img{
+    margin-left: 33%;
+  }
+}
+
+@media(max-width:320px){
+  .entire_knowit{
+    margin-left: 2%;
+  }
+  .knowit_img{
+    margin-left: 31%;
+  }
+  .annotator-annotation{
+    width: 290px;
+  }
+}

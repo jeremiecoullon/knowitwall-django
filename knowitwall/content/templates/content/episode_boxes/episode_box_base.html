@@ -1,0 +1,37 @@
+<!-- Base for episode boxes on homepage and all_episodes page -->
+{% block le_box %}{% endblock %}
+<a href="{% url 'content:episode_page' episode.slug %}">
+  <div style="background:url('{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}'); background-size:cover;background-attachment:scroll" class='homepage_box_episode'>
+    <div class="homepage_overlay">
+       <p class="box_episode_title">
+         {{episode.title | safe}}
+       </p>
+       <p class="homepage_box_by-in">
+         <i>by</i> <span class="highlight">{{episode.author.name | safe}}</span>
+         <i>in</i> {% include 'content/classification_discipline_tag.html' %}
+       </p>
+     <div class="homepage_hidden_info">
+       <div class="homepage_box_abstract">{{episode.abstract | safe}}</div>
+
+       <div class="audio_video_tag_div">
+         {% if episode.video_embed %}
+         <div class="label_wrapper film_label_wrapper">
+           <i class="fa fa-film audio-film_label" aria-hidden="true"></i>
+         </div>
+         {% endif %}
+         {% if episode.audio_mp3 %}
+         <div class="label_wrapper audio_label_wrapper">
+           <i class="fa fa-volume-up audio-film_label" aria-hidden="true"></i>
+         </div>
+         {% endif %}
+     </div>
+      </div>
+      {% if episode.status == 'v' %}
+        <div class="preview_episode_admin">
+          <p>PREVIEWED EPISODE</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</a>
+</div>
