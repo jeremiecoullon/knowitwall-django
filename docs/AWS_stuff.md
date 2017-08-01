@@ -13,6 +13,11 @@
 ## Elastic Beanstalk
 
 - Don't have backticks ( \` ) in environment variables; bash interprets these, and then it messes with other environment variables
+- to set environment variables, add all the variables in `le_local_setup.txt`, and set them using:
+
+```bash
+eb setenv `cat le_local_setup.txt| tr '\n' ' '`
+```
 
 ## Database stuff
 

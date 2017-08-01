@@ -39,9 +39,17 @@ class Classification(models.Model):
         super(Classification, self).save(*args, **kwargs)
 
 
+def episode_image_directory_path(instance, filename):
+    # Episode images will be uploaded to MEDIA_ROOT/Episode_image-id_<id>/<filename>
+    return 'Episodes_images/episode_id-{0}/{1}'.format(instance.unique_id, filename)
+
+def author_image_directory_path(instance, filename):
+    # Author images will be uploaded to MEDIA_ROOT/Episode_image-id_<id>/<filename>
+    return 'Author_images/{0}/{1}'.format(instance.name, filename)
+
 class Author(models.Model):
     name = models.CharField(max_length=200, default="le author name")
-    image = models.ImageField(upload_to="", null=True, blank=True)
+    image = models.ImageField(upload_to=author_image_directory_path, null=True, blank=True)
     bio = RichTextField(default="author bio", config_name='default')
     slug = models.SlugField(unique=True, max_length=200)
 
@@ -56,9 +64,9 @@ class Episode(models.Model):
     unique_id = models.CharField(max_length=100, blank=True, unique=True, default=uuid.uuid4, help_text="This determines the Disqus comment section. Need to set this manually for old KiW episodes (that were on Flask)")
     author = models.ForeignKey(Author, null=True)
     title = models.CharField(unique=True,max_length=100, default='le title')
-    topic_image = models.ImageField(upload_to="", null=True, blank=True, verbose_name="Cover image")
-    topic_image_latest = models.ImageField(upload_to="", null=True, blank=True, verbose_name="'featured episode' cover image", help_text="The cover image for 'featured' on the homepage")
-    topic_image_box = models.ImageField(upload_to="", null=True, blank=True, verbose_name="Mobile circular image",help_text="This is for the circular audio player on mobile")
+    topic_image = models.ImageField(upload_to=episode_image_directory_path, null=True, blank=True, verbose_name="Cover image")
+    topic_image_latest = models.ImageField(upload_to=episode_image_directory_path, null=True, blank=True, verbose_name="'featured episode' cover image", help_text="The cover image for 'featured' on the homepage")
+    topic_image_box = models.ImageField(upload_to=episode_image_directory_path, null=True, blank=True, verbose_name="Mobile circular image",help_text="This is for the circular audio player on mobile")
     transcript = RichTextUploadingField(default='le transcript', config_name='transcript')
     abstract = RichTextField(default="le abstract", config_name='default')
     by_in_colour = models.CharField(max_length=1, choices=BY_IN_COLOR_CHOICES, default='b', verbose_name="'by/in' colour")
