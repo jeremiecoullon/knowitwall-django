@@ -23,7 +23,7 @@ if os.path.isfile('le_local_setup.txt'):
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ["knowitwall-django-dev.us-west-2.elasticbeanstalk.com", "localhost"]
+ALLOWED_HOSTS = ["kiw-august-test.us-west-2.elasticbeanstalk.com", "localhost"]
 
 
 # Application definition
