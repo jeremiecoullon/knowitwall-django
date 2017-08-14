@@ -44,7 +44,7 @@ def episode_image_directory_path(instance, filename):
     return 'Episodes_images/episode_id-{0}/{1}'.format(instance.unique_id, filename)
 
 def author_image_directory_path(instance, filename):
-    # Author images will be uploaded to MEDIA_ROOT/Episode_image-id_<id>/<filename>
+    # Author images will be uploaded to MEDIA_ROOT/Author_images/<author_name>/<filename>
     return 'Author_images/{0}/{1}'.format(instance.name, filename)
 
 class Author(models.Model):
