@@ -14,5 +14,5 @@ def get_feedback(request):
     email_message_html = loader.render_to_string(template_name='notifications/email_user_feedback.html', context=context_email)
     email_message_txt = loader.render_to_string(template_name='notifications/email_user_feedback.txt', context=context_email)
     send_email(message=email_message_html)
-    send_feedback_to_slack(message=email_message_txt)
+    # send_feedback_to_slack(message=email_message_txt)
     return redirect('content:index')
