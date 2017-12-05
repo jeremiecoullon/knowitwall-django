@@ -4,7 +4,6 @@ from django.utils.text import slugify
 import uuid
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
-from config.settings import AWS_URL
 from .managers import ContentManager
 import os
 

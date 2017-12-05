@@ -168,7 +168,7 @@ CKEDITOR_CONFIGS = {
 # ]
 # STATIC_ROOT = 'static/'
 
-AWS_URL = "https://s3.eu-west-2.amazonaws.com/knowitwall"
+# AWS_URL = "https://s3.eu-west-2.amazonaws.com/knowitwall"
 
 #MEDIA FILE (user uploaded files)
 MEDIA_ROOT = os.path.join(BASE_DIR, "..", "www", "media")
@@ -177,27 +177,27 @@ STATIC_ROOT = os.path.join(BASE_DIR, "..", "www", "static")
 STATIC_URL = '/static/'
 
 # AWS storage stuff
-AWS_STORAGE_BUCKET_NAME = 'knowitwall-test-2'
+# AWS_STORAGE_BUCKET_NAME = 'knowitwall-test-2'
 
 # if working locally
-if os.path.isfile('le_local_setup.txt'):
-    AWS_ACCESS_KEY_ID = config.local_settings.LE_AWS_ACCESS_KEY_ID
-    AWS_SECRET_ACCESS_KEY = config.local_settings.LE_AWS_SECRET_ACCESS_KEY
-else: # else if on elasticbeanstalk
-    AWS_ACCESS_KEY_ID = os.environ['LE_AWS_ACCESS_KEY_ID']
-    AWS_SECRET_ACCESS_KEY = os.environ['LE_AWS_SECRET_ACCESS_KEY']
-
-# if deployed
-if 'RDS_DB_NAME' in os.environ:
-    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-    STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
-    STATICFILES_LOCATION = 'knowitwall/static'
-    MEDIAFILES_LOCATION = 'knowitwall/media'
-    import custom_storages
-    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
-    STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
-    MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+# if os.path.isfile('le_local_setup.txt'):
+#     AWS_ACCESS_KEY_ID = config.local_settings.LE_AWS_ACCESS_KEY_ID
+#     AWS_SECRET_ACCESS_KEY = config.local_settings.LE_AWS_SECRET_ACCESS_KEY
+# else: # else if on elasticbeanstalk
+#     AWS_ACCESS_KEY_ID = os.environ['LE_AWS_ACCESS_KEY_ID']
+#     AWS_SECRET_ACCESS_KEY = os.environ['LE_AWS_SECRET_ACCESS_KEY']
+#
+# # if deployed
+# if 'RDS_DB_NAME' in os.environ:
+#     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+#     STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+#     STATICFILES_LOCATION = 'knowitwall/static'
+#     MEDIAFILES_LOCATION = 'knowitwall/media'
+#     import custom_storages
+#     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+#     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+#     STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+#     MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
 
 

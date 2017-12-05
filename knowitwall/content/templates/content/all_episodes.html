@@ -153,7 +153,7 @@ hidden
                 <div class="archive_image_padding">
 
                 <a href="{% url 'content:episode_page' episode.slug %}">
-                  <div class="archive_image_element" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url('{{ episode.topic_image.url }}');background-size:cover;">
+                  <div class="archive_image_element" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url('{% if episode.topic_image %}{{ episode.topic_image.url }}{% else%}{% endif %}');background-size:cover;">
                     <p class="episode-title archive_episode_title">
                       {{episode.title | safe}}
                     </p>
