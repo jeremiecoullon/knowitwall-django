@@ -27,10 +27,10 @@ def create_transcript_image(input_html):
         else:
             continue
 
-        if image_type=='le_image_middle':
+        if image_type=='middle':
             image_class = "tr_image_middle"
             figure_class = "figure_transcript_middle"
-        elif image_type =="le_image_left":
+        elif image_type =="left":
             image_class = "tr_image_left"
             figure_class = "figure_transcript_left"
         else:
