@@ -62,7 +62,7 @@ class Author(models.Model):
 
 class Episode(models.Model):
     unique_id = models.CharField(max_length=100, blank=True, unique=True, default=uuid.uuid4, help_text="This determines the Disqus comment section. Need to set this manually for old KiW episodes (that were on Flask)")
-    author = models.ForeignKey(Author, null=True)
+    author = models.ForeignKey(Author, null=True, on_delete=models.CASCADE)
     title = models.CharField(unique=True,max_length=100, default='le title')
     topic_image = models.ImageField(upload_to=episode_image_directory_path, null=True, blank=True, verbose_name="Cover image")
     topic_image_latest = models.ImageField(upload_to=episode_image_directory_path, null=True, blank=True, verbose_name="'featured episode' cover image", help_text="The cover image for 'featured' on the homepage")
@@ -113,7 +113,7 @@ class Episode(models.Model):
 
 
 class FlashSeminar(models.Model):
-    episode = models.ForeignKey(Episode)
+    episode = models.ForeignKey(Episode, on_delete=models.CASCADE)
     title = models.CharField(max_length=100, unique=True, default='le title')
     event_date = models.DateTimeField(default=timezone.now)
     event_location = models.CharField(max_length=400, default='somewhere')
