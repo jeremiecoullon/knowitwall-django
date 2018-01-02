@@ -5,8 +5,6 @@ from .utils import get_env_variable
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-sys.path.append('{}/knowitwall'.format(BASE_DIR))
-
 
 SECRET_KEY = get_env_variable("SECRET_KEY")
 
@@ -20,7 +18,6 @@ ALLOWED_HOSTS = ["", "localhost"]
 
 
 INSTALLED_APPS = [
-    'storages',
     'ckeditor_uploader',
     'ckeditor',
     'content.apps.ContentConfig',
