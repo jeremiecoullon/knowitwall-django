@@ -1,13 +1,8 @@
 import os
 from slackclient import SlackClient
+from config.utils import get_env_variable
 
-
-if os.path.isfile('le_local_setup.txt'):
-    from config.local_settings import SLACK_TOKEN
-else:
-    SLACK_TOKEN = os.environ['SLACK_TOKEN']
-
-SLACK_TOKEN = SLACK_TOKEN
+SLACK_TOKEN = get_env_variable("SLACK_TOKEN")
 slack_client = SlackClient(SLACK_TOKEN)
 
 
