@@ -6,7 +6,7 @@ from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 from .managers import ContentManager
 import os
-from .images import create_transcript_image
+from .images import style_transcript_image
 
 STATUS_CHOICES = (
     ('d', 'Draft'),
@@ -105,7 +105,7 @@ class Episode(models.Model):
         # create slug field from title
         self.slug = slugify(self.title)
         self.video_embed = self.create_youtube_embed(url=self.video_embed)
-        self.transcript = create_transcript_image(input_html=self.transcript)
+        self.transcript = style_transcript_image(input_html=self.transcript)
         super(Episode, self).save(*args, **kwargs)
 
     def __str__(self):

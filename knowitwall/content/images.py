@@ -36,7 +36,44 @@ def wrap_img(bs_transcript, img_tag, image_class, figure_class):
     _wrap(img_tag, new_anchor_tag)
     return bs_transcript
 
-def create_transcript_image(input_html):
+def parse_double(bs_transcript):
+    """
+    Parse BeautifulSoup object bs_transcript: if there are 2 'double' <figure> tags
+    then wrap them in a column and row div
+
+    Parameters
+    ----------
+    bs_transcript: BeautifulSoup object
+
+    Returns
+    -------
+    bs_transcript: BeautifulSoup object
+    """
+    for idx, figure_tag in enumerate(bs_transcript.findAll('figure', {'class': 'figure_transcript_double'})):
+        next_figure_tag = figure_tag.find_next_sibling()
+        if next_figure_tag is None:
+            continue
+
+        if (next_figure_tag.name=='figure') & (next_figure_tag.get('class', '')=='figure_transcript_double'):
+            col_div = bs_transcript.new_tag("div", **{'class': 'col-md-6'})
+            _wrap(to_wrap=figure_tag, wrap_in=col_div)
+            col_div = bs_transcript.new_tag("div", **{'class': 'col-md-6'})
+            _wrap(to_wrap=next_figure_tag, wrap_in=col_div)
+
+            # add a row div around both column divs
+            new_row = bs_transcript.new_tag('div', **{'class':'row'})
+            figure_tag.parent.insert_before(new_row)
+
+            new_row.append(figure_tag.parent)
+            new_row.append(next_figure_tag.parent)
+        else:
+            print("wrong div! with index: {}".format(idx))
+            pass
+    return bs_transcript
+
+
+
+def style_transcript_image(input_html):
     """
     Take transcript and check if any of the images have a 'le_image_middle' or
     'le_image_left' as one of their classes. If so, wrap them in the correct tags.
@@ -59,13 +96,14 @@ def create_transcript_image(input_html):
         else:
             image_type = 'not_set'
 
-        if image_type == 'middle':
-            image_class = "tr_image_middle"
-            figure_class = "figure_transcript_middle"
-        elif image_type =="left":
+        if image_type =="left":
             image_class = "tr_image_left"
             figure_class = "figure_transcript_left"
-        elif image_type == 'not_set':
+        elif image_type == "double":
+            image_class = "tr_image_double"
+            figure_class = "figure_transcript_double"
+        # default is 'middle'
+        else:
             image_class = "tr_image_middle"
             figure_class = "figure_transcript_middle"
 
@@ -74,8 +112,8 @@ def create_transcript_image(input_html):
                                      image_class=image_class, figure_class=figure_class)
         elif img_tag.parent.name == 'a':
             # 1. Refresh <a> link with ficaption
-            # If figcaption was removed, add a new one
             figcaption_tag = img_tag.parent.parent.find("figcaption")
+            # If figcaption was removed, add a new one
             if figcaption_tag is not None:
                 new_img_desc = "".join((str(elem) for elem in figcaption_tag.contents))
             else:
@@ -84,8 +122,10 @@ def create_transcript_image(input_html):
                 new_img_desc = ""
             img_tag.parent['title'] = new_img_desc
 
-            # 2. check class and refresh based on longdescr
-
+            # 2. Refresh <img> and <figcaption> classes
+            img_tag['class'] = image_class
+            img_tag.parent.parent['class'] = figure_class
         else:
             pass
+    bs_transcript = parse_double(bs_transcript)
     return str(bs_transcript)
