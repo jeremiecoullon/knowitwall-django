@@ -1,5 +1,5 @@
 from django.contrib import admin
-
+from django.utils.html import format_html
 from .models import Episode, FlashSeminar, Classification, Author
 
 
@@ -15,10 +15,9 @@ class AuthorAdmin(admin.ModelAdmin):
 
     def thumbnail(self, obj):
         if obj.image:
-            return '<img src="%s" style="height: 50px; width: auto">' % (obj.image.url)
+            return format_html('<img src="%s" style="height: 50px; width: auto">' % (obj.image.url))
         else:
             "no image"
-    thumbnail.allow_tags = True
     thumbnail.short_description = 'Le author'
 
 
@@ -70,10 +69,9 @@ class EpisodeAdmin(admin.ModelAdmin):
 
     def thumbnail(self, obj):
         if obj.topic_image:
-            return '<img src="%s" style="height: 50px; width: auto">' % (obj.topic_image.url)
+            return format_html('<img src="%s" style="height: 50px; width: auto">' % (obj.topic_image.url))
         else:
             "no image"
-    thumbnail.allow_tags = True
     thumbnail.short_description = 'Preview'
     readonly_fields = ('thumbnail',)
 
