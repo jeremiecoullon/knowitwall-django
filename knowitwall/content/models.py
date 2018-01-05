@@ -69,7 +69,7 @@ class Episode(models.Model):
     topic_image_box = models.ImageField(upload_to=episode_image_directory_path, null=True, blank=True, verbose_name="Mobile circular image",help_text="This is for the circular audio player on mobile")
     transcript = RichTextUploadingField(default='le transcript', config_name='transcript')
     abstract = RichTextField(default="le abstract", config_name='default')
-    by_in_colour = models.CharField(max_length=1, choices=BY_IN_COLOR_CHOICES, default='b', verbose_name="'by/in' colour")
+    by_in_colour = models.CharField(max_length=1, choices=BY_IN_COLOR_CHOICES, default='w', verbose_name="'by/in' colour")
     author_name_size = models.CharField(max_length=1, choices=AUTHOR_NAME_SIZE_CHOICES, default='n')
     image_credits = RichTextField(default="", config_name='image_credits', blank=True, help_text="Example of the correct format: The Morgan Library & Museum, New York. By <a target='_blank' href='https://commons.wikimedia.org/wiki/File:The_Morgan_Library_%26_Museum.jpg'>Paolatrabanco</a> [<a target='_blank' href='https://creativecommons.org/licenses/by-sa/4.0/deed.en'>CC BY-SA 4.0</a>]")
     narration_credits = models.CharField(default="", max_length=300, blank=True, help_text="Example of correct format: Mary Wellesley and Vidish Athavale")
