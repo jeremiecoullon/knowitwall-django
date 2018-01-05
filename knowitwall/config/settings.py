@@ -146,6 +146,8 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, "..", "www", "static")
 STATIC_URL = '/static/'
 
+FILE_UPLOAD_MAX_MEMORY_SIZE = 200000000
+
 # email stuff
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
