@@ -116,6 +116,9 @@ whole bit better (so that a single css attribute gives the grey box its colour) 
 .audiodoc_narrate-credits{
   font-style:italic;
 }
+.justify{
+  text-align: justify;
+}
 @media(max-width:768px){
   .audiodoc_abstract{
     font-size:18px;
