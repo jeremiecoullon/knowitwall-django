@@ -112,8 +112,11 @@ USE_TZ = True
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'Full',
-        # 'extraPlugins': 'wordcount',
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Link', 'Unlink', 'Blockquote', 'Image', 'Italic', 'Bold', 'Underline', 'SpecialChar', 'Source'],
+        ],
+        "autoParagraph": False,
     },
     'image_credits': {
         'toolbar': 'Custom',
@@ -133,7 +136,10 @@ CKEDITOR_CONFIGS = {
         'width': 1000,
     },
     'transcript': {
-        'toolbar': 'Full',
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Link', 'Unlink', 'Blockquote', 'Image', 'Italic', 'Bold', 'Underline', 'SpecialChar', 'Source'],
+        ],
         'height': 700,
         'width': 1100,
         "allowedContent": True

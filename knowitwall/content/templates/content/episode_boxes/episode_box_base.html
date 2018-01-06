@@ -11,7 +11,7 @@
          <i>in</i> {% include 'content/classification_discipline_tag.html' %}
        </p>
      <div class="homepage_hidden_info">
-       <div class="homepage_box_abstract">{{episode.abstract | safe}}</div>
+       <div class="homepage_box_abstract"><p>{{episode.abstract | safe}}</p></div>
 
        <div class="audio_video_tag_div">
          {% if episode.video_embed %}

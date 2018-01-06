@@ -135,7 +135,7 @@
                    <i>in</i>{% include 'content/classification_discipline_tag.html' %}
                  </p>
                <div class="homepage_hidden_info">
-                 <div class="homepage_box_abstract homepage_box_abstract_first">{{episode.abstract | safe}}</div>
+                 <div class="homepage_box_abstract homepage_box_abstract_first"><p>{{episode.abstract | safe}}</p></div>
 
                  <div class="audio_video_tag_div_landing_page">
                    {% if episode.video_embed %}
