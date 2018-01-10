@@ -61,7 +61,8 @@ class EpisodeAdmin(admin.ModelAdmin):
         ('Random stuff', {'fields': ['by_in_colour', 'author_name_size'], 'description': '{}'.format(random_stuff_description)}),
         ('Publication info', {'fields': ['status', 'pub_date'],
                             'description': '{}'.format(publication_info_description)}),
-        ('ID stuff', {'fields': ['unique_id', 'old_KiW_slug'], 'description': "DON'T TOUCH THIS. This is because of Jeremie's shitty coding skillz."}),
+        # this line is to add fields to keep Disqus comment section and to keep old KiW slugs
+        # ('ID stuff', {'fields': ['unique_id', 'old_KiW_slug'], 'description': "DON'T TOUCH THIS. This is because of Jeremie's shitty coding skillz."}),
     ]
 
     def get_disciplines(self, obj):
