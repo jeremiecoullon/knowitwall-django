@@ -47,11 +47,28 @@ random_stuff_description = """Random styling stuff.
                                   <li><strong>author name size:</strong> this is for authors with annoyingly long name so they can
                                   fit in the episode page (next to their picture). Almost all of them use the 'normal' setting</li>
                                 </ul>"""
+transcript_image_description = """<h1>How to embed images in the transcript:</h1>
+                                <p>To add an image</p>
+                                <ol>
+                                    <li>Create a new line in the transcript where the image should go</li>
+                                    <li>Click on the 'image' icon (4th icon from the left)</li>
+                                    <li>Choose 'Upload' tab</li>
+                                    <li>Choose file, then click 'Send it to the server'. Then 'OK'</li>
+                                    <li>Click 'Save and continue editing' (at the bottom of the page) to save the episode. This will style the image correctly. You can then add the caption to the image</li>
+                                </ol>
+                                <p>By default the position of the image is in the middle. To change the positioning:</p>
+                                <ol>
+                                    <li>Click on the image, and go to the 'Advanced' tab</li>
+                                    <li>Fill in the box called 'Long description URL', and write either 'left' or 'middle'. Then click 'OK'</li>
+                                    <li>Save the episode ('Save and continue editing') to apply the new stying</li>
+                                </ol>
+"""
 
 @admin.register(Episode)
 class EpisodeAdmin(admin.ModelAdmin):
     fieldsets = [
-        ('Text stuff', {'fields': ['title', 'abstract', 'transcript']}),
+        ('Episode overview', {'fields': ['title', 'abstract']}),
+        ('Transcript', {'fields': ['transcript'], 'description': transcript_image_description}),
         ('Author', {'fields': ['author']}),
         ('Classification', {'fields': ['classification']}),
         ('Episode Images', {'fields': [('topic_image', 'thumbnail', 'image_credits'), 'topic_image_latest', 'topic_image_box'],
