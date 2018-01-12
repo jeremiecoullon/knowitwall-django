@@ -14,7 +14,7 @@ else:
     DEBUG = True
 
 
-ALLOWED_HOSTS = ["165.227.237.83", "localhost", "knowitwall.com"]
+ALLOWED_HOSTS = ["165.227.237.83", "localhost", "knowitwall.com", "www.knowitwall.com"]
 
 
 INSTALLED_APPS = [
