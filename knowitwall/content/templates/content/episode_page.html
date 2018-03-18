@@ -11,7 +11,7 @@
   <meta name="description" content="{{episode.abstract}}">
   <meta name="keywords" content="Knowitwall, Know it Wall, audio-documentary, audiodoc, outreach, academia, insightful, science, humanities">
   <meta name="author" content="">
-  <meta property="og:image" content="{{ episode.topic.image.url }}" />
+  <meta property="og:image" content="{% if episode.topic_image %}{{ episode.topic_image.url }}{% else %}{% endif %}" />
   <meta property="og:title" content="{{episode.title | safe}}{% if episode.video_embed %} [Video]{% elif episode.audio_mp3 %} [Audio]{% else %}{% endif %}"/>
   <meta property="og:description" content="{{episode.abstract | safe}}" />
   <meta property="og:url" content="http://knowitwall.com/episodes/{{episode.slug}}" />
@@ -354,34 +354,6 @@
   });
   </script>
 
-
-  <script type="text/javascript">
-  $(function() {
-    var width = $( window ).width();
-    if (width > 768){
-         $("#polanski_gif").hover(
-             function() {
-                 $(this).attr("src", "{{config.AWS_URL}}/static/Images/tr_image_emotional_expression_Scorsese_gif.gif");
-             },
-             function() {
-                 $(this).attr("src", "{{config.AWS_URL}}/static/Images/tr_image_emotional_expression_Scorsese_static.jpg");
-             }
-         );
-         $('#emotional_expression_gif').html('hover');
-       }
-    else {
-      $('#polanski_gif').on({
-       'click': function() {
-            var src = ($(this).attr('src') === '{{config.AWS_URL}}/static/Images/tr_image_emotional_expression_Scorsese_gif.gif')
-               ? '{{config.AWS_URL}}/static/Images/tr_image_emotional_expression_Scorsese_static.jpg'
-               : '{{config.AWS_URL}}/static/Images/tr_image_emotional_expression_Scorsese_gif.gif';
-            $(this).attr('src', src);
-       }
-   });
-   $('#emotional_expression_gif').html('click');
-    }
-   });
-  </script>
 
 
 </body>
