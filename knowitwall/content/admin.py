@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Episode, FlashSeminar, Classification, Author
+from .models import Episode, FlashSeminar, Classification, Author, Season
 
 
 @admin.register(Author)
@@ -20,6 +20,7 @@ class AuthorAdmin(admin.ModelAdmin):
             "no image"
     thumbnail.short_description = 'Le author'
 
+# ======================================================
 
 publication_info_description = """<h1>Select publication status</h1>
                                 <ul>
@@ -70,7 +71,7 @@ class EpisodeAdmin(admin.ModelAdmin):
         ('Episode overview', {'fields': ['title', 'abstract']}),
         ('Transcript', {'fields': ['transcript'], 'description': transcript_image_description}),
         ('Author', {'fields': ['author']}),
-        ('Classification', {'fields': ['classification']}),
+        ('Classification', {'fields': ['classification', 'season']}),
         ('Episode Images', {'fields': [('topic_image', 'thumbnail', 'image_credits'), 'topic_image_latest', 'topic_image_box'],
                             'description': '{}'.format(episode_images_description)}),
         ('Audio', {'fields': ['audio_mp3', 'narration_credits', 'music_credits'],'description': '{}'.format(audio_description)}),
@@ -101,6 +102,7 @@ class EpisodeAdmin(admin.ModelAdmin):
     list_filter = ['pub_date']
     filter_horizontal = ('classification',)
 
+# ======================================================
 
 class EpisodeInline(admin.TabularInline):
     model = Episode.classification.through
@@ -109,6 +111,7 @@ class EpisodeInline(admin.TabularInline):
     max_num = 0
     readonly_fields = ('episode',)
     can_delete = False
+
 
 
 @admin.register(Classification)
@@ -120,6 +123,32 @@ class ClassificationAdmin(admin.ModelAdmin):
 
     list_display = ['discipline', 'academic_field', 'discipline_episode_count']
     inlines = [EpisodeInline,]
+
+# ======================================================
+
+@admin.register(Season)
+class SeasonAdmin(admin.ModelAdmin):
+
+    def thumbnail(self, obj):
+        if obj.image:
+            return format_html('<img src="%s" style="height: 50px; width: auto">' % (obj.image.url))
+        else:
+            "no image"
+
+    def season_episode_count(self, obj):
+        return obj.episode_set.count()
+
+    season_episode_count.short_description = 'Number of episodes'
+
+    def season_list_episodes(self, obj):
+        return list(obj.episode_set.all())
+
+    list_display = ['title', 'thumbnail', 'season_episode_count', 'season_list_episodes']
+    fieldsets = [
+    ('Season info', {'fields': ['title', 'abstract', 'image'], 'description': 'hello!'}),
+    ]
+
+# ======================================================
 
 @admin.register(FlashSeminar)
 class FlashSeminarAdmin(admin.ModelAdmin):

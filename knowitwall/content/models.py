@@ -27,6 +27,19 @@ AUTHOR_NAME_SIZE_CHOICES = (
 )
 
 
+def seasons_image_directory_path(instance, filename):
+    return 'Season_images/{0}/{1}'.format(instance.title, filename)
+
+def episode_image_directory_path(instance, filename):
+    # Episode images will be uploaded to MEDIA_ROOT/Episode_image-id_<id>/<filename>
+    return 'Episodes_images/episode_id-{0}/{1}'.format(instance.unique_id, filename)
+
+def author_image_directory_path(instance, filename):
+    # Author images will be uploaded to MEDIA_ROOT/Author_images/<author_name>/<filename>
+    return 'Author_images/{0}/{1}'.format(instance.name, filename)
+
+
+
 class Classification(models.Model):
     discipline = models.CharField(max_length=100, default="le discipline",help_text="topic discipline (ex: Neuroscience)")
     academic_field = models.CharField(max_length=2, choices=ACADEMIC_FIELDS_CHOICES, help_text="Sciences or Humanities")
@@ -38,14 +51,14 @@ class Classification(models.Model):
         self.slug = slugify("_".join((self.academic_field,self.discipline)))
         super(Classification, self).save(*args, **kwargs)
 
+class Season(models.Model):
+    title = models.CharField(max_length=100, default="Season title")
+    abstract = RichTextField(default="Description of the season", config_name='default')
+    image = models.ImageField(upload_to=seasons_image_directory_path, null=True, blank=True, verbose_name="Season image")
+    
 
-def episode_image_directory_path(instance, filename):
-    # Episode images will be uploaded to MEDIA_ROOT/Episode_image-id_<id>/<filename>
-    return 'Episodes_images/episode_id-{0}/{1}'.format(instance.unique_id, filename)
-
-def author_image_directory_path(instance, filename):
-    # Author images will be uploaded to MEDIA_ROOT/Author_images/<author_name>/<filename>
-    return 'Author_images/{0}/{1}'.format(instance.name, filename)
+    def __str__(self):
+        return self.title
 
 class Author(models.Model):
     name = models.CharField(max_length=200, default="le author name")
@@ -63,6 +76,7 @@ class Author(models.Model):
 class Episode(models.Model):
     unique_id = models.CharField(max_length=100, blank=True, unique=True, default=uuid.uuid4, help_text="This determines the Disqus comment section. Need to set this manually for old KiW episodes (that were on Flask)")
     author = models.ForeignKey(Author, null=True, on_delete=models.CASCADE)
+    season = models.ForeignKey(Season, null=True, blank=True, on_delete=models.CASCADE)
     title = models.CharField(unique=True,max_length=100, default='le title')
     topic_image = models.ImageField(upload_to=episode_image_directory_path, null=True, blank=True, verbose_name="Cover image")
     topic_image_latest = models.ImageField(upload_to=episode_image_directory_path, null=True, blank=True, verbose_name="'featured episode' cover image", help_text="The cover image for 'featured' on the homepage")
