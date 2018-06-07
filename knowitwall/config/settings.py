@@ -20,6 +20,7 @@ ALLOWED_HOSTS = ["165.227.237.83", "localhost", "knowitwall.com", "www.knowitwal
 INSTALLED_APPS = [
     'ckeditor_uploader',
     'ckeditor',
+    'team.apps.TeamConfig',
     'content.apps.ContentConfig',
     'notifications.apps.NotificationsConfig',
     'django.contrib.admin',
