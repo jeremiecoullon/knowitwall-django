@@ -1,8 +1,0 @@
-{% extends 'content/list_episodes_base.html' %}
-{% block page_name%}
-<h1>All episodes</h1>
-{% endblock %}
-
-{% block episode_redirect %}
-<h1><a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title }}</a></h1>
-{% endblock %}

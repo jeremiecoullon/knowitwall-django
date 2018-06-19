@@ -2,6 +2,7 @@ from django.views import generic
 from django.shortcuts import render
 
 from .models import Episode, FlashSeminar
+from team.models import TeamMember
 
 # this is so that the old KiW URLs still work
 old_KiW_urls = [
@@ -15,7 +16,7 @@ old_KiW_urls = [
     ]
 
 class IndexView(generic.ListView):
-    template_name = 'content/index.html'
+    template_name = 'content/redesign/index.html'
 
     def get_queryset(self):
         query_episodes = Episode.objects.order_by('-pub_date')
@@ -61,3 +62,7 @@ class AboutView(generic.ListView):
 
 def terms(request):
     return render(request, 'content/terms.html')
+
+def team(request):
+    teammembers = TeamMember.objects.all()
+    return render(request, 'team/teampage.html', {'teammembers': teammembers})

@@ -1,0 +1,243 @@
+{% extends 'content/KiW_base.html' %}
+{% block content %}
+{% load static from staticfiles%}
+<!-- <!DOCTYPE html>
+<html> -->
+<head>
+
+  <script src="//cdn.optimizely.com/js/3239180053.js"></script>
+
+  <meta name="google-site-verification" content="JoE7Yhdq8T8FWWOnlh_O3I0-LhZeTCRNegIK-GY3Us8" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Know it Wall (KiW) is a place for inquisitive minds. Based at UCL and Imperial College London, KiW works with academics to create documentaries and articles about the subjects they dedicate their lives to.">
+  <meta name="keywords" content="Knowitwall, Know it Wall, audio-documentary, audiodoc, outreach, academia, insightful, science, humanities">
+  <meta name="author" content="">
+  <meta property="og:image" content="https://s3.eu-west-2.amazonaws.com/knowitwall/static/Images/KiW_banner.jpg"/>
+  <meta property="og:title" content="Know it Wall" />
+  <meta property="og:description" content="Know it Wall (KiW) is a place for inquisitive minds. Based at UCL and Imperial College London, KiW works with academics to create documentaries and articles about the subjects they dedicate their lives to." />
+  <meta property="og:url" content="http://knowitwall.com/" />
+  <link rel="icon" href="https://s3.eu-west-2.amazonaws.com/knowitwall/static/Images/KIW-thumbnail_logo.png" type="image/gif" sizes="16x16">
+<!-- pens -->
+
+  <title>Know it Wall | home page</title>
+
+  <link href="{% static 'content/css/audioplayer.css' %}" rel="stylesheet">
+  <link href="{% static 'content/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <link href="{% static 'content/css/knowitwall_base.css' %}" rel="stylesheet">
+  <link href="{% static 'content/css/homepage.css' %}" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="{% static 'content/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Lato:100,300,300italic,400,400italic," rel="stylesheet" type="text/css">
+
+
+  <!-- google analytics for jeremie.coullon@gmail.com -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62559170-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+</head>
+
+
+<body id='page-top'>
+
+
+
+  <div class="overflow">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+
+
+    <div class="container container_nav_bar">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#page-top">
+
+    {% include 'content/KiW_logo.html' %}
+        </a>
+      </div>
+
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="hidden">
+            <a href="#page-top"></a>
+          </li>
+          <li class="page-scroll">
+            <a href="{% url 'content:about' %}">About</a>
+          </li>
+          <!-- HACK: hidden div that activates just after the about section.
+        That means that the about button in the navbar stops being highlighted when you go past
+      the about section. -->
+          <li class="page-scroll" style="display:none;">
+            <a href="#episodes2">Get Involved</a>
+          </li>
+
+          <li class="page-scroll">
+            <a href="#contribute">Get Involved</a>
+          </li>
+          <li class="page-scroll">
+            <a href="#contact">Feedback</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="{% url 'content:all_episodes' %}" id="all_episodes">All Episodes</a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/KnowitWall/" target="_blank" class=""><i class="fa fa-fw fa-facebook"></i></a>
+          </li>
+        </ul>
+      <!-- /.navbar-collapse -->
+      </div>
+
+    <!-- /.container-fluid -->
+    </div>
+  </nav>
+
+<section>
+  <div class="container">
+<div class="row">
+  <h1>New episodes</h1>
+
+  {% for episode in episode_list|slice:"0:4" %}
+    <div class="col-md-3">
+      <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" width="200px">
+      <h5>{{ episode.title }}</h5>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="row">
+  <h1>Season 2</h1>
+
+  {% for episode in episode_list|slice:"4:8" %}
+    <div class="col-md-3">
+      <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" width="200px">
+      <h5>{{ episode.title }}</h5>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="row">
+  <h1>Videos</h1>
+  <div class="row">
+    <div class="col-md-8">
+      <img src="{% if episode_list.9.topic_image %}{{episode_list.9.topic_image.url}}{% endif %}" alt="" width="700px">
+    </div>
+    <div class="col-md-4">
+      <h2>{{ episode_list.9.title }}</h2>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="row">
+  {% for episode in episode_list|slice:"10:13" %}
+    <div class="col-md-4">
+      <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" width="200px">
+      <h5>{{ episode.title }}</h5>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+
+  </div>
+
+
+
+</section>
+
+  {% endblock %}
+
+  <!-- the footer is in base.html -->
+  {% block jsscripts %}
+  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+  <div class="scroll-top page-scroll visible-xs visble-sm">
+    <a class="btn btn-primary" href="#page-top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+
+
+<!-- scripts! -->
+
+  <!-- jQuery -->
+  <script src="{% static 'content/js/jquery.js' %}"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="{% static 'content/js/bootstrap.min.js' %}"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="{% static 'content/js/jquery.easing.min.js' %}"></script>
+
+
+  <script src="{% static 'content/js/classie.js' %}"></script>
+  <script src="{% static 'content/js/cbpAnimatedHeader.js' %}"></script>
+
+  <!-- Contact Form JavaScript -->
+  <script src="{% static 'content/js/jqBootstrapValidation.js' %}"></script>
+  <script src="{% static 'content/js/contact_me.js' %}"></script>
+
+  <!-- Custom Theme JavaScript -->
+  <script src="{% static 'content/js/knowitwall.js' %}"></script>
+
+  <script src="{% static 'content/js/audioplayer.js' %}"></script>
+
+
+  <script>
+    $( function()
+    {
+        $( 'audio' ).audioPlayer();
+    });
+  </script>
+  <!-- trying to remove an element from mailchimp signup error message -->
+  <script type="text/javascript">
+    $('#about-f').text(function (_,txt) {
+        return txt.slice(0, -1);
+    });
+  </script>
+
+  <script type="text/javascript">
+  var header_image_switch = function(){
+    var width = window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
+      if (width <= 768) {
+        var mobile_image = $('#header_image_desktop').attr('data-image');
+        console.log(mobile_image);
+
+        $('#header_image_desktop').css({'background':'url("' + mobile_image + '")', 'background-size':'cover','background-attachment':'scroll'});
+      }
+
+  }
+  header_image_switch();
+  var by_in_mobile = function(){
+    // makes all mobile 'by-in' white (as they're darkened all the time)
+    var width = window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
+    if (width <= 768){
+      $('.homepage_box_by-in > i').css('color','white');
+      }
+  };
+  by_in_mobile();
+  </script>
+
+</body>
+{% endblock %}

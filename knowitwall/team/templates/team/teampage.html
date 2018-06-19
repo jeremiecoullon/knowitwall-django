@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    a teampage!
+    {% for tmember in teammembers %}
+    <i>{{ tmember.name }}</i>
+
+    {% if tmember.image %}
+    <img src="{{ tmember.image.url }}" width=100px>
+    {% else %}{% endif%}
+
+    {% endfor %}
+  </body>
+</html>
