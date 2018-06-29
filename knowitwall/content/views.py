@@ -21,9 +21,9 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         query_episodes = Episode.objects.order_by('-pub_date')
         if self.request.user.is_staff:
-            return query_episodes.preview_and_published()[:13]
+            return query_episodes.preview_and_published()#[:13]
         else:
-            return query_episodes.published()[:13]
+            return query_episodes.published()#[:13]
 
 
 class AllEpisodesView(generic.ListView):

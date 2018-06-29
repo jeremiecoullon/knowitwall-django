@@ -23,11 +23,10 @@
 
   <title>Know it Wall | home page</title>
 
-  <link href="{% static 'content/css/audioplayer.css' %}" rel="stylesheet">
   <link href="{% static 'content/css/bootstrap.min.css' %}" rel="stylesheet">
 
   <link href="{% static 'content/css/knowitwall_base.css' %}" rel="stylesheet">
-  <link href="{% static 'content/css/homepage.css' %}" rel="stylesheet">
+  <link href="{% static 'content/css/kiw_homepage_2018.css' %}" rel="stylesheet">
 
   <!-- Custom Fonts -->
   <link href="{% static 'content/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
@@ -90,7 +89,7 @@
           </li>
 
           <li class="page-scroll">
-            <a href="#contribute">Get Involved</a>
+            <a href="#contribute">Disciplines</a>
           </li>
           <li class="page-scroll">
             <a href="#contact">Feedback</a>
@@ -113,54 +112,148 @@
 
 <section>
   <div class="container">
-<div class="row">
-  <h1>New episodes</h1>
 
-  {% for episode in episode_list|slice:"0:4" %}
-    <div class="col-md-3">
-      <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" width="200px">
-      <h5>{{ episode.title }}</h5>
+<!-- ======================================= -->
+
+
+    <div class="row">
+      <h1 class="latest_row_header">Season 1: Name Name</h1>
+      <div class="row">
+        <div class="col-md-6">
+          <img src="{% if episode_list.29.topic_image %}{{episode_list.29.topic_image.url}}{% endif %}" alt="" class="big_box_image">
+          <h2>{{ episode_list.29.title }}</h2>
+          <p class="box_episode_abstract">Oat cake gummies danish danish chocolate cake. Dragée sesame snaps lemon drops jelly-o apple pie.</p>
+        </div>
+        <div class="col-md-6 latest_vertical_boxes">
+          {% for episode in episode_list|slice:"10:13" %}
+            <div class="row latest_vertical_rows">
+              <div class="col-md-4">
+                <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_images_vertical">
+              </div>
+              <div class="col-md-8">
+                <h2 class="latest_title">{{ episode.title }}</h2>
+                <p class="latest_vertical_abstract">Oat cake gummies danish danish chocolate cake.</p>
+              </div>
+
+            </div>
+          {% endfor %}
+          </div>
+      </div>
     </div>
-  {% endfor %}
+
+
+<!-- ======================================= -->
+
+<div class="row homepage_row">
+  <h1 class="homepage_row_header">New episodes</h1>
+  <div class="row">
+    {% for episode in episode_list|slice:"0:4" %}
+      <a class="col-md-3" href="{% url 'content:episode_page' episode.slug %}" target="_blank">
+        <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_image">
+        <h2>{{ episode.title }}</h2>
+        <p class="box_episode_abstract">Oat cake gummies danish danish chocolate cake.</p>
+      </a>
+    {% endfor %}
+  </div>
 </div>
 
-<div class="row">
-  <h1>Season 2</h1>
+<!-- ======================================= -->
+
+<div class="row homepage_row">
+  <h1 class="homepage_row_header">Season 2: Name Name</h1>
+  <div class="row">
+
 
   {% for episode in episode_list|slice:"4:8" %}
-    <div class="col-md-3">
-      <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" width="200px">
-      <h5>{{ episode.title }}</h5>
-    </div>
+    <a class="col-md-3" href="{% url 'content:episode_page' episode.slug %}" target="_blank">
+        <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_image">
+        <h2>{{ episode.title }}</h2>
+      <p class="box_episode_abstract">Oat cake gummies danish danish chocolate cake.</p>
+    </a>
   {% endfor %}
+  </div>
 </div>
 
-<div class="row">
-  <h1>Videos</h1>
-  <div class="row">
+
+<!-- ======================================= -->
+
+
+<div class="row homepage_row">
+  <h1 class="homepage_row_header">VIDEO EPISODES</h1>
+  <div class="row ">
     <div class="col-md-8">
-      <img src="{% if episode_list.9.topic_image %}{{episode_list.9.topic_image.url}}{% endif %}" alt="" width="700px">
+      <img src="{% if episode_list.9.topic_image %}{{episode_list.9.topic_image.url}}{% endif %}" alt="" class="big_box_image">
     </div>
-    <div class="col-md-4">
-      <h2>{{ episode_list.9.title }}</h2>
+    <div class="col-md-4 big_episode_info">
+      <h2 class="big_title">{{ episode_list.9.title }}</h2>
+      <p class="big_episode_author_name">{{ episode_list.9.author.name | safe}}</p>
+      <p class="big_episode_abstract">{{ episode_list.9.abstract | safe}}</p>
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="row">
+
+  <div class="row homepage_3_cols">
   {% for episode in episode_list|slice:"10:13" %}
-    <div class="col-md-4">
-      <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" width="200px">
-      <h5>{{ episode.title }}</h5>
+    <div class="col-md-4 row_3_eps">
+      <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_images_3">
+      <h2>{{ episode.title }}</h2>
+      <p class="box_episode_abstract">Oat cake gummies danish danish chocolate cake.</p>
     </div>
   {% endfor %}
   </div>
 </div>
 
+<!-- ======================================= -->
+
+<div class="row homepage_row">
+  <h1 class="homepage_row_header">TRENDING NOW</h1>
+  <div class="row ">
+    <div class="col-md-4">
+      <h2 class="big_title">{{ episode_list.12.title }}</h2>
+      <p class="big_episode_author_name">{{ episode_list.12.author.name | safe}}</p>
+      <p class="big_episode_abstract">{{ episode_list.12.abstract | safe}}</p>
+    </div>
+    <div class="col-md-8">
+      <img src="{% if episode_list.12.topic_image %}{{episode_list.12.topic_image.url}}{% endif %}" alt="" class="big_box_image">
+    </div>
   </div>
+</div>
 
+<!-- ======================================= -->
 
+<div class="row homepage_row">
+  <h1 class="homepage_row_header">MEDICINE</h1>
+  <div class="row">
+  {% for episode in episode_list|slice:"12:16" %}
+    <a class="col-md-3" href="{% url 'content:episode_page' episode.slug %}" target="_blank">
+        <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_image">
+        <h2>{{ episode.title }}</h2>
+        <p class="box_episode_abstract">Oat cake gummies danish danish chocolate cake.</p>
+    </a>
+  {% endfor %}
+  </div>
+</div>
 
+<!-- ======================================= -->
+
+<div class="row">
+  <h1 class="latest_row_header">AUDIO</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <img src="{% if episode_list.29.topic_image %}{{episode_list.29.topic_image.url}}{% endif %}" alt="" class="big_box_image">
+      <h2>{{ episode_list.29.title }}</h2>
+      <p class="box_episode_abstract">Oat cake gummies danish danish chocolate cake. Dragée sesame snaps lemon drops jelly-o apple pie.</p>
+    </div>
+    <div class="col-md-6">
+      <img src="{% if episode_list.30.topic_image %}{{episode_list.30.topic_image.url}}{% endif %}" alt="" class="big_box_image">
+      <h2>{{ episode_list.30.title }}</h2>
+      <p class="box_episode_abstract">Oat cake gummies danish danish chocolate cake. Dragée sesame snaps lemon drops jelly-o apple pie.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================= -->
+
+  </div> <!-- end of container -->
 </section>
 
   {% endblock %}
@@ -190,54 +283,9 @@
   <script src="{% static 'content/js/classie.js' %}"></script>
   <script src="{% static 'content/js/cbpAnimatedHeader.js' %}"></script>
 
-  <!-- Contact Form JavaScript -->
-  <script src="{% static 'content/js/jqBootstrapValidation.js' %}"></script>
-  <script src="{% static 'content/js/contact_me.js' %}"></script>
 
   <!-- Custom Theme JavaScript -->
   <script src="{% static 'content/js/knowitwall.js' %}"></script>
-
-  <script src="{% static 'content/js/audioplayer.js' %}"></script>
-
-
-  <script>
-    $( function()
-    {
-        $( 'audio' ).audioPlayer();
-    });
-  </script>
-  <!-- trying to remove an element from mailchimp signup error message -->
-  <script type="text/javascript">
-    $('#about-f').text(function (_,txt) {
-        return txt.slice(0, -1);
-    });
-  </script>
-
-  <script type="text/javascript">
-  var header_image_switch = function(){
-    var width = window.innerWidth
-    || document.documentElement.clientWidth
-    || document.body.clientWidth;
-      if (width <= 768) {
-        var mobile_image = $('#header_image_desktop').attr('data-image');
-        console.log(mobile_image);
-
-        $('#header_image_desktop').css({'background':'url("' + mobile_image + '")', 'background-size':'cover','background-attachment':'scroll'});
-      }
-
-  }
-  header_image_switch();
-  var by_in_mobile = function(){
-    // makes all mobile 'by-in' white (as they're darkened all the time)
-    var width = window.innerWidth
-    || document.documentElement.clientWidth
-    || document.body.clientWidth;
-    if (width <= 768){
-      $('.homepage_box_by-in > i').css('color','white');
-      }
-  };
-  by_in_mobile();
-  </script>
 
 </body>
 {% endblock %}
