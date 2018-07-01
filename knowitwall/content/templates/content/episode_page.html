@@ -38,61 +38,6 @@
 </head>
 
 <body id="page-top">
-  <!-- Navigation -->
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <!-- HACK: disgusting inline style the moves the 'READ' button on the navbar to the right if the episode has audio.
-                Put this in a class once the CSS cleanup is done -->
-      <!-- TODO: this doesn't work for mobile! -->
-      <div class="navbar-header page-scroll {% if not episode.audio_mp3 %}text-only-margin{%endif%}">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand navbarADpage {% if episode.video_embed %}navbarADpage_video{% endif %}" href=" {% url 'content:index' %}">   <!-- for audiodoc, the logo goes back to home page-->
-
-    {% include 'content/KiW_logo.html' %}
-        </a>
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          {% if episode.video_embed %}
-          <li class="page-scroll navbar_hamburger">
-            <a href="#header_video_hidden_div">Watch</a>
-          </li>
-          {% endif %}
-          {% if episode.audio_mp3 %}
-          <li class="page-scroll navbar_hamburger">
-            <a href="#episodes">Listen</a>
-          </li>
-          {% endif %}
-          {% if episode.audio_mp3 or episode.video_embed %}
-
-          <li class="page-scroll-offset navbar_hamburger">
-            <a href="#read">Read</a>
-          </li>
-          {% endif %}
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <!-- <a href="/all_episodes">All Episodes</a> -->
-            <a href="{% url 'content:all_episodes' %}" id="all_episodes">All Episodes</a>
-          </li>
-          <li class="navbar_hamburger">
-            <a href="https://www.facebook.com/KnowitWall/" target="_blank"><i class="fa fa-fw fa-facebook"></i></a>
-          </li>
-
-        </ul>
-      <!-- /.navbar-collapse -->
-      </div>
-    <!-- /.container-fluid -->
-    </div>
-  </nav>
 
   <div id="header_video_hidden_div" style="display:hidden">
     fds

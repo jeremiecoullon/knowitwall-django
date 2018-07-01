@@ -8,6 +8,7 @@
   object-fit: cover;
   width: 100%;
   height: 340px;
+  background: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.6));
 }
 
 .homepage_row{
@@ -73,9 +74,9 @@ section h2{
   font-style: italic;
   padding-top: 8px;
 }
-.big_episode_abstract{
-  font-size: 1.2em;
-  font-weight: 100;
+.big_episode_abstract > p{
+  font-size: 1.1em;
+  font-weight: 300;
   padding-right: 20%;
   padding-top: 10px;
 }
@@ -83,18 +84,31 @@ section h2{
   padding-left: 25px;
 }
 .row_3_eps{
-  padding-left: 25px;
   padding-right: 25px;
 }
-.box_episode_abstract{
+.box_episode_abstract > p{
   font-size: 1em;
-  font-weight: 100;
+  font-weight: 300;
   padding-right: 10%;
   padding-top: 17px;
 }
-.latest_vertical_abstract{
+.latest_vertical_abstract > p{
   font-size: 1em;
-  font-weight: 100;
+  font-weight: 300;
   padding-right: 20%;
   padding-top: 5px;
 }
+
+/* .overlay {
+  position: relative;
+}
+.overlay:after {
+  position: absolute;
+  content:"";
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  opacity:0.3;
+  background: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.6));
+} */

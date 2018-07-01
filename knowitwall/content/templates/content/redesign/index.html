@@ -48,68 +48,6 @@
 
 <body id='page-top'>
 
-
-
-  <div class="overflow">
-
-  <!-- Navigation -->
-  <nav class="navbar navbar-default navbar-fixed-top">
-
-
-    <div class="container container_nav_bar">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header page-scroll">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#page-top">
-
-    {% include 'content/KiW_logo.html' %}
-        </a>
-      </div>
-
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="hidden">
-            <a href="#page-top"></a>
-          </li>
-          <li class="page-scroll">
-            <a href="{% url 'content:about' %}">About</a>
-          </li>
-          <!-- HACK: hidden div that activates just after the about section.
-        That means that the about button in the navbar stops being highlighted when you go past
-      the about section. -->
-          <li class="page-scroll" style="display:none;">
-            <a href="#episodes2">Get Involved</a>
-          </li>
-
-          <li class="page-scroll">
-            <a href="#contribute">Disciplines</a>
-          </li>
-          <li class="page-scroll">
-            <a href="#contact">Feedback</a>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a href="{% url 'content:all_episodes' %}" id="all_episodes">All Episodes</a>
-          </li>
-          <li>
-            <a href="https://www.facebook.com/KnowitWall/" target="_blank" class=""><i class="fa fa-fw fa-facebook"></i></a>
-          </li>
-        </ul>
-      <!-- /.navbar-collapse -->
-      </div>
-
-    <!-- /.container-fluid -->
-    </div>
-  </nav>
-
 <section>
   <div class="container">
 
@@ -119,23 +57,22 @@
     <div class="row">
       <h1 class="latest_row_header">Season 1: Name Name</h1>
       <div class="row">
-        <div class="col-md-6">
+        <a class="col-md-6" href="{% url 'content:episode_page' episode_list.29.slug %}" target="_blank">
           <img src="{% if episode_list.29.topic_image %}{{episode_list.29.topic_image.url}}{% endif %}" alt="" class="big_box_image">
           <h2>{{ episode_list.29.title }}</h2>
-          <p class="box_episode_abstract">Oat cake gummies danish danish chocolate cake. Dragée sesame snaps lemon drops jelly-o apple pie.</p>
-        </div>
+          <div class="box_episode_abstract">{{ episode_list.29.transcript|truncatewords:30 | safe }}</div>
+        </a>
         <div class="col-md-6 latest_vertical_boxes">
           {% for episode in episode_list|slice:"10:13" %}
-            <div class="row latest_vertical_rows">
+            <a class="row latest_vertical_rows" href="{% url 'content:episode_page' episode.slug %}" target="_blank">
               <div class="col-md-4">
                 <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_images_vertical">
               </div>
               <div class="col-md-8">
                 <h2 class="latest_title">{{ episode.title }}</h2>
-                <p class="latest_vertical_abstract">Oat cake gummies danish danish chocolate cake.</p>
+                <div class="latest_vertical_abstract">{{ episode.transcript|truncatewords:15 | safe }}</div>
               </div>
-
-            </div>
+            </a>
           {% endfor %}
           </div>
       </div>
@@ -151,7 +88,7 @@
       <a class="col-md-3" href="{% url 'content:episode_page' episode.slug %}" target="_blank">
         <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_image">
         <h2>{{ episode.title }}</h2>
-        <p class="box_episode_abstract">Oat cake gummies danish danish chocolate cake.</p>
+        <div class="box_episode_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
       </a>
     {% endfor %}
   </div>
@@ -168,7 +105,7 @@
     <a class="col-md-3" href="{% url 'content:episode_page' episode.slug %}" target="_blank">
         <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_image">
         <h2>{{ episode.title }}</h2>
-      <p class="box_episode_abstract">Oat cake gummies danish danish chocolate cake.</p>
+      <div class="box_episode_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
     </a>
   {% endfor %}
   </div>
@@ -180,31 +117,31 @@
 
 <div class="row homepage_row">
   <h1 class="homepage_row_header">VIDEO EPISODES</h1>
-  <div class="row ">
-    <div class="col-md-8">
-      <img src="{% if episode_list.9.topic_image %}{{episode_list.9.topic_image.url}}{% endif %}" alt="" class="big_box_image">
+  <a class="row" href="{% url 'content:episode_page' episode_list.4.slug %}">
+    <div class="col-md-8 overlay">
+      <img src="{% if episode_list.4.topic_image %}{{episode_list.4.topic_image.url}}{% endif %}" alt="" class="big_box_image">
     </div>
     <div class="col-md-4 big_episode_info">
-      <h2 class="big_title">{{ episode_list.9.title }}</h2>
-      <p class="big_episode_author_name">{{ episode_list.9.author.name | safe}}</p>
-      <p class="big_episode_abstract">{{ episode_list.9.abstract | safe}}</p>
+      <h2 class="big_title">{{ episode_list.4.title }}</h2>
+      <p class="big_episode_author_name">{{ episode_list.4.author.name | safe}}</p>
+      <div class="big_episode_abstract">{{ episode_list.4.transcript|truncatewords:45 | safe }}</div>
     </div>
-  </div>
-
+  </a>
   <div class="row homepage_3_cols">
+
   {% for episode in episode_list|slice:"10:13" %}
-    <div class="col-md-4 row_3_eps">
+    <a class="col-md-4 row_3_eps" href="{% url 'content:episode_page' episode.slug %}" target="_blank">
       <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_images_3">
       <h2>{{ episode.title }}</h2>
-      <p class="box_episode_abstract">Oat cake gummies danish danish chocolate cake.</p>
-    </div>
+      <div class="box_episode_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
+    </a>
   {% endfor %}
   </div>
 </div>
 
 <!-- ======================================= -->
 
-<div class="row homepage_row">
+<!-- <div class="row homepage_row">
   <h1 class="homepage_row_header">TRENDING NOW</h1>
   <div class="row ">
     <div class="col-md-4">
@@ -216,7 +153,7 @@
       <img src="{% if episode_list.12.topic_image %}{{episode_list.12.topic_image.url}}{% endif %}" alt="" class="big_box_image">
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- ======================================= -->
 
@@ -227,7 +164,7 @@
     <a class="col-md-3" href="{% url 'content:episode_page' episode.slug %}" target="_blank">
         <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_image">
         <h2>{{ episode.title }}</h2>
-        <p class="box_episode_abstract">Oat cake gummies danish danish chocolate cake.</p>
+        <div class="box_episode_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
     </a>
   {% endfor %}
   </div>
@@ -238,16 +175,14 @@
 <div class="row">
   <h1 class="latest_row_header">AUDIO</h1>
   <div class="row">
-    <div class="col-md-6">
-      <img src="{% if episode_list.29.topic_image %}{{episode_list.29.topic_image.url}}{% endif %}" alt="" class="big_box_image">
-      <h2>{{ episode_list.29.title }}</h2>
-      <p class="box_episode_abstract">Oat cake gummies danish danish chocolate cake. Dragée sesame snaps lemon drops jelly-o apple pie.</p>
-    </div>
-    <div class="col-md-6">
-      <img src="{% if episode_list.30.topic_image %}{{episode_list.30.topic_image.url}}{% endif %}" alt="" class="big_box_image">
-      <h2>{{ episode_list.30.title }}</h2>
-      <p class="box_episode_abstract">Oat cake gummies danish danish chocolate cake. Dragée sesame snaps lemon drops jelly-o apple pie.</p>
-    </div>
+    {% for episode in episode_list|slice:"29:31" %}
+    <a class="col-md-6" href="{% url 'content:episode_page' episode.slug %}" target="_blank">
+      <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="big_box_image">
+      <h2>{{ episode.title }}</h2>
+      <div class="box_episode_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
+    </a>
+    {% endfor %}
+
   </div>
 </div>
 
