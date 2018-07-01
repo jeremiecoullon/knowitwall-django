@@ -1,6 +1,6 @@
 {% extends "content/KiW_base.html" %}
 {% load static from staticfiles %}
-{% block content %}
+{% block header %}
 <head>
 
 
@@ -28,6 +28,7 @@
 
   <!-- Custom CSS -->
   <link href="{% static 'content/css/knowitwallredux.css' %}" rel="stylesheet">
+  <link href="{% static 'content/css/knowitwall_base.css' %}" rel="stylesheet">
 
 
 
@@ -42,52 +43,12 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
-
-
-
 </head>
 
+{% endblock %}
+{% block content %}
+
 <body id="page-top">
-  <!-- <div class="overflow"> -->
-
-  <!-- Navigation -->
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header page-scroll">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href=" {% url 'content:index' %}">   <!-- for audiodoc, the logo goes back to home page-->
-
-    {% include 'content/KiW_logo.html' %}
-        </a>
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <!--
-          <li class="hidden">
-             <a href="#page-top"></a>
-          </li>
-          -->
-
-          <!--
-          <li class="page-scroll">
-            <a href="#page-top">Home</a>
-          </li>
-          -->
-
-        </ul>
-      <!-- /.navbar-collapse -->
-      </div>
-    <!-- /.container-fluid -->
-    </div>
-  </nav>
   <section style="padding-top:120px;">
  <div class="container">
 

@@ -90,7 +90,7 @@ section h2{
   font-size: 1em;
   font-weight: 300;
   padding-right: 10%;
-  padding-top: 17px;
+  padding-top: 10px;
 }
 .latest_vertical_abstract > p{
   font-size: 1em;
@@ -98,7 +98,13 @@ section h2{
   padding-right: 20%;
   padding-top: 5px;
 }
-
+.author_name{
+  font-size: 0.7em;
+  color: #33353d;
+  font-style: italic;
+  padding-top: 5px;
+  margin-bottom: 0px;
+}
 /* .overlay {
   position: relative;
 }

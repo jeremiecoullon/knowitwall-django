@@ -1,7 +1,7 @@
 from django.views import generic
 from django.shortcuts import render
-
-from .models import Episode, FlashSeminar
+import random
+from .models import Episode, FlashSeminar, Classification, Season
 from team.models import TeamMember
 
 # this is so that the old KiW URLs still work
@@ -15,15 +15,23 @@ old_KiW_urls = [
     'antartica_discovery', 'stegosaurus', 'ganymede', 'tate'
     ]
 
-class IndexView(generic.ListView):
-    template_name = 'content/redesign/index.html'
+def index(request):
+    all_episodes = Episode.objects.order_by('-pub_date')
 
-    def get_queryset(self):
-        query_episodes = Episode.objects.order_by('-pub_date')
-        if self.request.user.is_staff:
-            return query_episodes.preview_and_published()#[:13]
-        else:
-            return query_episodes.published()#[:13]
+    if request.user.is_staff:
+        episode_list = all_episodes.preview_and_published()
+    else:
+        episode_list = all_episodes.published()
+
+    all_audio = [e for e in episode_list if e.has_audio==True]
+    all_video = [e for e in episode_list if e.has_video==True]
+    random_discipline_1, random_discipline_2 = random.sample(population=list(Classification.objects.all()), k=2)
+    season_list = Season.objects.all()
+    
+    return render(request, 'content/redesign/index.html',
+        {'episode_list': episode_list, 'all_audio': all_audio, 'all_video': all_video,
+        'random_discipline_1': random_discipline_1, 'random_discipline_2': random_discipline_2,
+        'season_list': season_list})
 
 
 class AllEpisodesView(generic.ListView):

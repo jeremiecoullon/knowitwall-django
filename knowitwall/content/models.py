@@ -55,7 +55,7 @@ class Season(models.Model):
     title = models.CharField(max_length=100, default="Season title")
     abstract = RichTextField(default="Description of the season", config_name='default')
     image = models.ImageField(upload_to=seasons_image_directory_path, null=True, blank=True, verbose_name="Season image")
-    
+
 
     def __str__(self):
         return self.title
@@ -121,6 +121,14 @@ class Episode(models.Model):
         self.video_embed = self.create_youtube_embed(url=self.video_embed)
         self.transcript = style_transcript_image(input_html=self.transcript)
         super(Episode, self).save(*args, **kwargs)
+
+    @property
+    def has_audio(self):
+        return bool(self.audio_mp3)
+
+    @property
+    def has_video(self):
+        return bool(self.video_embed)
 
     def __str__(self):
         return self.title
