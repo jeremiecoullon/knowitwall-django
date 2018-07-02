@@ -3,40 +3,70 @@
 
 {% block header %}{% endblock %}
 
-  <nav class="navbar navbar-default navbar-fixed-top">
-
-
-    <div class="container container_nav_bar">
-      <div class="navbar-header page-scroll">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="\">
-        {% include 'content/KiW_logo.html' %}
-        </a>
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="hidden">
-            <a href="#page-top"></a>
-          </li>
-          <li class="page-scroll">
-            <a href="{% url 'content:about' %}">About</a>
-          </li>
-          <li class="page-scroll">
-            <a href="{% url 'content:about' %}">Seasons</a>
-          </li>
-          <li class="page-scroll">
-            <a href="#contribute">Disciplines</a>
-          </li>
-        </ul>
-      </div>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container container_nav_bar">
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="\">
+      {% include 'content/KiW_logo.html' %}
+      </a>
     </div>
-  </nav>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="hidden">
+          <a href="#page-top"></a>
+        </li>
+        <li class="page-scroll">
+          <a href="{% url 'content:about' %}">About</a>
+        </li>
+        <li class="page-scroll">
+          <a href="{% url 'content:about' %}">Seasons</a>
+        </li>
+        <li>
+          <div class="discipline_dropdown">
+            <div class="discipline_dropbtn" onclick="dropdownFun()">
+              Disciplines
+            </div>
+            <div class="discipline_dropdown-content" id="mydisciplineDropdown">
 
+              <div class="row">
+                {% for cl in all_classifications %}
+                <div class="col-md-3">
+                  <a href="{% url 'content:discipline_page' cl.discipline %}">{{ cl.discipline }}</a>
+                </div>
+                {% endfor %}
+              </div>
+
+
+            </div>
+          </div>
+
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- <div class="navbar">
+  <a href="#home">Home</a>
+  <a href="#news">News</a>
+  <div class="discipline_dropdown">
+    <button class="discipline_dropbtn" onclick="myFunction()">Dropdown
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="discipline_dropdown-content" id="mydisciplineDropdown">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </div>
+</div> -->
 
 {% block content %}{% endblock %}
 
@@ -178,5 +208,22 @@
     $('#copyright_year').html(current_year);
   };
   copyright_year();
+
+  /* When the user clicks on the button,
+  toggle between hiding and showing the dropdown content */
+  function dropdownFun() {
+    document.getElementById("mydisciplineDropdown").classList.toggle("show_disciplines");
+  }
+
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(e) {
+  if (!e.target.matches('.discipline_dropbtn')) {
+    var myDropdown = document.getElementById("mydisciplineDropdown");
+      if (myDropdown.classList.contains('show_disciplines')) {
+        myDropdown.classList.remove('show_disciplines');
+      }
+  }
+  }
 </script>
+
 </html>

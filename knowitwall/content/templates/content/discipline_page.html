@@ -1,0 +1,104 @@
+{% extends 'content/KiW_base.html' %}
+{% load static from staticfiles %}
+{% block header %}
+
+<head>
+
+  <script src="//cdn.optimizely.com/js/3239180053.js"></script>
+
+  <meta name="google-site-verification" content="JoE7Yhdq8T8FWWOnlh_O3I0-LhZeTCRNegIK-GY3Us8" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Know it Wall (KiW) is a place for inquisitive minds. Based at UCL and Imperial College London, KiW works with academics to create documentaries and articles about the subjects they dedicate their lives to.">
+  <meta name="keywords" content="Knowitwall, Know it Wall, audio-documentary, audiodoc, outreach, academia, insightful, science, humanities">
+  <meta name="author" content="">
+  <meta property="og:image" content="https://s3.eu-west-2.amazonaws.com/knowitwall/static/Images/KiW_banner.jpg"/>
+  <meta property="og:title" content="Know it Wall:" />
+  <meta property="og:description" content="Know it Wall (KiW) is a place for inquisitive minds. Based at UCL and Imperial College London, KiW works with academics to create documentaries and articles about the subjects they dedicate their lives to." />
+  <meta property="og:url" content="http://knowitwall.com/" />
+  <link rel="icon" href="https://s3.eu-west-2.amazonaws.com/knowitwall/static/Images/KIW-thumbnail_logo.png" type="image/gif" sizes="16x16">
+<!-- pens -->
+
+  <title>Know it Wall | home page</title>
+
+  <link href="{% static 'content/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <link href="{% static 'content/css/knowitwall_base.css' %}" rel="stylesheet">
+  <link href="{% static 'content/css/kiw_homepage_2018.css' %}" rel="stylesheet">
+  <link href="{% static 'content/css/discipline_page.css' %}" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="{% static 'content/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Lato:100,300,300italic,400,400italic," rel="stylesheet" type="text/css">
+
+</head>
+
+{% endblock %}
+
+{% block content %}
+
+
+<body id='page-top'>
+
+<section>
+  <div class="container container_discipline">
+
+ <div class="row discipline_title">
+   <h1>{{ classification.discipline }}</h1>
+ </div>
+ <hr class="discipline_title_line">
+
+ {% for episode in classification.episode_set.all %}
+   <div class="row">
+     <div class="discipline_episode_title">
+        <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe }}</a>
+     </div>
+     <i>by {{  episode.author.name | safe }}</i>
+   </div>
+   <div class="row">
+     <a href="{% url 'content:episode_page' episode.slug %}">
+       <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_image">
+     </a>
+     <p class="episode_abstract">{{ episode.abstract|truncatewords:35 | safe }}</p>
+   </div>
+   <hr>
+ {% endfor %}
+
+
+  </div> <!-- end of container -->
+</section>
+
+  {% endblock %}
+
+
+  <!-- the footer is in base.html -->
+  {% block jsscripts %}
+  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+  <div class="scroll-top page-scroll visible-xs visble-sm">
+    <a class="btn btn-primary" href="#page-top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+
+
+<!-- scripts! -->
+
+
+  <script src="{% static 'content/js/jquery.js' %}"></script>
+
+  <script src="{% static 'content/js/bootstrap.min.js' %}"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="{% static 'content/js/jquery.easing.min.js' %}"></script>
+
+
+  <script src="{% static 'content/js/classie.js' %}"></script>
+  <script src="{% static 'content/js/cbpAnimatedHeader.js' %}"></script>
+
+
+  <!-- Custom Theme JavaScript -->
+  <script src="{% static 'content/js/knowitwall.js' %}"></script>
+</body>
+
+{% endblock %}

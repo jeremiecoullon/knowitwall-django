@@ -1,0 +1,10 @@
+<div class="col-md-3">
+  <a href="{% url 'content:episode_page' episode.slug %}">
+    <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_image">
+  </a>
+  <div class="episode_title_link">
+    <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
+  </div>
+  <p class="author_name">by {{ episode.author.name | safe}}</p>
+  <div class="box_episode_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
+</div>

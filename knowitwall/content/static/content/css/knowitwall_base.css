@@ -51,7 +51,7 @@ h3,
 h4,
 h5,
 h6 {
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     font-family: 'Lato';
     font-weight: 300;
 }
@@ -380,3 +380,44 @@ a.footer-clickeable{
 .preview_episode_admin > p{
   margin: 0px;
 }
+
+
+
+/* DISCIPLINE DROPDOWN STUFF */
+
+.discipline_dropdown .discipline_dropbtn {
+    cursor: pointer;
+    padding-top: 19.5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.discipline_dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    min-width: 900px;
+    right: -150px;
+    margin-top: 10px;
+}
+
+.discipline_dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    text-align: left;
+    font-size: 0.7em;
+}
+
+.discipline_dropdown-content a:hover {
+    color: #999999;
+}
+
+.show_disciplines {
+    display: block;
+}
+
+/* end of DISCIPLINE DROPDOWN STUFF */

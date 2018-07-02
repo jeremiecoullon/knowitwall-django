@@ -59,31 +59,39 @@
 
 
     <div class="row">
-      <h1 class="latest_row_header">Season 1: {{ season_list.0.title}}</h1>
+      <h1 class="latest_row_header">Season 1: {{ season_list.0.title | safe}}</h1>
       <div class="row">
         {% for episode in season_list.0.episode_set.all|slice:"0:1" %}
-        <a class="col-md-6" href="{% url 'content:episode_page' episode.slug %}">
-          <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="big_box_image">
-          <h2>{{ episode.title }}</h2>
+        <div class="col-md-6">
+          <a href="{% url 'content:episode_page' episode.slug %}">
+            <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="big_box_image">
+          </a>
+          <div class="episode_title_link big_title">
+            <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
+          </div>
+
           <p class="author_name">by {{ episode.author.name | safe}}</p>
 
           <div class="box_episode_abstract">{{ episode.transcript|truncatewords:30 | safe }}</div>
-        </a>
+        </div>
         {% endfor %}
 
         <div class="col-md-6 latest_vertical_boxes">
-
           {% for episode in season_list.0.episode_set.all|slice:"1:4" %}
-            <a class="row latest_vertical_rows" href="{% url 'content:episode_page' episode.slug %}">
+            <div class="row latest_vertical_rows">
               <div class="col-md-4">
-                <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_images_vertical">
+                <a href="{% url 'content:episode_page' episode.slug %}">
+                  <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_images_vertical">
+                </a>
               </div>
               <div class="col-md-8">
-                <h2 class="latest_title">{{ episode.title }}</h2>
+                <div class="episode_title_link latest_title">
+                  <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
+                </div>
                 <p class="author_name">by {{ episode.author.name | safe}}</p>
-                <div class="latest_vertical_abstract">{{ episode.transcript|truncatewords:15 | safe }}</div>
+                <!-- <div class="latest_vertical_abstract">{{ episode.transcript|truncatewords:15 | safe }}</div> -->
               </div>
-            </a>
+            </div>
           {% endfor %}
           </div>
       </div>
@@ -96,14 +104,10 @@
   <h1 class="homepage_row_header">Recent episodes</h1>
   <div class="row">
     {% for episode in episode_list|slice:"0:4" %}
-      <a class="col-md-3" href="{% url 'content:episode_page' episode.slug %}">
-        <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_image">
-        <h2>{{ episode.title }}</h2>
-        <p class="author_name">by {{ episode.author.name | safe}}</p>
-        <div class="box_episode_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
-      </a>
+      {% include 'content/row_4_episodes.html' %}
     {% endfor %}
   </div>
+
 </div>
 
 <!-- ======================================= -->
@@ -111,13 +115,8 @@
 <div class="row homepage_row">
   <h1 class="homepage_row_header">{{ random_discipline_1.discipline }}</h1>
   <div class="row">
-  {% for episode in random_discipline_1.episode_set.all|slice:"0:4" %}
-    <a class="col-md-3" href="{% url 'content:episode_page' episode.slug %}">
-        <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_image">
-        <h2>{{ episode.title }}</h2>
-        <p class="author_name">by {{ episode.author.name | safe}}</p>
-      <div class="box_episode_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
-    </a>
+  {% for episode in episode_discipline_1|slice:"0:4" %}
+    {% include 'content/row_4_episodes.html' %}
   {% endfor %}
   </div>
 </div>
@@ -129,26 +128,32 @@
 <div class="row homepage_row">
   <h1 class="homepage_row_header">VIDEO EPISODES</h1>
   {% for episode in all_video|slice:"0:1" %}
-  <a class="row" href="{% url 'content:episode_page' episode.slug %}">
-    <div class="col-md-8 overlay">
+  <div class="row">
+    <a class="col-md-8 overlay"  href="{% url 'content:episode_page' episode.slug %}">
       <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="big_box_image">
-    </div>
+    </a>
     <div class="col-md-4 big_episode_info">
-      <h2 class="big_title">{{ episode.title }}</h2>
+      <div class="episode_title_link big_title">
+        <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
+      </div>
       <p class="author_name">by {{ episode.author.name | safe}}</p>
       <div class="big_episode_abstract">{{ episode.transcript|truncatewords:45 | safe }}</div>
     </div>
-  </a>
+  </div>
   {% endfor %}
   <div class="row homepage_3_cols">
 
   {% for episode in all_video|slice:"1:4" %}
-    <a class="col-md-4 row_3_eps" href="{% url 'content:episode_page' episode.slug %}">
-      <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_images_3">
-      <h2>{{ episode.title }}</h2>
+    <div class="col-md-4 row_3_eps">
+      <a href="{% url 'content:episode_page' episode.slug %}">
+        <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_images_3">
+      </a>
+      <div class="episode_title_link">
+        <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
+      </div>
       <p class="author_name">by {{ episode.author.name | safe}}</p>
       <div class="box_episode_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
-    </a>
+    </div>
   {% endfor %}
   </div>
 </div>
@@ -159,13 +164,8 @@
 <div class="row homepage_row">
   <h1 class="homepage_row_header">{{ random_discipline_2.discipline }}</h1>
   <div class="row">
-  {% for episode in random_discipline_2.episode_set.all|slice:"0:4" %}
-    <a class="col-md-3" href="{% url 'content:episode_page' episode.slug %}">
-        <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_image">
-        <h2>{{ episode.title }}</h2>
-        <p class="author_name">by {{ episode.author.name | safe}}</p>
-        <div class="box_episode_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
-    </a>
+  {% for episode in episode_discipline_2|slice:"0:4" %}
+    {% include 'content/row_4_episodes.html' %}
   {% endfor %}
   </div>
 </div>
@@ -176,12 +176,16 @@
   <h1 class="latest_row_header">AUDIO</h1>
   <div class="row">
     {% for episode in all_audio|slice:"0:2" %}
-    <a class="col-md-6" href="{% url 'content:episode_page' episode.slug %}">
-      <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="big_box_image">
-      <h2>{{ episode.title }}</h2>
+    <div class="col-md-6">
+      <a href="{% url 'content:episode_page' episode.slug %}">
+        <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="big_box_image">
+      </a>
+      <div class="episode_title_link big_title">
+        <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
+      </div>
       <p class="author_name">by {{ episode.author.name | safe}}</p>
       <div class="box_episode_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
-    </a>
+    </div>
     {% endfor %}
 
   </div>

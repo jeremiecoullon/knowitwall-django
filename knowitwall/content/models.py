@@ -55,8 +55,7 @@ class Season(models.Model):
     title = models.CharField(max_length=100, default="Season title")
     abstract = RichTextField(default="Description of the season", config_name='default')
     image = models.ImageField(upload_to=seasons_image_directory_path, null=True, blank=True, verbose_name="Season image")
-
-
+    
     def __str__(self):
         return self.title
 
