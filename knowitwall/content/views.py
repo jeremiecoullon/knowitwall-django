@@ -42,24 +42,18 @@ def episode_page(request, slug):
 def about_page(request):
     flash_seminar_list = FlashSeminar.objects.published().order_by('event_date')
     all_classifications = Classification.objects.all()
+    teammembers = TeamMember.objects.order_by('name')
 
     return render(request, 'content/about_page.html',
-        {'flash_seminar_list': flash_seminar_list, 'all_classifications': all_classifications})
+        {'flash_seminar_list': flash_seminar_list, 'teammembers': teammembers,
+        'all_classifications': all_classifications})
 
 def discipline_page(request, discipline):
     classification = Classification.objects.get(discipline=discipline)
     all_classifications = Classification.objects.all()
     return render(request, 'content/discipline_page.html',
         {'classification': classification, 'all_classifications': all_classifications})
-
-
-def team(request):
-    teammembers = TeamMember.objects.all()
-    all_classifications = Classification.objects.all()
-
-    return render(request, 'team/teampage.html',
-        {'teammembers': teammembers, 'all_classifications': all_classifications})
-
+        
 
 def terms(request):
     all_classifications = Classification.objects.all()

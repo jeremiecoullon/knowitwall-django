@@ -145,7 +145,7 @@ class SeasonAdmin(admin.ModelAdmin):
 
     list_display = ['title', 'thumbnail', 'season_episode_count', 'season_list_episodes']
     fieldsets = [
-    ('Season info', {'fields': ['title', 'abstract', 'image'], 'description': 'hello!'}),
+    ('Season info', {'fields': ['title', 'abstract', 'image', 'pub_date']}),
     ]
 
 # ======================================================

@@ -1,10 +1,7 @@
 {% extends "content/KiW_base.html" %}
 {% load static from staticfiles %}
-{% block content %}
+{% block header %}
 <head>
-
-
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,11 +22,13 @@
 
   <link href="{% static 'content/css/knowitwall_base.css' %}" rel="stylesheet">
 
-  <link href="{% static 'content/css/archive_extra.css' %}" rel="stylesheet">
+  <!-- <link href="{% static 'content/css/archive_extra.css' %}" rel="stylesheet"> -->
 
-  <link href="{% static 'content/css/archive_page.css' %}" rel="stylesheet">
+  <!-- <link href="{% static 'content/css/archive_page.css' %}" rel="stylesheet"> -->
 
   <link href="{% static 'content/css/about_page.css' %}" rel="stylesheet">
+  <link href="{% static 'content/css/team_page.css' %}" rel="stylesheet">
+
   <!-- Custom Fonts -->
   <link href="{% static 'content/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
   <link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
@@ -38,6 +37,9 @@
 
 
 </head>
+
+{% endblock %}
+{% block content %}
 
 <body>
   <div id="page-top" style="display:hidden;position:absolute; top:0px">
@@ -95,6 +97,30 @@ hidden
 
     </div>
   </div>
+</section>
+
+<section class="team_section">
+  <div class="container team_section">
+    <div class="team_title_wrapper">
+      <h2 class="team_title">Meet the team</h2>
+    </div>
+
+    <div class="row">
+      <p class="team_description">Knowitwall is run by a team of volunteers passionate about making academic research more accessible. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in.</p>
+    </div>
+    <div class="row team_member_rows">
+      {% for tmember in teammembers %}
+        <div class="col-md-4">
+          {% if tmember.image %}
+            <img src="{{ tmember.image.url }}" width=100px class="teammember_center">
+          {% else %}{% endif%}
+          <p class="team_name">{{ tmember.name }}</p>
+           <i class="teammember_center team_role">{{ tmember.role }}</i>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <hr class="team_bottom_line">
 </section>
 
 <section id="flash_seminars">
@@ -156,7 +182,7 @@ hidden
 {% endblock %}
 <!-- the footer is in base.html -->
 {% block jsscripts %}
-
+<script src="{% static 'content/js/jquery.js' %}"></script>
 <script src="{% static 'content/js/bootstrap.min.js' %}"></script>
 
 </body>
