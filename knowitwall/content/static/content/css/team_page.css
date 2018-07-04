@@ -47,3 +47,11 @@ text-align: center;
 .team_member_cols{
   margin-top: 55px;
 }
+@media(max-width:991px){
+  .team_member_rows{
+    margin: 0;
+  }
+  .team_description{
+    margin-bottom: 0;
+  }
+}

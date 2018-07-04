@@ -10,9 +10,9 @@
   margin: 0px 10%;
   margin-bottom: 40px;
 }
-.container_discipline{
-  width: 800px;
-  margin-left: 14%;
+
+.discipline_image_row{
+  margin: 0;
 }
 .box_image{
   width: 50%;
@@ -36,4 +36,16 @@ hr{
 }
 .discipline_episode_title > a:hover{
   color: #ffc21c;
+}
+
+@media(min-width: 1200px){
+  .container_discipline{
+    width: 800px;
+    margin-left: 14%;
+  }
+}
+@media(max-width:991px){
+  .box_image, .episode_abstract{
+    width: 100%;
+  }
 }

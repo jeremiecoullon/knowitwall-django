@@ -85,7 +85,7 @@ label {
 }
 @media(max-width: 1200px) and (min-width:768px){
   .navbar-brand {
-    padding: 0px 0px 20.5px 20px;
+    padding: 0px 300px 20.5px 20px;
   }
   .navbarADpage {
     padding: 0px 70px 20.5px 20px;
@@ -99,7 +99,10 @@ label {
   }
 }
 .navbar-default .navbar-toggle {
-  border-color: #FFFFFF;
+  border-color: #33353d;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #33353d;
 }
 @media(min-width:768px) {
 /* this says how  the nav bar transition happens, but not when */
@@ -118,7 +121,7 @@ label {
 
     .navbar-fixed-top {
         padding: 10px 0;
-		background-color:#27282D;
+  		background-color: #f5f5f5;
     }
 
     .navbar-fixed-top .navbar-brand {
@@ -128,6 +131,7 @@ label {
 @media (max-width: 991px) {
   .navbar-fixed-top .navbar-brand {
   font-size: 1.5em;
+  padding: 0px 200px 20.5px 20px;
   }
 }
 .navbar {
@@ -150,14 +154,14 @@ label {
 }
 @media(max-width:400px) {
 .navbar-brand {
-    padding: 0;
+    padding: 3px 0 0 15px;
     max-width:250px;
     width:70%;
   }
 }
 @media(max-width:768px) {
   .navbar-default {
-    background-color: #27282D;
+    background-color: #f5f5f5;
     border-color: transparent;
     padding: 0px
   }
@@ -419,5 +423,13 @@ a.footer-clickeable{
 .show_disciplines {
     display: block;
 }
-
+@media(max-width:991px){
+  .discipline_dropdown-content{
+    right: 0;
+    min-width: 100%;
+  }
+  /* .discipline_dropdown-content > .row > .col-md-3{
+    width: 30%;
+  } */
+}
 /* end of DISCIPLINE DROPDOWN STUFF */

@@ -50,13 +50,13 @@
  <hr class="discipline_title_line">
 
  {% for episode in classification.episode_set.all %}
-   <div class="row">
+   <div class="row discipline_image_row">
      <div class="discipline_episode_title">
         <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe }}</a>
      </div>
      <i>by {{  episode.author.name | safe }}</i>
    </div>
-   <div class="row">
+   <div class="row discipline_image_row">
      <a href="{% url 'content:episode_page' episode.slug %}">
        <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_image">
      </a>

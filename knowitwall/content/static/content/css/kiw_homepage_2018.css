@@ -24,9 +24,6 @@
 .latest_vertical_rows{
   padding-bottom: 30px;
 }
-.container{
-  width: 1100px;
-}
 .episode_title_link{
   padding-top: 10px;
 }
@@ -110,8 +107,8 @@ section h2{
 .latest_vertical_abstract > p{
   font-size: 1em;
   font-weight: 300;
-  padding-right: 20%;
-  padding-top: 5px;
+  padding-top: 10px;
+  display: none
 }
 .author_name{
   font-size: 0.8em;
@@ -133,3 +130,25 @@ section h2{
   opacity:0.3;
   background: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.6));
 } */
+
+/* style all episodes in the same way */
+@media(max-width:991px){
+  .box_images_vertical, .box_image, .box_images_3{
+    height: 340px;
+  }
+  .latest_vertical_boxes, .homepage_3_cols{
+    padding-top: 30px;
+  }
+  .homepage_row, .latest_row_header, .latest_title{
+    padding-top: 8px;
+  }
+  .episode_column, .row_3_eps, .audio_cols{
+    padding-bottom: 25px;
+  }
+  .latest_vertical_abstract > p{
+    display: block;
+  }
+  .box_episode_abstract > p {
+    padding-right: 0px;
+  }
+}
