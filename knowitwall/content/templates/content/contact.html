@@ -1,0 +1,56 @@
+{% extends 'content/KiW_base.html' %}
+{% load static from staticfiles %}
+{% block header %}
+
+<head>
+
+  <meta name="google-site-verification" content="JoE7Yhdq8T8FWWOnlh_O3I0-LhZeTCRNegIK-GY3Us8" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Know it Wall (KiW) is a place for inquisitive minds. Based at UCL and Imperial College London, KiW works with academics to create documentaries and articles about the subjects they dedicate their lives to.">
+  <meta name="keywords" content="Knowitwall, Know it Wall, audio-documentary, audiodoc, outreach, academia, insightful, science, humanities">
+  <meta name="author" content="">
+  <meta property="og:image" content="https://s3.eu-west-2.amazonaws.com/knowitwall/static/Images/KiW_banner.jpg"/>
+  <meta property="og:title" content="Know it Wall" />
+  <meta property="og:description" content="Know it Wall (KiW) is a place for inquisitive minds. Based at UCL and Imperial College London, KiW works with academics to create documentaries and articles about the subjects they dedicate their lives to." />
+  <meta property="og:url" content="http://knowitwall.com/" />
+  <link rel="icon" href="https://s3.eu-west-2.amazonaws.com/knowitwall/static/Images/KIW-thumbnail_logo.png" type="image/gif" sizes="16x16">
+<!-- pens -->
+
+
+  <title>Know it Wall | contact</title>
+
+  <link href="{% static 'content/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <link href="{% static 'content/css/knowitwall_base.css' %}" rel="stylesheet">
+  <link href="{% static 'content/css/kiw_homepage_2018.css' %}" rel="stylesheet">
+  <link href="{% static 'content/css/contact_page.css' %}" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="{% static 'content/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Lato:100,300,300italic,400,400italic," rel="stylesheet" type="text/css">
+
+</head>
+{% endblock %}
+
+{% block content %}
+<body>
+
+
+<section>
+  <div class="container">
+    <div class="row contact_title">
+      <h1>Contact</h1>
+    </div>
+    <hr class="contact_title_line">
+
+      <div class="row contact_row">
+        <p>Contact the team at team@knowitwall.com for feedback, to get involved, or just to say hi!</p>
+
+      </div>
+
+  </div>
+</section>
+</body>
+{% endblock %}

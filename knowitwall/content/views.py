@@ -53,7 +53,11 @@ def discipline_page(request, discipline):
     all_classifications = Classification.objects.all()
     return render(request, 'content/discipline_page.html',
         {'classification': classification, 'all_classifications': all_classifications})
-        
+
+def contact(request):
+    all_classifications = Classification.objects.all()
+    return render(request, 'content/contact.html', {'all_classifications': all_classifications})
+
 
 def terms(request):
     all_classifications = Classification.objects.all()

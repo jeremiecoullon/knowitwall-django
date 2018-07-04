@@ -53,21 +53,6 @@
   </div>
 </nav>
 
-<!-- <div class="navbar">
-  <a href="#home">Home</a>
-  <a href="#news">News</a>
-  <div class="discipline_dropdown">
-    <button class="discipline_dropbtn" onclick="myFunction()">Dropdown
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="discipline_dropdown-content" id="mydisciplineDropdown">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
-  </div>
-</div> -->
-
 {% block content %}{% endblock %}
 
 <!-- Footer -->
@@ -185,13 +170,16 @@
   <div class="footer-below">
     <div class="container">
       <div class="row footer-info">
-        <div class="col-lg-4 footer-unclickeable">
+        <div class="col-lg-3 footer-unclickeable">
+          <a href="{% url 'content:contact' %}" class="contact_button">Contact</a>
+        </div>
+        <div class="col-lg-3 footer-unclickeable">
           Copyright &copy; Know it Wall <span id="copyright_year"></span>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <a class="footer-clickeable" href="mailto:team@knowitwall.com">team@knowitwall.com</a>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <a class="footer-clickeable" href="{% url 'content:terms'%}" target='_blank' class="footer-info">Terms of Use</a>
         </div>
       </div>

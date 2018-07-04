@@ -1,0 +1,21 @@
+.contact_title > h1{
+  padding-top: 50px;
+  text-align: center;
+  margin: 15px 10%;
+  font-size: 4em;
+  margin-bottom: 30px;
+}
+.contact_title_line{
+  border-top: 3px solid #ecf0f1;
+  margin: 0px 10%;
+  margin-bottom: 40px;
+}
+.contact_row{
+  padding-top: 10px;
+  text-align: center;
+}
+@media(max-width:991px){
+  .contact_row{
+    padding: 10px 20px 0 20px;
+  }
+}

@@ -433,3 +433,9 @@ a.footer-clickeable{
   } */
 }
 /* end of DISCIPLINE DROPDOWN STUFF */
+.contact_button{
+  color: #33353d;
+}
+.contact_button:hover{
+  color: #ffc21c;
+}
