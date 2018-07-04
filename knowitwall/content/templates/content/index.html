@@ -129,9 +129,12 @@
   <h1 class="homepage_row_header">VIDEO EPISODES</h1>
   {% for episode in all_video|slice:"0:1" %}
   <div class="row">
-    <a class="col-md-8 overlay"  href="{% url 'content:episode_page' episode.slug %}">
-      <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="big_box_image">
-    </a>
+      <!-- <a class="col-md-8 overlay"  href="{% url 'content:episode_page' episode.slug %}" style="background-image: url('{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}'); height:340px; position: absolute"> -->
+
+        <a class="col-md-8 overlay video_container"  href="{% url 'content:episode_page' episode.slug %}">
+          <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="big_box_image">
+          <p class="words_bottom_left">some word</p>
+        </a>
     <div class="col-md-4 big_episode_info">
       <div class="episode_title_link big_title">
         <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>

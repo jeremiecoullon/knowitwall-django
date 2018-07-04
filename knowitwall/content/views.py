@@ -15,7 +15,7 @@ def index(request):
 
     all_audio = [e for e in episode_list if e.has_audio==True]
     all_video = [e for e in episode_list if e.has_video==True]
-    all_classifications = Classification.objects.all()
+    all_classifications = Classification.objects.order_by('discipline')
     random_discipline_1, random_discipline_2 = random.sample(population=list(Classification.objects.all()), k=2)
 
     # get episode for each discipline. Need to do this so that the 'preview_and_published' and 'published' above apply
@@ -33,7 +33,7 @@ def index(request):
 
 def episode_page(request, slug):
     episode = get_object_or_404(Episode, slug=slug)
-    all_classifications = Classification.objects.all()
+    all_classifications = Classification.objects.order_by('discipline')
 
     return render(request, 'content/episode_page.html',
         {'episode': episode, 'all_classifications': all_classifications})
@@ -41,7 +41,7 @@ def episode_page(request, slug):
 
 def about_page(request):
     flash_seminar_list = FlashSeminar.objects.published().order_by('event_date')
-    all_classifications = Classification.objects.all()
+    all_classifications = Classification.objects.order_by('discipline')
     teammembers = TeamMember.objects.order_by('name')
 
     return render(request, 'content/about_page.html',
@@ -50,15 +50,15 @@ def about_page(request):
 
 def discipline_page(request, discipline):
     classification = Classification.objects.get(discipline=discipline)
-    all_classifications = Classification.objects.all()
+    all_classifications = Classification.objects.order_by('discipline')
     return render(request, 'content/discipline_page.html',
         {'classification': classification, 'all_classifications': all_classifications})
 
 def contact(request):
-    all_classifications = Classification.objects.all()
+    all_classifications = Classification.objects.order_by('discipline')
     return render(request, 'content/contact.html', {'all_classifications': all_classifications})
 
 
 def terms(request):
-    all_classifications = Classification.objects.all()
+    all_classifications = Classification.objects.order_by('discipline')
     return render(request, 'content/terms.html', {'all_classifications': all_classifications})

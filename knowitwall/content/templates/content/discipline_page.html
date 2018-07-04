@@ -60,7 +60,7 @@
      <a href="{% url 'content:episode_page' episode.slug %}">
        <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_image">
      </a>
-     <p class="episode_abstract">{{ episode.abstract|truncatewords:35 | safe }}</p>
+     <p class="episode_abstract">{{ episode.abstract|truncatewords:40 | safe }}</p>
    </div>
    <hr>
  {% endfor %}
