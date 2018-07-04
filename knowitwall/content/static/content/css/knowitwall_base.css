@@ -427,10 +427,13 @@ a.footer-clickeable{
   .discipline_dropdown-content{
     right: 0;
     min-width: 100%;
+
   }
-  /* .discipline_dropdown-content > .row > .col-md-3{
-    width: 30%;
-  } */
+}
+@media(max-width:767px){
+  .discipline_dropdown-content{
+    position: static;
+  }
 }
 /* end of DISCIPLINE DROPDOWN STUFF */
 .contact_button{
