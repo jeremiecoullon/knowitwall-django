@@ -25,7 +25,7 @@
   padding-top: 7%;
 }
 .latest_vertical_rows{
-  padding-bottom: 30px;
+  padding-bottom: 14px;
 }
 .episode_title_link{
   padding-top: 10px;
@@ -37,7 +37,13 @@
   font-weight: 300;
   color: #33353d;
 }
+.discipline_title_link > a{
+  color: #33353d;
+}
 .episode_title_link > a:hover{
+  color: #ffc21c;
+}
+.discipline_title_link > a:hover{
   color: #ffc21c;
 }
 section h1{
@@ -62,7 +68,7 @@ section h2{
 .box_images_3{
   object-fit: cover;
   width: 100%;
-  height: 140px;
+  height: 240px;
 }
 .big_title{
   font-size: 1.6em;
@@ -71,8 +77,8 @@ section h2{
 
 .box_images_vertical{
   object-fit:cover;
-  width: 100%;
-  height: 90px;
+  width: 60%;
+  height: 130px;
 }
 .latest_vertical_boxes{
   padding-left: 10px;
@@ -120,20 +126,6 @@ section h2{
   padding-top: 5px;
   margin-bottom: 0px;
 }
-/* .overlay {
-  position: relative;
-}
-.overlay:after {
-  position: absolute;
-  content:"";
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  opacity:0.3;
-  background: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.6));
-} */
-
 
 
 .yellow_square{
@@ -145,8 +137,52 @@ section h2{
   margin-right: 17px;
   /* margin-top: 10px; */
   margin-bottom: -1px;
-  overflow: auto;
 }
+.video_player_square{
+  position: absolute;
+  top: 80%;
+  left: 5%;
+  width: 40px;
+  height: 40px;
+  background: #ffc21c;
+  display: inline-block;
+  z-index: 10;
+  box-shadow: 0 4px 6px -6px #999;
+}
+.arrow-right {
+  position: absolute;
+  top: 23%;
+  left: 38%;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 15px solid white;
+}
+.video_player_big_player{
+  position: absolute;
+  top: 8%;
+  right: 39%;
+  width: 80px;
+  height: 80px;
+  background: #ffc21c;
+  display: inline-block;
+  z-index: 10;
+  box-shadow: 0 6px 6px -6px #999;
+}
+.arrow-right_big_player {
+  position: absolute;
+  top: 23%;
+  left: 38%;
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 30px solid white;
+}
+
+
+
 .greybackground{
   background-color:#f5f5f5;
 }
@@ -155,6 +191,15 @@ section h2{
 }
 .homepage_container{
   padding-bottom: 300px;
+}
+.homepage_season1_container{
+  padding-bottom: 140px;
+}
+.homepage_audio_container{
+  padding-bottom: 160px;
+}
+.homepage_video_container{
+  padding-bottom: 250px;
 }
 
 .text_box_absolute{
@@ -166,10 +211,42 @@ section h2{
   height: 276px;
   box-shadow: 0 6px 6px -6px #999;
 }
+.video_text_box_absolute{
+  width: 85%;
+  height: 260px;
+  padding-top: 50px;
+}
+.big_text_box_absolute{
+  width: 85%;
+  height: 260px;
+}
 .image_relative_div{
   position: relative;
   top: 0;
   left: 0;
+}
+
+/*  TEMPORARY DIV!!  */
+.big_box_image_relative{
+  width: 70%;
+}
+/* for the main video image */
+.big_video_text_box_absolute{
+  position: absolute;
+  top: 5%;
+  right: 0%;
+  width: 40%;
+  height: 90%;
+  box-shadow: 0 6px 6px -6px #999;
+}
+.first_season_text_box_absolute{
+    position: absolute;
+    top: 5%;
+    right: 0;
+    padding: 12px;
+    height: 80%;
+    width: 50%;
+    box-shadow: 0 6px 6px -6px #999;
 }
 
 
@@ -186,15 +263,21 @@ section h2{
   .homepage_row, .latest_row_header, .latest_title{
     padding-top: 8px;
   }
-  .episode_column, .row_3_eps, .audio_cols{
-    /* padding-bottom: 25px; */
+  .episode_column, .row_3_eps,{
     padding-bottom: 130px;
+  }
+  .audio_cols{
+    padding-bottom: 200px;
   }
   .homepage_container{
     padding-bottom: 50px;
   }
   .text_box_absolute{
     height: 200px;
+    top: 70%;
+  }
+  .video_text_box_absolute{
+    height: 300px;
     top: 70%;
   }
   .latest_vertical_abstract > p{
