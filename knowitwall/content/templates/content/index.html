@@ -73,6 +73,7 @@
               </div>
               <p class="author_name">by {{ episode.author.name | safe}}</p>
               <div class="box_episode_abstract">{{ episode.transcript|truncatewords:30 | safe }}</div>
+              <a href="{% url 'content:episode_page' episode.slug %}" class="readmore_button_season1">Read more</a>
           </div>
         </div>
         {% endfor %}
@@ -154,6 +155,7 @@
       <p class="author_name">by {{ episode.author.name | safe}}</p>
       <div class="big_episode_abstract">{{ episode.transcript|truncatewords:50 | safe }}</div>
     </div>
+    <a href="{% url 'content:episode_page' episode.slug %}" class="readmore_button_video">Read more</a>
   </div>
   {% endfor %}
 
@@ -222,7 +224,6 @@
             <p class="author_name">by {{ episode.author.name | safe}}</p>
             <div class="box_episode_abstract">{{ episode.transcript|truncatewords:30 | safe }}</div>
           </div>
-
         </div>
         {% endfor %}
       </div>

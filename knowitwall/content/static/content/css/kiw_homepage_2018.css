@@ -248,7 +248,28 @@ section h2{
     width: 50%;
     box-shadow: 0 6px 6px -6px #999;
 }
-
+.readmore_button_season1{
+  position: absolute;
+  bottom: 3%;
+  right: 5%;
+  font-weight: 300;
+  text-decoration: underline;
+}
+.readmore_button_season1:hover{
+  color: #ffc21c;
+  text-decoration: underline;
+}
+.readmore_button_video{
+    position: absolute;
+    bottom: 7%;
+    right: 2%;
+    font-weight: 300;
+    text-decoration: underline;
+}
+.readmore_button_video:hover{
+  color: #ffc21c;
+  text-decoration: underline;
+}
 
 /* ==================== */
 
