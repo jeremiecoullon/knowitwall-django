@@ -52,14 +52,14 @@
 
 <body id='page-top'>
 
-<section>
-  <div class="container">
+<section class="greybackground">
+  <div class="container homepage_container">
 
 <!-- ======================================= -->
 
 
     <div>
-      <h1 class="latest_row_header">Season 1: {{ season_list.0.title | safe}}</h1>
+      <h1 class="latest_row_header"><span class="yellow_square"></span>Season 1: {{ season_list.0.title | safe}}</h1>
       <div class="row">
         {% for episode in season_list.0.episode_set.all|slice:"0:1" %}
         <div class="col-md-6">
@@ -97,11 +97,15 @@
       </div>
     </div>
 
-
+</div> <!-- end of container -->
 <!-- ======================================= -->
 
+<div class="whitebackground">
+<div class="container homepage_container">
+
+
 <div class="homepage_row">
-  <h1 class="homepage_row_header">Recent episodes</h1>
+  <h1 class="homepage_row_header"><span class="yellow_square"></span>Recent episodes</h1>
   <div class="row">
     {% for episode in episode_list|slice:"0:4" %}
       {% include 'content/row_4_episodes.html' %}
@@ -110,31 +114,33 @@
 
 </div>
 
+</div> <!-- end of container -->
+</div>
 <!-- ======================================= -->
 
-<div class="homepage_row">
-  <h1 class="homepage_row_header">{{ random_discipline_1.discipline }}</h1>
+<!-- <div class="homepage_row">
+  <h1 class="homepage_row_header"><span class="yellow_square"></span>{{ random_discipline_1.discipline }}</h1>
   <div class="row">
   {% for episode in episode_discipline_1|slice:"0:4" %}
     {% include 'content/row_4_episodes.html' %}
   {% endfor %}
   </div>
-</div>
+</div> -->
 
 
 <!-- ======================================= -->
 
+<div class="container homepage_container">
+
+
 
 <div class="homepage_row">
-  <h1 class="homepage_row_header">VIDEO EPISODES</h1>
+  <h1 class="homepage_row_header"><span class="yellow_square"></span>VIDEO EPISODES</h1>
   {% for episode in all_video|slice:"0:1" %}
   <div class="row">
-      <!-- <a class="col-md-8 overlay"  href="{% url 'content:episode_page' episode.slug %}" style="background-image: url('{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}'); height:340px; position: absolute"> -->
-
-        <a class="col-md-8 overlay video_container"  href="{% url 'content:episode_page' episode.slug %}">
-          <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="big_box_image">
-          <p class="words_bottom_left">some word</p>
-        </a>
+      <a class="col-md-8 overlay"  href="{% url 'content:episode_page' episode.slug %}">
+        <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="big_box_image">
+      </a>
     <div class="col-md-4 big_episode_info">
       <div class="episode_title_link big_title">
         <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
@@ -161,11 +167,14 @@
   </div>
 </div>
 
+</div> <!-- end of container -->
 
 <!-- ======================================= -->
 
+<div class="whitebackground">
+<div class="container homepage_container">
 <div class="homepage_row">
-  <h1 class="homepage_row_header">{{ random_discipline_2.discipline }}</h1>
+  <h1 class="homepage_row_header"><span class="yellow_square"></span>{{ random_discipline_2.discipline }}</h1>
   <div class="row">
   {% for episode in episode_discipline_2|slice:"0:4" %}
     {% include 'content/row_4_episodes.html' %}
@@ -173,30 +182,34 @@
   </div>
 </div>
 
-<!-- ======================================= -->
-
-<div>
-  <h1 class="latest_row_header">AUDIO</h1>
-  <div class="row">
-    {% for episode in all_audio|slice:"0:2" %}
-    <div class="col-md-6 audio_cols">
-      <a href="{% url 'content:episode_page' episode.slug %}">
-        <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="big_box_image">
-      </a>
-      <div class="episode_title_link big_title">
-        <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
-      </div>
-      <p class="author_name">by {{ episode.author.name | safe}}</p>
-      <div class="box_episode_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
-    </div>
-    {% endfor %}
-
-  </div>
+</div> <!-- end of container -->
 </div>
 
 <!-- ======================================= -->
 
+
+  <div class="container homepage_container">
+    <div>
+      <h1 class="latest_row_header"><span class="yellow_square"></span>AUDIO</h1>
+      <div class="row">
+        {% for episode in all_audio|slice:"0:2" %}
+        <div class="col-md-6 audio_cols">
+          <a href="{% url 'content:episode_page' episode.slug %}">
+            <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="big_box_image">
+          </a>
+          <div class="episode_title_link big_title">
+            <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
+          </div>
+          <p class="author_name">by {{ episode.author.name | safe}}</p>
+          <div class="box_episode_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
   </div> <!-- end of container -->
+<!-- ======================================= -->
+
+
 </section>
 
   {% endblock %}

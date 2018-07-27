@@ -150,7 +150,7 @@ label {
 /* make the navbar solid throughout */
 .navbar-default {
     padding: 10px 0;
-    background-color: #f5f5f5;
+    background-color: white;
 }
 @media(max-width:400px) {
 .navbar-brand {
@@ -246,7 +246,7 @@ footer h3 {
 
 footer .footer-above {
     padding-top: 7px;
-    background-color: #f5f5f5;
+    background-color: #ffc21c;
 }
 
 footer .footer-col {
@@ -255,7 +255,7 @@ footer .footer-col {
 
 footer .footer-below {
     padding: 25px 0;
-    background-color: #f5f5f5;
+    background-color: #ffc21c;
 }
 
 /* social media buttons in the footer */
