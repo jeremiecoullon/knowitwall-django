@@ -1,7 +1,10 @@
 .box_image{
   object-fit: cover;
   width: 100%;
-  height: 110px;
+  height: 200px;
+}
+.box_image_shadow{
+  box-shadow: 6px 6px 6px -6px #999;
 }
 .big_box_image{
   object-fit: cover;
@@ -131,35 +134,7 @@ section h2{
   background: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.6));
 } */
 
-/* style all episodes in the same way */
-@media(max-width:991px){
-  .box_images_vertical, .box_image, .box_images_3{
-    height: 340px;
-  }
-  .latest_vertical_boxes, .homepage_3_cols{
-    padding-top: 30px;
-  }
-  .homepage_row, .latest_row_header, .latest_title{
-    padding-top: 8px;
-  }
-  .episode_column, .row_3_eps, .audio_cols{
-    padding-bottom: 25px;
-  }
-  .latest_vertical_abstract > p{
-    display: block;
-  }
-  .box_episode_abstract > p {
-    padding-right: 0px;
-  }
-}
-/* .video_container{
-  position: absolute;
-}
-.words_bottom_left{
-  position: relative;
-  top: 0;
-  left: 0;
-} */
+
 
 .yellow_square{
   width: 25px;
@@ -179,5 +154,61 @@ section h2{
   background-color: white;
 }
 .homepage_container{
-  padding-bottom: 30px;
+  padding-bottom: 300px;
 }
+
+.text_box_absolute{
+  position: absolute;
+  top: 80%;
+  left: 5%;
+  right: 10px;
+  padding: 12px;
+  height: 276px;
+  box-shadow: 0 6px 6px -6px #999;
+}
+.image_relative_div{
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+
+/* ==================== */
+
+/* style all episodes in the same way */
+@media(max-width:991px){
+  .box_images_vertical, .box_image, .box_images_3{
+    height: 340px;
+  }
+  .latest_vertical_boxes, .homepage_3_cols{
+    padding-top: 30px;
+  }
+  .homepage_row, .latest_row_header, .latest_title{
+    padding-top: 8px;
+  }
+  .episode_column, .row_3_eps, .audio_cols{
+    /* padding-bottom: 25px; */
+    padding-bottom: 130px;
+  }
+  .homepage_container{
+    padding-bottom: 50px;
+  }
+  .text_box_absolute{
+    height: 200px;
+    top: 70%;
+  }
+  .latest_vertical_abstract > p{
+    display: block;
+  }
+  .box_episode_abstract > p {
+    padding-right: 0px;
+  }
+}
+/* .video_container{
+  position: absolute;
+}
+.words_bottom_left{
+  position: relative;
+  top: 0;
+  left: 0;
+} */
