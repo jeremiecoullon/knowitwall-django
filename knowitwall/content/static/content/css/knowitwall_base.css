@@ -382,6 +382,10 @@ a.footer-clickeable{
 
 /* Flashy red "PREVIEWED EPISODE" */
 .preview_episode_admin{
+  position: absolute;
+  top: 70%;
+  left: 12%;
+  z-index: 5;
   width: 200px;
   border-radius: 5px;
   border: 2px solid red;
@@ -390,7 +394,8 @@ a.footer-clickeable{
   background-color: rgba(0, 0, 0, 0.4);
 }
 .preview_episode_admin > p{
-  margin: 0px;
+  margin: 7px;
+  margin-right: 0px;
 }
 
 

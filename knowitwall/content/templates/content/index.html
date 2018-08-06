@@ -67,6 +67,13 @@
             <a href="{% url 'content:episode_page' episode.slug %}">
               <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="big_box_image box_image_shadow">
             </a>
+
+            {% if episode.status == 'v' %}
+              <div class="preview_episode_admin">
+                <p>PREVIEWED EPISODE</p>
+              </div>
+            {% endif %}
+
           <div class="text_box_absolute big_text_box_absolute whitebackground">
               <div class="episode_title_link big_title">
                 <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
@@ -190,6 +197,11 @@
       <a class=""  href="{% url 'content:episode_page' episode.slug %}">
         <span class="video_player_big_player"><div class="arrow-right_big_player"></div></span>
       </a>
+      {% if episode.status == 'v' %}
+        <div class="preview_episode_admin">
+          <p>PREVIEWED EPISODE</p>
+        </div>
+      {% endif %}
     <div class="big_video_text_box_absolute whitebackground big_episode_info">
       <div class="episode_title_link big_title">
         <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
@@ -209,6 +221,11 @@
       <a class=""  href="{% url 'content:episode_page' episode.slug %}">
         <span class="video_player_square"><div class="arrow-right"></div></span>
       </a>
+      {% if episode.status == 'v' %}
+        <div class="preview_episode_admin">
+          <p>PREVIEWED EPISODE</p>
+        </div>
+      {% endif %}
       <div class="text_box_absolute whitebackground video_text_box_absolute">
         <div class="episode_title_link">
           <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
@@ -259,7 +276,11 @@
           <a href="{% url 'content:episode_page' episode.slug %}">
             <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="big_box_image box_image_shadow">
           </a>
-
+          {% if episode.status == 'v' %}
+            <div class="preview_episode_admin">
+              <p>PREVIEWED EPISODE</p>
+            </div>
+          {% endif %}
           <div class="text_box_absolute whitebackground big_text_box_absolute">
             <div class="episode_title_link big_title">
               <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>

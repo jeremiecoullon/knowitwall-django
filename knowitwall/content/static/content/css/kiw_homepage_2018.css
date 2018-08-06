@@ -4,7 +4,7 @@
   height: 200px;
 }
 .box_image_shadow{
-  box-shadow: 6px 6px 6px -6px #999;
+  /* box-shadow: 6px 6px 6px -6px #999; */
 }
 .big_box_image{
   object-fit: cover;
@@ -147,7 +147,7 @@ section h2{
   background: #ffc21c;
   display: inline-block;
   z-index: 10;
-  box-shadow: 0 4px 6px -6px #999;
+  /* box-shadow: 0 4px 6px -6px #999; */
 }
 .arrow-right {
   position: absolute;
@@ -168,7 +168,7 @@ section h2{
   background: #ffc21c;
   display: inline-block;
   z-index: 10;
-  box-shadow: 0 6px 6px -6px #999;
+  /* box-shadow: 0 6px 6px -6px #999; */
 }
 .arrow-right_big_player {
   position: absolute;
@@ -210,7 +210,7 @@ section h2{
   right: 10px;
   padding: 12px;
   height: 276px;
-  box-shadow: 0 6px 6px -6px #999;
+  /* box-shadow: 0 6px 6px -6px #999; */
 }
 .video_text_box_absolute{
   width: 85%;
@@ -238,7 +238,7 @@ section h2{
   right: 0%;
   width: 40%;
   height: 90%;
-  box-shadow: 0 6px 6px -6px #999;
+  /* box-shadow: 0 6px 6px -6px #999; */
 }
 .first_season_text_box_absolute{
     position: absolute;
@@ -247,7 +247,7 @@ section h2{
     padding: 12px;
     height: 80%;
     width: 50%;
-    box-shadow: 0 6px 6px -6px #999;
+    /* box-shadow: 0 6px 6px -6px #999; */
 }
 .readmore_button_season1{
   position: absolute;

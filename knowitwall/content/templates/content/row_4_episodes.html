@@ -4,7 +4,11 @@
   <a href="{% url 'content:episode_page' episode.slug %}">
     <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_image box_image_shadow">
   </a>
-
+  {% if episode.status == 'v' %}
+    <div class="preview_episode_admin">
+      <p>PREVIEWED EPISODE</p>
+    </div>
+  {% endif %}
   <div class="text_box_absolute greybackground">
   <div class="episode_title_link">
     <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
