@@ -295,18 +295,25 @@ section h2{
     padding-bottom: 50px;
   }
   .text_box_absolute{
-    height: 200px;
-    top: 70%;
+    height: 220px;
+    top: 50%;
+  }
+  .video_player_square{
+    top: 50%;
   }
   .video_text_box_absolute{
-    height: 300px;
-    top: 70%;
+    height: 225px;
+    top: 50%;
+    padding-top: 33px;
   }
   .latest_vertical_abstract > p{
     display: block;
   }
   .box_episode_abstract > p {
     padding-right: 0px;
+  }
+  .image_relative_div{
+    padding-bottom: 120px;
   }
 }
 /* .video_container{
