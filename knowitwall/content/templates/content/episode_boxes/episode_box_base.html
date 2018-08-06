@@ -8,6 +8,7 @@
        </p>
        <p class="homepage_box_by-in">
          <i>by</i> <span class="highlight">{{episode.author.name | safe}}</span>
+         {% if episode.second_author %}<i>and</i> <span class="highlight">{{episode.second_author.name | safe}}</span>{% endif %}
          <i>in</i> {% include 'content/classification_discipline_tag.html' %}
        </p>
      <div class="homepage_hidden_info">
