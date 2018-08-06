@@ -242,16 +242,18 @@
         <div class="col-lg-12 second_author_row">
         <!-- Second Author -->
           <div class="author-bio">
-            <div class="col-md-3">
+
+            <div class="col-md-3 col-md-push-6">
               <div class="author-name {% if not episode.audio_mp3 %}text-only-author-name{%endif%}" >
               <h2 style="text-align:right; {% if episode.author_name_size == 'n' %}{% else %}font-size:2.3em;{%endif%}"> {{ episode.second_author.name | safe}} </h2>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="vertical-line justify">
+            <div class="col-md-6 col-md-pull-3">
+              <div class="vertical-line-right justify">
               <p class="audiodoc_bio"> {{ episode.second_author.bio | safe}} </p>
               </div>
             </div>
+
             <div class="col-md-3">
               <img class="author-image"class="img-responsive" src="{% if episode.second_author.image %}{{ episode.second_author.image.url }}{% endif %}"  alt = "{{ episode.second_author.name | safe}}">
             </div>
