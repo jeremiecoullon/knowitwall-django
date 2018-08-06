@@ -62,7 +62,8 @@ class Author(models.Model):
 
 class Episode(models.Model):
     unique_id = models.CharField(max_length=100, blank=True, unique=True, default=uuid.uuid4, help_text="This determines the Disqus comment section. Need to set this manually for old KiW episodes (that were on Flask)")
-    author = models.ForeignKey(Author, null=True, on_delete=models.CASCADE)
+    author = models.ForeignKey(Author, null=True, on_delete=models.CASCADE, related_name='author')
+    second_author = models.ForeignKey(Author, null=True, blank=True, on_delete=models.CASCADE, related_name='second_author', help_text="A second author is optional")
     title = models.CharField(unique=True,max_length=100, default='le title')
     topic_image = models.ImageField(upload_to=episode_image_directory_path, null=True, blank=True, verbose_name="Cover image")
     topic_image_latest = models.ImageField(upload_to=episode_image_directory_path, null=True, blank=True, verbose_name="'featured episode' cover image", help_text="The cover image for 'featured' on the homepage")
