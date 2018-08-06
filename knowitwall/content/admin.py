@@ -9,7 +9,7 @@ class AuthorAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
     def count_episodes(self, obj):
-        return obj.episode_set.count()
+        return obj.author.count() + obj.second_author.count()
     count_episodes.short_description = "number of episodes written"
     list_display = ['name', 'thumbnail', 'count_episodes']
 
@@ -70,7 +70,7 @@ class EpisodeAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Episode overview', {'fields': ['title', 'abstract']}),
         ('Transcript', {'fields': ['transcript'], 'description': transcript_image_description}),
-        ('Author', {'fields': ['author']}),
+        ('Author', {'fields': ['author', 'second_author']}),
         ('Classification', {'fields': ['classification', 'season']}),
         ('Episode Images', {'fields': [('topic_image', 'thumbnail', 'image_credits'), 'topic_image_latest', 'topic_image_box'],
                             'description': '{}'.format(episode_images_description)}),

@@ -71,7 +71,7 @@
               <div class="episode_title_link big_title">
                 <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
               </div>
-              <p class="author_name">by {{ episode.author.name | safe}}</p>
+              {% include 'content/author_name.html' %}
               <div class="box_episode_abstract">{{ episode.transcript|truncatewords:30 | safe }}</div>
               <a href="{% url 'content:episode_page' episode.slug %}" class="readmore_button_season1">Read more</a>
           </div>
@@ -92,7 +92,7 @@
                 <div class="episode_title_link latest_title">
                   <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
                 </div>
-                <p class="author_name">by {{ episode.author.name | safe}}</p>
+                {% include 'content/author_name.html' %}
                 <div class="latest_vertical_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
               </div>
 
@@ -118,7 +118,7 @@
       <div class="episode_title_link big_title">
         <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
       </div>
-      <p class="author_name">by {{ episode.author.name | safe}}</p>
+      {% include 'content/author_name.html' %}
       <div class="big_episode_abstract">{{ episode.transcript|truncatewords:50 | safe }}</div>
     </div>
     <a href="{% url 'content:episode_page' episode.slug %}" class="readmore_button_video">Read more</a>
@@ -134,7 +134,7 @@
         <div class="episode_title_link">
           <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
         </div>
-        <p class="author_name">by {{ episode.author.name | safe}}</p>
+        {% include 'content/author_name.html' %}
         <div class="box_episode_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
       </div>
     </div>
@@ -194,7 +194,7 @@
       <div class="episode_title_link big_title">
         <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
       </div>
-      <p class="author_name">by {{ episode.author.name | safe}}</p>
+      {% include 'content/author_name.html' %}
       <div class="big_episode_abstract">{{ episode.transcript|truncatewords:50 | safe }}</div>
     </div>
     <a href="{% url 'content:episode_page' episode.slug %}" class="readmore_button_video">Read more</a>
@@ -213,7 +213,7 @@
         <div class="episode_title_link">
           <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
         </div>
-        <p class="author_name">by {{ episode.author.name | safe}}</p>
+        {% include 'content/author_name.html' %}
         <div class="box_episode_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
       </div>
 
@@ -264,7 +264,7 @@
             <div class="episode_title_link big_title">
               <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
             </div>
-            <p class="author_name">by {{ episode.author.name | safe}}</p>
+            {% include 'content/author_name.html' %}
             <div class="box_episode_abstract">{{ episode.transcript|truncatewords:30 | safe }}</div>
           </div>
         </div>

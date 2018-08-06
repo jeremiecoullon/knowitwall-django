@@ -6,6 +6,9 @@
   position:relative;
   right: 20px;
 }
+.second_author_row{
+  padding-top: 45px;
+}
 @media(max-width:991px) {
   .author-name{
   padding:60px 0 20px 0;

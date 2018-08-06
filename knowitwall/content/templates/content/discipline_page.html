@@ -54,7 +54,7 @@
      <div class="discipline_episode_title">
         <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe }}</a>
      </div>
-     <i>by {{  episode.author.name | safe }}</i>
+     <i>by {{  episode.author.name | safe }}{% if episode.second_author %} and {{ episode.second_author.name | safe}}{% endif %}</i>
    </div>
    <div class="row discipline_image_row">
      <a href="{% url 'content:episode_page' episode.slug %}">
