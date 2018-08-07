@@ -1,5 +1,7 @@
 from django.views import generic
 from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 import random
 from .models import Episode, FlashSeminar, Classification, Season
 from team.models import TeamMember
@@ -51,8 +53,21 @@ def about_page(request):
 def discipline_page(request, discipline):
     classification = Classification.objects.get(discipline=discipline)
     all_classifications = Classification.objects.order_by('discipline')
+    episode_list = classification.episode_set.all()
+
+    # pagination stuff
+    page = request.GET.get('page', 1)
+    paginator = Paginator(episode_list, 8)
+    try:
+        episodes = paginator.page(page)
+    except PageNotAnInteger:
+        episodes = paginator.page(1)
+    except EmptyPage:
+        episodes = paginator.page(paginator.num_pages)
+
     return render(request, 'content/discipline_page.html',
-        {'classification': classification, 'all_classifications': all_classifications})
+        {'classification': classification, 'all_classifications': all_classifications,
+        'episodes': episodes})
 
 def contact(request):
     all_classifications = Classification.objects.order_by('discipline')

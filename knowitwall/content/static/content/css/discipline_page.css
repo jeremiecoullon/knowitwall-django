@@ -2,12 +2,12 @@
   padding-top: 50px;
   text-align: center;
   margin: 15px 10%;
-  font-size: 4em;
+  font-size: 3.5em;
   margin-bottom: 30px;
 }
 .discipline_title_line{
   border-top: 3px solid #ffc21c;
-  margin: 0px 10%;
+  margin: 0px 20%;
   margin-bottom: 40px;
 }
 
@@ -37,6 +37,49 @@ hr{
 .discipline_episode_title > a:hover{
   color: #ffc21c;
 }
+
+/* pagination stuff */
+
+/* current page number */
+.pagination > .active > span{
+  color: #33353d;
+  background-color: #ffc21c61;
+
+}
+.pagination > .active > span:hover{
+  background-color: #ffc21c;
+  color: #33353d;
+  /* border-color: #ddd; */
+}
+
+/* all page number and arrow to the right of the current page */
+.pagination > li > a{
+  color: #33353d;
+  background-color: transparent;
+}
+
+/* left arrow */
+.pagination > .disabled > span{
+  background-color: transparent;
+  color: #33353d;
+}
+.pagination > .disabled > span:hover{
+  background-color: transparent;
+  border-color: #ddd;
+  color: #33353d;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+    z-index: 3;
+    color: #23527c;
+    background-color: transparent;
+    border-color: #ddd;
+}
+/* end of pagination stuff */
+
 
 @media(min-width: 1200px){
   .container_discipline{
