@@ -10,7 +10,6 @@
   object-fit: cover;
   width: 100%;
   height: 340px;
-  background: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.6));
 }
 
 .homepage_row{
@@ -227,7 +226,6 @@ section h2{
   left: 0;
 }
 
-/*  TEMPORARY DIV!!  */
 .big_box_image_relative{
   width: 70%;
 }
@@ -278,6 +276,7 @@ section h2{
 @media(max-width:991px){
   .box_images_vertical, .box_image, .box_images_3{
     height: 340px;
+    width: 100%;
   }
   .latest_vertical_boxes, .homepage_3_cols{
     padding-top: 30px;
@@ -295,11 +294,13 @@ section h2{
     padding-bottom: 50px;
   }
   .text_box_absolute{
-    height: 220px;
+    height: 250px;
     top: 50%;
+    left: 7.5%;
   }
   .video_player_square{
     top: 50%;
+    left: 7.5%;
   }
   .video_text_box_absolute{
     height: 225px;
@@ -314,6 +315,45 @@ section h2{
   }
   .image_relative_div{
     padding-bottom: 120px;
+  }
+  .first_season_text_box_absolute{
+    top: 50%;
+    left: 7.5%;
+    width: 85%;
+    height: 210px;
+  }
+  .big_video_text_box_absolute{
+    top: 50%;
+    left: 6%;
+    width: 88%;
+    height: 320px;
+  }
+  .homepage_season1_container{
+    padding-bottom: 40px;
+  }
+  .homepage_video_container{
+    padding-bottom: 40px;
+  }
+  .big_box_image_relative{
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .big_episode_abstract > p{
+    padding-right: 10px;
+  }
+  .video_big_episode_mobile{
+    padding-bottom:300px
+  }
+  .readmore_button_video{
+    bottom: 1%;
+    right: 10%;
+  }
+  .homepage_audio_container{
+    padding-bottom: 40px;
+  }
+  .big_text_box_absolute{
+    height: 300px;
   }
 }
 /* .video_container{

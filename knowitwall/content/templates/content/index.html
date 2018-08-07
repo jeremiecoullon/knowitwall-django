@@ -190,7 +190,7 @@
   <h1 class="homepage_row_header"><span class="yellow_square"></span>VIDEO EPISODES</h1>
   {% for episode in all_video|slice:"0:1" %}
 
-  <div class="row image_relative_div">
+  <div class="row image_relative_div video_big_episode_mobile">
       <a class=""  href="{% url 'content:episode_page' episode.slug %}">
         <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="big_box_image box_image_shadow big_box_image_relative">
       </a>
