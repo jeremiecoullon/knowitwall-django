@@ -81,7 +81,7 @@ label {
   }
  /* positioning of elements in the nav bar (namely: paddings) */
 .navbar-brand {
-  padding: 0px 500px 20.5px 20px;
+  padding: 0px 300px 20.5px 20px;
 }
 @media(max-width: 1200px) and (min-width:768px){
   .navbar-brand {
@@ -323,7 +323,16 @@ footer .footer-below {
   border-radius: 3px;
   font-weight: 300;
 }
-
+.search_button{
+  border: none;
+  padding: 0px 10px;
+}
+.search_button:hover{
+  color: #ffc21c;
+}
+.search_bar{
+  padding: 17px 0px;
+}
 /* Yellow titles for each episode */
 /* TODO: this overlaps a lot with `box_episode_title`; need to modify the classes
   in html accordingly  */

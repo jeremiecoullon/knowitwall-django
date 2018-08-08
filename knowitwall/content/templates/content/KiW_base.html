@@ -21,6 +21,13 @@
         <li class="hidden">
           <a href="#page-top"></a>
         </li>
+        <li>
+           <form class="search_bar" action="{% url 'content:search' %}" method="GET">
+              <input name="q" value="{{ request.GET.q }}" placeholder="search..">
+              <button class="fa fa-search search_button" type="submit">
+              </button>
+           </form>
+        </li>
         <li class="page-scroll">
           <a href="{% url 'content:about' %}">About</a>
         </li>
