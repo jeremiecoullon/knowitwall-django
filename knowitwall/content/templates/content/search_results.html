@@ -20,7 +20,7 @@
   <link rel="icon" href="https://s3.eu-west-2.amazonaws.com/knowitwall/static/Images/KIW-thumbnail_logo.png" type="image/gif" sizes="16x16">
 <!-- pens -->
 
-  <title>Know it Wall | {{ classification.discipline }}</title>
+  <title>Know it Wall | Search results</title>
 
   <link href="{% static 'content/css/bootstrap.min.css' %}" rel="stylesheet">
 
@@ -45,21 +45,13 @@
   <div class="container container_discipline">
 
  <div class="row discipline_title">
-   <h1>{{ classification.discipline }}</h1>
+   <h1>Search results</h1>
  </div>
  <hr class="discipline_title_line">
 
- <i>{{ episodes.paginator.count }} results</i>
- <hr>
-
- <form action="{% url 'content:search' %}" method="GET">
-    <input name="q" value="{{ request.GET.q }}" placeholder="search..">
-    <button class="btn btn-success" type="submit">
-      Search
-    </button>
- </form>
-
- {% for episode in episodes %}
+  <i>{{ results.paginator.count }} results</i>
+  <hr>
+ {% for episode in results %}
    <div class="row discipline_image_row">
      <div class="discipline_episode_title">
         <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe }}</a>
@@ -77,22 +69,22 @@
 
 
 
- {% if episodes.has_other_pages %}
+ {% if results.has_other_pages %}
    <ul class="pagination">
-     {% if episodes.has_previous %}
-       <li><a href="?page={{ episodes.previous_page_number }}">&laquo;</a></li>
+     {% if results.has_previous %}
+       <li><a href="?page={{ results.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">&laquo;</a></li>
      {% else %}
        <li class="disabled"><span>&laquo;</span></li>
      {% endif %}
-     {% for i in episodes.paginator.page_range %}
-       {% if episodes.number == i %}
+     {% for i in results.paginator.page_range %}
+       {% if results.number == i %}
          <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
        {% else %}
-         <li><a href="?page={{ i }}">{{ i }}</a></li>
+         <li><a href="?page={{ i }}{% if query %}&q={{ query }}{% endif %}">{{ i }}</a></li>
        {% endif %}
      {% endfor %}
-     {% if episodes.has_next %}
-       <li><a href="?page={{ episodes.next_page_number }}">&raquo;</a></li>
+     {% if results.has_next %}
+       <li><a href="?page={{ results.next_page_number }}{% if query %}&q={{ query }}{% endif %}">&raquo;</a></li>
      {% else %}
        <li class="disabled"><span>&raquo;</span></li>
      {% endif %}

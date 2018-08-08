@@ -1,6 +1,7 @@
 from django.views import generic
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 
 import random
 from .models import Episode, FlashSeminar, Classification, Season
@@ -77,3 +78,26 @@ def contact(request):
 def terms(request):
     all_classifications = Classification.objects.order_by('discipline')
     return render(request, 'content/terms.html', {'all_classifications': all_classifications})
+
+def search(request):
+    all_classifications = Classification.objects.order_by('discipline')
+    episodes = Episode.objects.all()
+
+    query = request.GET.get('q')
+    if query:
+        results = Episode.objects.filter(Q(title__icontains=query) |
+         Q(classification__discipline__icontains=query)) # | Q(classification__academic_field__icontains=query))
+    else:
+        results = Episode.objects.order_by('-pub_date').published()
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(results, 8)
+    try:
+        results = paginator.page(page)
+    except PageNotAnInteger:
+        results = paginator.page(1)
+    except EmptyPage:
+        results = paginator.page(paginator.num_pages)
+
+    return render(request, 'content/search_results.html', {'all_classifications': all_classifications,
+                            'results': results, 'query': query})

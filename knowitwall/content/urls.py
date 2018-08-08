@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^terms/$', views.terms, name='terms'),
     url(r'^contact/$', views.contact, name='contact'),
     url(r'^discipline/(?P<discipline>[\w ]+)/$', views.discipline_page, name='discipline_page'),
+    url(r'^results/$', views.search, name='search'),
 
 ]
