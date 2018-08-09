@@ -59,10 +59,10 @@
 <!-- SEASON 1 -->
   <div class="container homepage_season1_container">
     <div>
-      <h1 class="latest_row_header"><span class="yellow_square"></span>Season 1: {{ season_list.0.title | safe}}</h1>
+      <h1 class="latest_row_header"><span class="yellow_square"></span>Recent episodes</h1>
       <div class="row">
 
-        {% for episode in season_list.0.episode_set.all|slice:"0:1" %}
+        {% for episode in episode_list|slice:"0:1" %}
         <div class="col-md-6 image_relative_div">
             <a href="{% url 'content:episode_page' episode.slug %}">
               <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="big_box_image box_image_shadow">
@@ -86,7 +86,7 @@
         {% endfor %}
 
         <div class="col-md-6 latest_vertical_boxes">
-          {% for episode in season_list.0.episode_set.all|slice:"1:4" %}
+          {% for episode in episode_list|slice:"1:4" %}
             <div class="image_relative_div latest_vertical_rows">
 
               <div class="">
@@ -195,7 +195,7 @@
         <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="big_box_image box_image_shadow big_box_image_relative">
       </a>
       <a class=""  href="{% url 'content:episode_page' episode.slug %}">
-        <span class="video_player_big_player"><div class="arrow-right_big_player"></div></span>
+        <div class="video_player_big_player">{% include 'content/video_play_button.html' %}</div>
       </a>
       {% if episode.status == 'v' %}
         <div class="preview_episode_admin">
@@ -219,7 +219,7 @@
         <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_images_3 box_image_shadow">
       </a>
       <a class=""  href="{% url 'content:episode_page' episode.slug %}">
-        <span class="video_player_square"><div class="arrow-right"></div></span>
+        <span class="video_player_square">{% include 'content/video_play_button.html' %}</span>
       </a>
       {% if episode.status == 'v' %}
         <div class="preview_episode_admin">

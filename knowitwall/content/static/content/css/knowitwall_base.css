@@ -138,9 +138,10 @@ label {
     text-transform: uppercase;
     font-family: 'Lato';
     font-weight: 700;
-    -webkit-box-shadow: 0 8px 6px -6px #999;
+    border-bottom: 1px solid #dadada;
+    /* -webkit-box-shadow: 0 8px 6px -6px #999;
     -moz-box-shadow: 0 8px 6px -6px #999;
-    box-shadow: 0 6px 6px -6px #999;
+    box-shadow: 0 6px 6px -6px #999; */
 }
 @media (max-width: 993px){
   .navbar-right {
@@ -272,7 +273,7 @@ footer .footer-below {
 }
 
 .navbar_social_buttons{
-  bottom: 3px;
+  bottom: 1px;
   font-size: 15px;
   border: none;
 }
@@ -428,7 +429,8 @@ a.footer-clickeable{
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+    border: 1px solid #dadada;
     z-index: 1;
     min-width: 900px;
     right: -150px;
