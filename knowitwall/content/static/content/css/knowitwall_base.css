@@ -74,11 +74,12 @@ label {
     color: #33353d;
 }
 /* this makes the navbar tabs light up when you scroll to their respective section */
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+/* .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
   color: #27282D;
+  color: green;
   background-color: #FFC21C;
   border-radius: 5px;
-  }
+  } */
  /* positioning of elements in the nav bar (namely: paddings) */
 .navbar-brand {
   padding: 0px 300px 20.5px 20px;
@@ -334,6 +335,24 @@ footer .footer-below {
 .search_bar{
   padding: 17px 0px;
 }
+.search_input{
+  width: 300px;
+  height: 50px;
+  border: none;
+  border: 0.3px solid #dcdcdc;
+  padding: 10px;
+  font-weight: 300;
+  font-size: 25px;
+}
+/* prevents the border to be highlighted blue when you type stuff in the search bar */
+input:focus,
+button:focus {
+    outline: none;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #ffc21c;
+}
 /* Yellow titles for each episode */
 /* TODO: this overlaps a lot with `box_episode_title`; need to modify the classes
   in html accordingly  */
@@ -435,7 +454,7 @@ a.footer-clickeable{
   }
 }
 /* ======= */
-.discipline_dropdown .discipline_dropbtn {
+.discipline_dropdown .discipline_dropbtn, .search_dropdown .search_dropbtn {
     cursor: pointer;
     padding-top: 19.5px;
     padding-left: 15px;
@@ -444,13 +463,7 @@ a.footer-clickeable{
 
 .discipline_dropdown-content {
     display: none;
-    /* position: absolute; */
-    /* background-color: #f9f9f9; */
-    /* border: 1px solid #dadada; */
     z-index: 1;
-    /* min-width: 900px; */
-    /* right: -150px;
-    margin-top: 10px; */
 }
 
 .discipline_dropdown-content a {
@@ -463,10 +476,10 @@ a.footer-clickeable{
 }
 
 .discipline_dropdown-content a:hover {
-    color: #999999;
+    color: #ffc21c;
 }
 
-.show_disciplines {
+.show_disciplines, .show_search {
     display: block;
 }
 @media(max-width:991px){

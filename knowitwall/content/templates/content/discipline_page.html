@@ -52,12 +52,6 @@
  <i>{{ episodes.paginator.count }} results</i>
  <hr>
 
- <form action="{% url 'content:search' %}" method="GET">
-    <input name="q" value="{{ request.GET.q }}" placeholder="search..">
-    <button class="fa fa-search search_button" type="submit">
-    </button>
- </form>
-
  {% for episode in episodes %}
    <div class="row discipline_image_row">
      <div class="discipline_episode_title">
