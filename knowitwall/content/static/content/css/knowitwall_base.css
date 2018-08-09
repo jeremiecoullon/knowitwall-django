@@ -460,7 +460,9 @@ a.footer-clickeable{
     padding-left: 15px;
     padding-right: 15px;
 }
-
+.discipline_dropbtn:hover{
+  color: #ffc21c;
+}
 .discipline_dropdown-content {
     display: none;
     z-index: 1;
