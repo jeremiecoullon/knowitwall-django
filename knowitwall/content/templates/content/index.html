@@ -195,7 +195,7 @@
         <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="big_box_image box_image_shadow big_box_image_relative">
       </a>
       <a class=""  href="{% url 'content:episode_page' episode.slug %}">
-        <span class="video_player_big_player"><div class="arrow-right_big_player"></div></span>
+        <div class="video_player_big_player">{% include 'content/video_play_button.html' %}</div>
       </a>
       {% if episode.status == 'v' %}
         <div class="preview_episode_admin">
@@ -219,7 +219,7 @@
         <img src="{% if episode.topic_image %}{{episode.topic_image.url}}{% endif %}" alt="" class="box_images_3 box_image_shadow">
       </a>
       <a class=""  href="{% url 'content:episode_page' episode.slug %}">
-        <span class="video_player_square"><div class="arrow-right"></div></span>
+        <span class="video_player_square">{% include 'content/video_play_button.html' %}</span>
       </a>
       {% if episode.status == 'v' %}
         <div class="preview_episode_admin">
