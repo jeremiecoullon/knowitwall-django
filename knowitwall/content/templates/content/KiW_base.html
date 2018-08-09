@@ -39,7 +39,7 @@
             <div class="discipline_dropbtn" onclick="dropdownFun()">
               Disciplines
             </div>
-            <div class="discipline_dropdown-content" id="mydisciplineDropdown">
+            <!-- <div class="discipline_dropdown-content" id="mydisciplineDropdown">
 
               <div class="row">
                 {% for cl in all_classifications %}
@@ -48,7 +48,7 @@
                 </div>
                 {% endfor %}
               </div>
-            </div>
+            </div> -->
           </div>
         </li>
         <li class="page-scroll">
@@ -64,6 +64,19 @@
 
       </ul>
     </div>
+  </div>
+  <div class="container containter_navbar_dropdown">
+      <div class="discipline_dropdown-content" id="mydisciplineDropdown">
+
+      <div class="row">
+        {% for cl in all_classifications %}
+        <div class="col-md-3">
+          <a href="{% url 'content:discipline_page' cl.discipline %}">{{ cl.discipline }}</a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
   </div>
 </nav>
 
