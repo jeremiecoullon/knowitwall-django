@@ -156,11 +156,6 @@ footer .footer-below{
   background-color: #FFC21C;
 }
 
-@media (min-width: 1200px){
-  .container {
-      width: 1200px;
-  }
-}
 @media(max-width:768px){
   .vertical-line_right{
     padding-right: 0em;
