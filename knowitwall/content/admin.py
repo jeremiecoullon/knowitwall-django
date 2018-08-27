@@ -9,7 +9,7 @@ class AuthorAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
     def count_episodes(self, obj):
-        return obj.author.count() + obj.second_author.count()
+        return obj.first_author.count() + obj.second_author.count()
     count_episodes.short_description = "number of episodes written"
     list_display = ['name', 'thumbnail', 'count_episodes']
 
