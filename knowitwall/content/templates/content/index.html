@@ -78,7 +78,11 @@
                 <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
               </div>
               {% include 'content/author_name.html' %}
+              {% if episode.transcript %}
               <div class="box_episode_abstract">{{ episode.transcript|truncatewords:30 | safe }}</div>
+              {% else %}
+              <div class="box_episode_abstract"><p>{{ episode.abstract|truncatewords:30 | safe }}</p></div>
+              {% endif %}
               <a href="{% url 'content:episode_page' episode.slug %}" class="readmore_button_season1">Read more</a>
           </div>
         </div>
@@ -99,7 +103,7 @@
                   <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
                 </div>
                 {% include 'content/author_name.html' %}
-                <div class="latest_vertical_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
+                <!-- <div class="latest_vertical_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div> -->
               </div>
 
             </div>
@@ -125,7 +129,11 @@
         <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
       </div>
       {% include 'content/author_name.html' %}
+      {% if episode.transcript %}
       <div class="big_episode_abstract">{{ episode.transcript|truncatewords:50 | safe }}</div>
+      {% else %}
+      <div class="big_episode_abstract"><p>{{ episode.abstract|truncatewords:50 | safe }}</p></div>
+      {% endif %}
     </div>
     <a href="{% url 'content:episode_page' episode.slug %}" class="readmore_button_video">Read more</a>
   </div>
@@ -141,7 +149,11 @@
           <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
         </div>
         {% include 'content/author_name.html' %}
-        <div class="box_episode_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
+        {% if episode.transcript %}
+        <div class="big_episode_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
+        {% else %}
+        <div class="big_episode_abstract"><p>{{ episode.abstract|truncatewords:25 | safe }}</p></div>
+        {% endif %}
       </div>
     </div>
   {% endfor %}
@@ -206,7 +218,11 @@
         <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
       </div>
       {% include 'content/author_name.html' %}
+      {% if episode.transcript %}
       <div class="big_episode_abstract">{{ episode.transcript|truncatewords:50 | safe }}</div>
+      {% else %}
+      <div class="big_episode_abstract"><p>{{ episode.abstract|truncatewords:50 | safe }}</p></div>
+      {% endif %}
     </div>
     <a href="{% url 'content:episode_page' episode.slug %}" class="readmore_button_video">Read more</a>
   </div>
@@ -230,7 +246,11 @@
           <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
         </div>
         {% include 'content/author_name.html' %}
+        {% if episode.transcript %}
         <div class="box_episode_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
+        {% else %}
+        <div class="box_episode_abstract"><p>{{ episode.abstract|truncatewords:25 | safe }}</p></div>
+        {% endif %}
       </div>
 
     </div>
@@ -285,7 +305,11 @@
               <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
             </div>
             {% include 'content/author_name.html' %}
+            {% if episode.transcript %}
             <div class="box_episode_abstract">{{ episode.transcript|truncatewords:30 | safe }}</div>
+            {% else %}
+            <div class="box_episode_abstract"><p>{{ episode.abstract|truncatewords:30 | safe }}</p></div>
+            {% endif %}
           </div>
         </div>
         {% endfor %}

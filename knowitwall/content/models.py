@@ -89,6 +89,7 @@ class Episode(models.Model):
     image_credits = RichTextField(default="", config_name='image_credits', blank=True, help_text="Example of the correct format: The Morgan Library & Museum, New York. By <a target='_blank' href='https://commons.wikimedia.org/wiki/File:The_Morgan_Library_%26_Museum.jpg'>Paolatrabanco</a> [<a target='_blank' href='https://creativecommons.org/licenses/by-sa/4.0/deed.en'>CC BY-SA 4.0</a>]")
     narration_credits = models.CharField(default="", max_length=300, blank=True, help_text="Example of correct format: Mary Wellesley and Vidish Athavale")
     music_credits = models.CharField(default='', max_length=300, blank=True, help_text="Example of correct format: Greg Joy and Neil Cross")
+    general_credits = models.CharField(default='', max_length=300, blank=True, help_text="Name of podcast interviewer. Example format: 'interviewed by Ellen O'Neill'")
     video_embed = models.CharField(default='', max_length=300, blank=True, verbose_name="Youtube URL")
     audio_mp3 = models.FileField(blank=True)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='d')

@@ -143,9 +143,15 @@
       <div class="row">
         <div class="col-lg-10 col-lg-offset-1 text-center {% if not episode.audio_mp3 %}text-only-abstract{%endif%}">
           <p class="audiodoc_abstact">{% if not episode.audio_mp3 %}<i>{% endif %}{{ episode.abstract | safe }}{% if not episode.audio_mp3 %}</i>{% endif %}</p>
-          {% if episode.audio_mp3 %}
+
+          {% if episode.narration_credits %}
           <p class="audiodoc_narrate-credits">narrated by {{ episode.narration_credits }}</p>
+          {% endif %}
+          {% if episode.music_credits %}
           <p class="audiodoc_narrate-credits">music by {{ episode.music_credits }}</p>
+          {% endif %}
+          {% if episode.general_credits %}
+          <p class="audiodoc_narrate-credits">{{ episode.general_credits }}</p>
           {% endif %}
         </div>
       </div>

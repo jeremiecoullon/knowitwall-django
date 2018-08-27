@@ -54,7 +54,7 @@ def about_page(request):
 def discipline_page(request, discipline):
     classification = Classification.objects.get(discipline=discipline)
     all_classifications = Classification.objects.order_by('discipline')
-    episode_list = classification.episode_set.all()
+    episode_list = classification.episode_set.all().filter(Q(status='p')).order_by('title')
 
     # pagination stuff
     page = request.GET.get('page', 1)
@@ -85,8 +85,8 @@ def search(request):
 
     query = request.GET.get('q')
     if query:
-        results = Episode.objects.filter(Q(title__icontains=query) |
-         Q(classification__discipline__icontains=query)) # | Q(classification__academic_field__icontains=query))
+        results = Episode.objects.filter(Q(status='p') & (Q(title__icontains=query) |
+         Q(classification__discipline__icontains=query))) # | Q(classification__academic_field__icontains=query))
     else:
         results = Episode.objects.order_by('-pub_date').published()
 

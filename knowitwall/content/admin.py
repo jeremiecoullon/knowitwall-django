@@ -74,7 +74,7 @@ class EpisodeAdmin(admin.ModelAdmin):
         ('Classification', {'fields': ['classification', 'season']}),
         ('Episode Images', {'fields': [('topic_image', 'thumbnail', 'image_credits'), 'topic_image_latest', 'topic_image_box'],
                             'description': '{}'.format(episode_images_description)}),
-        ('Audio', {'fields': ['audio_mp3', 'narration_credits', 'music_credits'],'description': '{}'.format(audio_description)}),
+        ('Audio', {'fields': ['audio_mp3', 'narration_credits', 'music_credits', 'general_credits'],'description': '{}'.format(audio_description)}),
         ('Film', {'fields': ['video_embed'], 'description': '{}'.format(film_description)}),
         ('Random stuff', {'fields': ['by_in_colour', 'author_name_size'], 'description': '{}'.format(random_stuff_description)}),
         ('Publication info', {'fields': ['status', 'pub_date'],

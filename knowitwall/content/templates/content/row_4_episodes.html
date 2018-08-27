@@ -14,8 +14,11 @@
     <a href="{% url 'content:episode_page' episode.slug %}">{{ episode.title | safe}}</a>
   </div>
   <p class="author_name">by {{ episode.author.name | safe}}</p>
+  {% if episode.transcript %}
   <div class="box_episode_abstract">{{ episode.transcript|truncatewords:25 | safe }}</div>
-
+  {% else %}
+  <div class="box_episode_abstract"><p>{{ episode.abstract|truncatewords:25 | safe }}</p></div>
+  {% endif %}
   </div>
 
   </div>
