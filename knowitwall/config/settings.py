@@ -65,9 +65,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': get_env_variable('RDS_DB_NAME'),
+        'NAME': get_env_variable('RDS_DB_NAME'),
         # read different database while chaging db schema for "Seasons"
-        'NAME': 'kiw_seasons_db',
         'USER': get_env_variable('RDS_USERNAME'),
         'PASSWORD': get_env_variable('RDS_PASSWORD'),
         'HOST': "",
