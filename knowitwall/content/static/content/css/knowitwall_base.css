@@ -328,6 +328,8 @@ footer .footer-below {
 .search_button{
   border: none;
   padding: 0px 10px;
+  color: #33353d;
+  text-shadow: none;
 }
 .search_button:hover{
   color: #ffc21c;
