@@ -1,4 +1,0 @@
-{% extends 'content/episode_boxes/episode_box_base.html' %}
-{% block le_box %}
-<div class="col-md-{% if forloop.counter|add:-1|divisibleby:4 %}5{% elif forloop.counter|add:-2|divisibleby:4 %}7{% endif %} homepage_box_col {% if forloop.counter|add:1|divisibleby:2 %}homepage_box_col_2{% else %}{% endif %}">
-{% endblock %}
