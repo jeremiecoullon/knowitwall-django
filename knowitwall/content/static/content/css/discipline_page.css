@@ -92,3 +92,8 @@ hr{
     width: 100%;
   }
 }
+@media(max-width:414px){
+  .discipline_title > h1{
+    font-size: 2em;
+  }
+}
