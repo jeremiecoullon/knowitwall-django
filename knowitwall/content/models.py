@@ -68,7 +68,7 @@ class Episode(models.Model):
     topic_image = models.ImageField(upload_to=episode_image_directory_path, null=True, blank=True, verbose_name="Cover image")
     topic_image_latest = models.ImageField(upload_to=episode_image_directory_path, null=True, blank=True, verbose_name="'featured episode' cover image", help_text="The cover image for 'featured' on the homepage")
     topic_image_box = models.ImageField(upload_to=episode_image_directory_path, null=True, blank=True, verbose_name="Mobile circular image",help_text="This is for the circular audio player on mobile")
-    transcript = RichTextUploadingField(default='le transcript', config_name='transcript')
+    transcript = RichTextUploadingField(default='le transcript', config_name='transcript', null=True, blank=True)
     abstract = RichTextField(default="le abstract", config_name='default')
     by_in_colour = models.CharField(max_length=1, choices=BY_IN_COLOR_CHOICES, default='w', verbose_name="'by/in' colour")
     author_name_size = models.CharField(max_length=1, choices=AUTHOR_NAME_SIZE_CHOICES, default='n')
