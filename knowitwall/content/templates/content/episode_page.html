@@ -14,7 +14,7 @@
   <meta property="og:image" content="{% if episode.topic_image %}{{ episode.topic_image.url }}{% else %}{% endif %}" />
   <meta property="og:title" content="{{episode.title | safe}}{% if episode.video_embed %} [Video]{% elif episode.audio_mp3 %} [Audio]{% else %}{% endif %}"/>
   <meta property="og:description" content="{{episode.abstract | safe}}" />
-  <meta property="og:url" content="http://knowitwall.com/episodes/{{episode.slug}}" />
+  <meta property="og:url" content="https://knowitwall.com/episodes/{{episode.slug}}" />
   <link rel="icon" href="https://s3.eu-west-2.amazonaws.com/knowitwall/static/Images/KIW-thumbnail_logo.png" type="image/gif" sizes="16x16">
 <!-- pens -->
 
@@ -32,8 +32,8 @@
 
   <!-- Custom Fonts -->
   <link href="{% static 'content/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-  <link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
-  <link href="http://fonts.googleapis.com/css?family=Lato:100,300,300italic,400,400italic" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300italic,400,400italic" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -235,7 +235,7 @@
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'knowitwall'; // Required - Replace '<example>' with your forum shortname
             var disqus_identifier = '{{ episode.unique_id }}';
-            var disqus_url = 'http://knowitwall.com/{{ episode.unique_id }}';
+            var disqus_url = 'https://knowitwall.com/{{ episode.unique_id }}';
             var disqus_title = '{{ episode.unique_id }}';
             /* * * DON'T EDIT BELOW THIS LINE * * */
             (function() {
