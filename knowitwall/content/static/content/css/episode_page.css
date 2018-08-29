@@ -116,8 +116,19 @@ whole bit better (so that a single css attribute gives the grey box its colour) 
   margin-bottom:20px;
   text-align: justify;
 }
-.audiodoc_narrate-credits{
+.audiodoc_narrate-credits, .download_audio_link{
   font-style:italic;
+}
+.download_audio_link{
+  font-size: italic;
+  padding-bottom: 25px;
+}
+
+.download_audio_link a{
+  color: black;
+}
+.download_audio_link a:hover{
+  color: #ffc21c;
 }
 .justify{
   text-align: justify;

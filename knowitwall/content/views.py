@@ -81,7 +81,6 @@ def terms(request):
 
 def search(request):
     all_classifications = Classification.objects.order_by('discipline')
-    episodes = Episode.objects.all()
 
     query = request.GET.get('q')
     if query:

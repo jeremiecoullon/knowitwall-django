@@ -221,6 +221,11 @@
       <div class="row">
         <div class="col-md-12" id="read">
           <div class="transcript"> <!-- transcript class gives the padding -->
+            {% if not episode.transcript %}
+            <div class="download_audio_link">
+              <a href="{{ episode.audio_mp3.url }}" download>Download audio</a>
+            </div>
+            {% endif %}
             {{ episode.transcript | safe }}
             <!-- Go to www.addthis.com/dashboard to customize your tools -->
             <div class="addthis_sharing_toolbox" style="float: right;"></div>
