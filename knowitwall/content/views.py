@@ -70,6 +70,52 @@ def discipline_page(request, discipline):
         {'classification': classification, 'all_classifications': all_classifications,
         'episodes': episodes})
 
+
+def video_episodes(request):
+    all_classifications = Classification.objects.order_by('discipline')
+    all_episodes = Episode.objects.order_by('-pub_date').exclude(video_embed__isnull=True).exclude(video_embed__exact='').order_by('title')
+
+    if request.user.is_staff:
+        episode_list = all_episodes.preview_and_published()
+    else:
+        episode_list = all_episodes.published()
+    # pagination stuff
+    page = request.GET.get('page', 1)
+    paginator = Paginator(episode_list, 8)
+    try:
+        episodes = paginator.page(page)
+    except PageNotAnInteger:
+        episodes = paginator.page(1)
+    except EmptyPage:
+        episodes = paginator.page(paginator.num_pages)
+
+    return render(request, 'content/video_episodes.html',
+        {'all_classifications': all_classifications,
+        'episodes': episodes})
+
+
+def audio_episodes(request):
+    all_classifications = Classification.objects.order_by('discipline')
+    all_episodes = Episode.objects.order_by('-pub_date').exclude(audio_mp3__isnull=True).exclude(audio_mp3__exact='').order_by('title')
+
+    if request.user.is_staff:
+        episode_list = all_episodes.preview_and_published()
+    else:
+        episode_list = all_episodes.published()
+    # pagination stuff
+    page = request.GET.get('page', 1)
+    paginator = Paginator(episode_list, 8)
+    try:
+        episodes = paginator.page(page)
+    except PageNotAnInteger:
+        episodes = paginator.page(1)
+    except EmptyPage:
+        episodes = paginator.page(paginator.num_pages)
+
+    return render(request, 'content/audio_episodes.html',
+        {'all_classifications': all_classifications,
+        'episodes': episodes})
+
 def contact(request):
     all_classifications = Classification.objects.order_by('discipline')
     return render(request, 'content/contact.html', {'all_classifications': all_classifications})
@@ -99,4 +145,4 @@ def search(request):
         results = paginator.page(paginator.num_pages)
 
     return render(request, 'content/search_results.html', {'all_classifications': all_classifications,
-                            'results': results, 'query': query})
+                            'episodes': results, 'query': query})

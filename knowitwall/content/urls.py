@@ -11,5 +11,7 @@ urlpatterns = [
     url(r'^contact/$', views.contact, name='contact'),
     url(r'^discipline/(?P<discipline>[\w ]+)/$', views.discipline_page, name='discipline_page'),
     url(r'^results/$', views.search, name='search'),
+    url(r'^video_episodes/$', views.video_episodes, name='video_episodes'),
+    url(r'^audio_episodes/$', views.audio_episodes, name='audio_episodes'),
 
 ]
