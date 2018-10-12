@@ -43,7 +43,9 @@ def episode_page(request, slug):
         list_related_episodes = list(filter(lambda x: x!=episode, list_related_episodes))
     else:
         pass
-    related_episode = random.sample(population=list_related_episodes, k=1)[0]
+    related_episode = random.sample(population=list_related_episodes, k=2)
+    print(related_episode)
+    # print(related_episode.author.name)
 
     return render(request, 'content/episode_page.html',
         {'episode': episode, 'related_episode': related_episode, 'all_classifications': all_classifications})
