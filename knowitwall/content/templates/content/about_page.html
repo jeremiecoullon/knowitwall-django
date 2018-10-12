@@ -99,7 +99,7 @@ hidden
   </div>
 </section>
 
-<!-- <section class="team_section">
+<section class="team_section">
   <div class="container team_section">
     <div class="team_title_wrapper">
       <h2 class="team_title">Meet the team</h2>
@@ -112,19 +112,35 @@ hidden
       design, and of course enthusiasm about public engagement.</p>
     </div>
     <div class="row team_member_rows">
-      {% for tmember in teammembers %}
-        <div class="col-md-4 team_member_cols">
+      {% for tmember in teammembers|slice:"0:8" %}
+        <div class="col-md-3 team_member_cols">
           {% if tmember.image %}
             <img src="{{ tmember.image.url }}" width=100px class="teammember_center">
           {% else %}{% endif%}
-          <p class="team_name">{{ tmember.name }}</p>
-           <i class="teammember_center team_role">{{ tmember.role }}</i>
+          <p class="team_name">{{ tmember.name | safe}}</p>
+           <i class="teammember_center team_role">{{ tmember.role | safe}}</i>
+           <!-- <hr class="teammember_line"> -->
+           <!-- <p class="teammember_center team_role teammember_bio">{{ tmember.bio | safe}}</p> -->
         </div>
       {% endfor %}
     </div>
+    <div class="row team_member_rows team_member_2_people">
+      {% for tmember in teammembers|slice:"8:10" %}
+        <div class="col-md-3 team_member_cols">
+          {% if tmember.image %}
+            <img src="{{ tmember.image.url }}" width=100px class="teammember_center">
+          {% else %}{% endif%}
+          <p class="team_name">{{ tmember.name | safe}}</p>
+           <i class="teammember_center team_role">{{ tmember.role | safe}}</i>
+           <!-- <hr class="teammember_line"> -->
+           <!-- <p class="teammember_center team_role teammember_bio">{{ tmember.bio | safe}}</p> -->
+        </div>
+      {% endfor %}
+
+    </div>
   </div>
   <hr class="team_bottom_line">
-</section> -->
+</section>
 
 <section id="flash_seminars">
   <div class="container">

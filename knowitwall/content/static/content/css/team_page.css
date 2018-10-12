@@ -13,11 +13,20 @@
   margin-top: 60px;
   border-top: 2px solid #ecf0f1;
 }
+.teammember_line{
+  width: 30%;
+  margin-top: 20px;
+  border-top: 2px solid #ecf0f1;
+}
 .team_section{
   padding-bottom: 0px;
 }
 .team_member_rows{
-  margin: 60px 15%;
+  margin: 0px 0%;
+}
+.team_member_2_people{
+  /* for the last 2 team members */
+
 }
 .teammember_center{
   display: block;
@@ -25,8 +34,12 @@
   margin-right: auto;
   width: 50%;
 }
+.teammember_bio{
+  font-weight: 300;
+}
 .team_name{
-text-align: center;
+  margin-top: 10px;
+  text-align: center;
 }
 .team_role{
   width: 90%;
