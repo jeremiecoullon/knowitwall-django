@@ -37,18 +37,8 @@ def index(request):
 def episode_page(request, slug):
     episode = get_object_or_404(Episode, slug=slug)
     all_classifications = Classification.objects.order_by('discipline')
-    related_discipline = random.sample(population=list(episode.classification.all()), k=1)[0]
-    list_related_episodes = list(related_discipline.episode_set.all())
-    if len(list_related_episodes) > 1:
-        list_related_episodes = list(filter(lambda x: x!=episode, list_related_episodes))
-    else:
-        pass
-    related_episode = random.sample(population=list_related_episodes, k=2)
-    print(related_episode)
-    # print(related_episode.author.name)
-
     return render(request, 'content/episode_page.html',
-        {'episode': episode, 'related_episode': related_episode, 'all_classifications': all_classifications})
+        {'episode': episode, 'all_classifications': all_classifications})
 
 
 def about_page(request):

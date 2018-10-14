@@ -1,0 +1,24 @@
+<div class="col-md-5 {% if diff_sim == 'similar' %}col-md-offset-1{% else %}{% endif %} episode_column recommend_article_col" >
+  <h3 class="something_similar_different_tag">Something {{ diff_sim }}:</h3>
+  <div class="image_relative_div">
+  <a href="{% url 'content:episode_page' recommend_ep.slug %}">
+    <img src="{% if recommend_ep.topic_image %}{{recommend_ep.topic_image.url}}{% endif %}" alt="" class="box_image box_image_shadow">
+  </a>
+  {% if recommend_ep.status == 'v' %}
+    <div class="preview_episode_admin">
+      <p>PREVIEWED EPISODE</p>
+    </div>
+  {% endif %}
+  <div class="text_box_absolute align_4_boxes greybackground">
+  <div class="episode_title_link">
+    <a href="{% url 'content:episode_page' recommend_ep.slug %}">{{ recommend_ep.title | safe}}</a>
+  </div>
+  <p class="author_name">by {{ recommend_ep.author.name | safe}}</p>
+  {% if recommend_ep.transcript %}
+  <div class="box_episode_abstract">{{ recommend_ep.transcript|truncatewords:40 | safe }}</div>
+  {% else %}
+  <div class="box_episode_abstract"><p>{{ recommend_ep.abstract|truncatewords:25 | safe }}</p></div>
+  {% endif %}
+  </div>
+  </div>
+</div>

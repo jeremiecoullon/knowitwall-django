@@ -20,15 +20,15 @@
 
   <title>{{episode.title}} | Know it Wall</title>
 
-  <link href="{% static 'content/css/audioplayer.min.css' %}" rel="stylesheet">
-  <link href="{% static 'content/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href="{% static 'content/css/circular_player.css' %}" rel="stylesheet">
 
-  <!-- new stylesheets -->
+  <link href="{% static 'content/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'content/css/knowitwall_base_redux.css' %}" rel="stylesheet">
   <link href="{% static 'content/css/episode_page.css' %}" rel="stylesheet">
-<link href="{% static 'content/css/kiw_homepage_2018.css' %}" rel="stylesheet">
-<!-- <link href="{% static 'content/css/recommend_episodes.css' %}" rel="stylesheet"> -->
+
+  <link href="{% static 'content/css/audioplayer.min.css' %}" rel="stylesheet">
+  <link href="{% static 'content/css/circular_player.css' %}" rel="stylesheet">
+
+  <link href="{% static 'content/css/recommend_episodes.css' %}" rel="stylesheet">
   <link href="{% static 'content/css/jquery.fancybox.css' %}" rel="stylesheet"/>
 
   <!-- Custom Fonts -->
@@ -233,65 +233,21 @@
           </div>
         </div>
       </div>  <!-- row -->
-      <!-- <div class="row">
-        <div class="col-md-12">
-          <h3>Why not also check out: </h3>
-          {{ related_episode.title }} by {{ related_episode.author.name }}
-        </div>
-      </div> -->
-      <div class="row" style="margin:auto">
-        {% for rel_ep in related_episode|slice:"0:1" %}
-          <div class="col-md-5 col-md-offset-1 episode_column" style="padding-bottom: 300px;">
-            <div class="image_relative_div">
-            <a href="{% url 'content:episode_page' rel_ep.slug %}">
-              <img src="{% if rel_ep.topic_image %}{{rel_ep.topic_image.url}}{% endif %}" alt="" class="box_image box_image_shadow">
-            </a>
-            {% if related_episode.status == 'v' %}
-              <div class="preview_episode_admin">
-                <p>PREVIEWED EPISODE</p>
-              </div>
-            {% endif %}
-            <div class="text_box_absolute align_4_boxes greybackground">
-            <div class="episode_title_link">
-              <a href="{% url 'content:episode_page' rel_ep.slug %}">{{ rel_ep.title | safe}}</a>
-            </div>
-            <p class="author_name">by {{ rel_ep.author.name | safe}}</p>
-            {% if rel_ep.transcript %}
-            <div class="box_episode_abstract">{{ rel_ep.transcript|truncatewords:25 | safe }}</div>
-            {% else %}
-            <div class="box_episode_abstract"><p>{{ rel_ep.abstract|truncatewords:25 | safe }}</p></div>
-            {% endif %}
-            </div>
-            </div>
-          </div>
-        {% endfor %}
+      
+      <div class="row recomment_article_row">
+        {% if episode.related_episode %}
+          {% with diff_sim="similar" %}
+            {% for recommend_ep in episode.related_episode|slice:"0:1" %}
+              {% include 'content/recommend_article.html' %}
+            {% endfor %}
+          {% endwith %}
 
-
-        {% for rel_ep in related_episode|slice:"1:2" %}
-          <div class="col-md-5 episode_column" style="padding-bottom: 300px;">
-            <div class="image_relative_div">
-            <a href="{% url 'content:episode_page' rel_ep.slug %}">
-              <img src="{% if rel_ep.topic_image %}{{rel_ep.topic_image.url}}{% endif %}" alt="" class="box_image box_image_shadow">
-            </a>
-            {% if related_episode.status == 'v' %}
-              <div class="preview_episode_admin">
-                <p>PREVIEWED EPISODE</p>
-              </div>
-            {% endif %}
-            <div class="text_box_absolute align_4_boxes greybackground">
-            <div class="episode_title_link">
-              <a href="{% url 'content:episode_page' rel_ep.slug %}">{{ rel_ep.title | safe}}</a>
-            </div>
-            <p class="author_name">by {{ rel_ep.author.name | safe}}</p>
-            {% if rel_ep.transcript %}
-            <div class="box_episode_abstract">{{ rel_ep.transcript|truncatewords:25 | safe }}</div>
-            {% else %}
-            <div class="box_episode_abstract"><p>{{ rel_ep.abstract|truncatewords:25 | safe }}</p></div>
-            {% endif %}
-            </div>
-            </div>
-          </div>
-        {% endfor %}
+          {% with diff_sim="different" %}
+            {% for recommend_ep in episode.different_episode|slice:"0:1" %}
+              {% include 'content/recommend_article.html' %}
+            {% endfor %}
+          {%endwith%}
+        {% endif %}
 
       </div>
 

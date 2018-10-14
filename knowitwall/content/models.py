@@ -6,6 +6,7 @@ from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 from .managers import ContentManager
 import os
+import random
 from .images import style_transcript_image
 
 STATUS_CHOICES = (
@@ -99,6 +100,33 @@ class Episode(models.Model):
     old_KiW_slug = models.CharField(max_length=200, blank=True, help_text="For old episodes (that were on Flask): need to fill this in so that the old links on social media and stuff still work")
 
     objects = ContentManager()
+
+    def related_episode(self):
+        """
+        Returns a related episode: an episode that has the same classification as the episode
+        If the episode has several classifications, choose one randomly
+        """
+        related_discipline = random.sample(population=list(self.classification.all()), k=1)[0]
+        list_related_episodes = list(related_discipline.episode_set.all())
+
+        if len(list_related_episodes) > 1:
+            list_related_episodes = list(filter(lambda x: x!=self, list_related_episodes))
+            related_episode = list(random.sample(population=list_related_episodes, k=1))
+        else:
+            related_episode = None
+
+        return related_episode
+
+    def different_episode(self):
+        """
+        Returns an unrelated episode: an episode not in the same classification as the current episode
+        """
+        all_classifications = Classification.objects.order_by('discipline')
+        list_different_discipline = list(filter(lambda x: x not in self.classification.all(), all_classifications))
+        different_discipline = random.sample(population=list_different_discipline, k=1)[0]
+        list_different_episodes = list(different_discipline.episode_set.all())
+        a_different_episode = list(random.sample(population=list_different_episodes, k=1))
+        return a_different_episode
 
     def create_youtube_embed(self, url):
         """
