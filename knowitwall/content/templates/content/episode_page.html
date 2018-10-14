@@ -1,6 +1,6 @@
 {% extends "content/base_html/KiW_base.html" %}
 {% load static from staticfiles %}
-{% block content %}
+{% block header %}
 <head>
 
 
@@ -37,7 +37,8 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300italic,400,400italic" rel="stylesheet" type="text/css">
 
 </head>
-
+{% endblock %}
+{% block content %}
 <body id="page-top">
 
   <div id="header_video_hidden_div" style="display:hidden">
@@ -233,7 +234,7 @@
           </div>
         </div>
       </div>  <!-- row -->
-      
+
       <div class="row recomment_article_row">
         {% if episode.related_episode %}
           {% with diff_sim="similar" %}
