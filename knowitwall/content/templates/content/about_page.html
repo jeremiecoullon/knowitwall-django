@@ -125,7 +125,7 @@ hidden
       {% endfor %}
     </div>
     <div class="row team_member_rows team_member_2_people">
-      {% for tmember in teammembers|slice:"8:10" %}
+      {% for tmember in teammembers|slice:"8:" %}
         <div class="col-md-3 team_member_cols">
           {% if tmember.image %}
             <img src="{{ tmember.image.url }}" width=100px class="teammember_center">
