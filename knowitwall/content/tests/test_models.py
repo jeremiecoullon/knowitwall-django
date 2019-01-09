@@ -1,8 +1,10 @@
 from django.test import TestCase
 from content.models import Episode
 from .utils import create_episode
+from content.models import author_image_directory_path
+from content.util import create_youtube_embed
 
-class EpisodeSlugTests(TestCase):
+class ModelTests(TestCase):
 
     def test_save_creates_slug(self):
         """
@@ -31,7 +33,8 @@ class EpisodeSlugTests(TestCase):
         "http://knowitwall.com/": "",
 
         }
-        create_episode(title="a fun Title with _underscores!", author_name="hip-ass author")
-        le_episode = Episode.objects.get(title="a fun Title with _underscores!")
+        # create_episode(title="a fun Title with _underscores!", author_name="hip-ass author")
+        # le_episode = Episode.objects.get(title="a fun Title with _underscores!")
         for raw_url, expected_url in url_dict.items():
-            self.assertEqual(expected_url,le_episode.create_youtube_embed(url=raw_url))
+            self.assertEqual(expected_url, create_youtube_embed(url=raw_url))
+        

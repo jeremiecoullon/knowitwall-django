@@ -5,9 +5,9 @@ import uuid
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 from .managers import ContentManager
-import os
 import random
 from .images import style_transcript_image
+from .util import seasons_image_directory_path, episode_image_directory_path, author_image_directory_path, create_youtube_embed
 
 STATUS_CHOICES = (
     ('d', 'Draft'),
@@ -26,18 +26,6 @@ AUTHOR_NAME_SIZE_CHOICES = (
     ('n', 'normal'),
     ('s', 'smaller')
 )
-
-
-def seasons_image_directory_path(instance, filename):
-    return 'Season_images/{0}/{1}'.format(instance.title, filename)
-
-def episode_image_directory_path(instance, filename):
-    # Episode images will be uploaded to MEDIA_ROOT/Episode_image-id_<id>/<filename>
-    return 'Episodes_images/episode_id-{0}/{1}'.format(instance.unique_id, filename)
-
-def author_image_directory_path(instance, filename):
-    # Author images will be uploaded to MEDIA_ROOT/Author_images/<author_name>/<filename>
-    return 'Author_images/{0}/{1}'.format(instance.name, filename)
 
 
 
@@ -128,27 +116,10 @@ class Episode(models.Model):
         a_different_episode = list(random.sample(population=list_different_episodes, k=1))
         return a_different_episode
 
-    def create_youtube_embed(self, url):
-        """
-        Parses URL to youtube video and returns the embeded link.
-        """
-        if 'www.youtube.com' not in url:
-            return ""
-        if 'youtube.com/embed' in url:
-            if "?" in url:
-                url = url.split("?")[0]
-            url = url.split('embed/')[-1]
-            # return url
-        if 'watch' in url:
-            url = url.split("=")[1]
-        if "&" in url:
-            url = url.split("&")[0]
-        return os.path.join('https://www.youtube.com','embed',url+'?autoplay=1')
-
     def save(self, *args, **kwargs):
         # create slug field from title
         self.slug = slugify(self.title)
-        self.video_embed = self.create_youtube_embed(url=self.video_embed)
+        self.video_embed = create_youtube_embed(url=self.video_embed)
         self.transcript = style_transcript_image(input_html=self.transcript)
         super(Episode, self).save(*args, **kwargs)
 
