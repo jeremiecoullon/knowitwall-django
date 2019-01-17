@@ -1,9 +1,11 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+import unidecode
 
 def teammember_image_directory_path(instance, filename):
     # Author images will be uploaded to MEDIA_ROOT/TeamMember/<author_name>/<filename>
-    return 'TeamMember_images/{0}/{1}'.format(instance.name, filename)
+    unaccented_teammember_name =  unidecode.unidecode(instance.name)
+    return 'TeamMember_images/{0}/{1}'.format(unaccented_teammember_name, filename)
 
 
 class TeamMember(models.Model):
